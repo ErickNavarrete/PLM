@@ -340,6 +340,7 @@
             this.rLMToolStripMenuItem.Name = "rLMToolStripMenuItem";
             this.rLMToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.rLMToolStripMenuItem.Text = "Sugerencia de compra";
+            this.rLMToolStripMenuItem.Click += new System.EventHandler(this.rLMToolStripMenuItem_Click);
             // 
             // reloj
             // 

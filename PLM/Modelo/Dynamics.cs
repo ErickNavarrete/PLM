@@ -18,8 +18,8 @@ namespace PLM.Modelo
 		public Dynamics()
 		{
 			//"Data Source=OMARTUAPC;Initial Catalog=RIOSULAPP;User Id=sa;Password=********;"            
-			conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + ";");
-			//conexion = new SqlConnection(@"Data Source= DESKTOP-JBDH3N9; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
+			//conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + ";");
+			conexion = new SqlConnection(@"Data Source= DESKTOP-JBDH3N9; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
 		}
 
 		// recorda que quitamos el LeadTime
@@ -560,7 +560,7 @@ namespace PLM.Modelo
 
 		public List<Inventory> Inventario2()
 		{
-			SqlCommand comando = new SqlCommand("SELECT custid, name,curyid FROM customer", conexion);
+			SqlCommand comando = new SqlCommand("SELECT custid, name,curyid FROM customer order by name", conexion);
 			SqlDataAdapter miDa = new SqlDataAdapter();
 			DataSet miDs = new DataSet();
 			DataTable miDt = new DataTable();

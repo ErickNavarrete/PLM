@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MetroFramework.Forms;
 using PLM.Modelo;
 using ArcangelDialogs;
+using PLM.Vista.Reporte;
 
 namespace PLM.Vista
 {
@@ -412,6 +413,13 @@ namespace PLM.Vista
                   pbxNotificacion.Image = Properties.Resources.Notification64pxRed;
                   pbxNotificacion.Image.Tag = "rojo";
               }
+        }
+
+        private void rLMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Resurtimiento view = new Resurtimiento();
+            view.Show();
+            view.BringToFront();
         }
     }
 }
