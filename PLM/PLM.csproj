@@ -1,0 +1,574 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5AFCE19E-12C6-474E-9FEB-7CD187E1855D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PLM</RootNamespace>
+    <AssemblyName>PLM</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>PLM.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icono.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ArcangelDialogs">
+      <HintPath>..\..\..\..\Downloads\dll\ArcangelDialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\..\..\Downloads\dll\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar.Keyboard, Version=10.4.0.2, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=10.4.0.2, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=10.4.0.2, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.SuperGrid.Design, Version=10.4.0.2, Culture=neutral, PublicKeyToken=26d81176cfa2b486, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.WinForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clases\ConfigIni.cs" />
+    <Compile Include="Controlador\BitacoradeEventosController.cs" />
+    <Compile Include="Controlador\BodyController.cs" />
+    <Compile Include="Controlador\BOMController.cs" />
+    <Compile Include="Controlador\CategoriaDosController.cs" />
+    <Compile Include="Controlador\DepartamentoController.cs" />
+    <Compile Include="Controlador\DiasAnticipacionController.cs" />
+    <Compile Include="Controlador\DiasFeriadoseInhabiles.cs" />
+    <Compile Include="Controlador\EmpaqueController.cs" />
+    <Compile Include="Controlador\EstilosdeProduccionController.cs" />
+    <Compile Include="Controlador\FitController.cs" />
+    <Compile Include="Controlador\InseamController.cs" />
+    <Compile Include="Controlador\ManoDeObraController.cs" />
+    <Compile Include="Controlador\NotificacionesController.cs" />
+    <Compile Include="Controlador\PresupuestosController.cs" />
+    <Compile Include="Controlador\ProcesosController.cs" />
+    <Compile Include="Controlador\SegmentoController.cs" />
+    <Compile Include="Controlador\SegundasController.cs" />
+    <Compile Include="Controlador\TareaController.cs" />
+    <Compile Include="Controlador\TemporadasController.cs" />
+    <Compile Include="Controlador\TrimController.cs" />
+    <Compile Include="Controlador\UsuarioController.cs" />
+    <Compile Include="GLOBALS.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Modelo\Boms.cs" />
+    <Compile Include="Modelo\BomsDetails.cs" />
+    <Compile Include="Modelo\DiasAnticipacion.cs" />
+    <Compile Include="Modelo\DiasFeriados.cs" />
+    <Compile Include="Modelo\Dynamics.cs" />
+    <Compile Include="Modelo\Hilos.cs" />
+    <Compile Include="Modelo\HilosDetails.cs" />
+    <Compile Include="Modelo\Inventory.cs" />
+    <Compile Include="Modelo\Notificacion.cs" />
+    <Compile Include="Modelo\Presupuestos.cs" />
+    <Compile Include="Modelo\Reportes\DetalleBom.cs" />
+    <Compile Include="Modelo\Reportes\DetalleUsuario.cs" />
+    <Compile Include="Modelo\Reportes\EncabezadoEstilo.cs" />
+    <Compile Include="Modelo\Reportes\HilosDetalle.cs" />
+    <Compile Include="Modelo\Segundas.cs" />
+    <Compile Include="Modelo\BitacoraDeEventos.cs" />
+    <Compile Include="Modelo\Body.cs" />
+    <Compile Include="Modelo\CategoryDos.cs" />
+    <Compile Include="Modelo\Departamentos.cs" />
+    <Compile Include="Modelo\Empaques.cs" />
+    <Compile Include="Modelo\EstilosProduccion.cs" />
+    <Compile Include="Modelo\Fit.cs" />
+    <Compile Include="Modelo\Inseam.cs" />
+    <Compile Include="Modelo\ManodeObra.cs" />
+    <Compile Include="Modelo\Proceso.cs" />
+    <Compile Include="Modelo\Segmentos.cs" />
+    <Compile Include="Modelo\Tareas.cs" />
+    <Compile Include="Modelo\TareasThread.cs" />
+    <Compile Include="Modelo\Temporadas.cs" />
+    <Compile Include="Modelo\Trims.cs" />
+    <Compile Include="Modelo\Usuario.cs" />
+    <Compile Include="Modelo\PLMContext.cs" />
+    <Compile Include="Notificaciones\Notificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notificaciones\Notificacion.Designer.cs">
+      <DependentUpon>Notificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vista\BitacoradeEventosVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\BitacoradeEventosVista.Designer.cs">
+      <DependentUpon>BitacoradeEventosVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\BOM\BOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\BOM\BOM.Designer.cs">
+      <DependentUpon>BOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\BOM\BomTarea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\BOM\BomTarea.Designer.cs">
+      <DependentUpon>BomTarea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\BOM\ConsultaBom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\BOM\ConsultaBom.Designer.cs">
+      <DependentUpon>ConsultaBom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\BOM\ConsultaBomCosteado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\BOM\ConsultaBomCosteado.Designer.cs">
+      <DependentUpon>ConsultaBomCosteado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\BOM\DetailBomVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\BOM\DetailBomVista.Designer.cs">
+      <DependentUpon>DetailBomVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\BOM\BomNotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\BOM\BomNotas.Designer.cs">
+      <DependentUpon>BomNotas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Busqueda\BusquedaVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Busqueda\BusquedaVista.Designer.cs">
+      <DependentUpon>BusquedaVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Busqueda\Hilo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Busqueda\Hilo.Designer.cs">
+      <DependentUpon>Hilo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Busqueda\Input.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Busqueda\Input.Designer.cs">
+      <DependentUpon>Input.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Busqueda\TareaHilo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Busqueda\TareaHilo.Designer.cs">
+      <DependentUpon>TareaHilo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\CategoryDosVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\CategoryDosVista.Designer.cs">
+      <DependentUpon>CategoryDosVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ConfigConexionVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\ConfigConexionVista.Designer.cs">
+      <DependentUpon>ConfigConexionVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ConfigDynamic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\ConfigDynamic.Designer.cs">
+      <DependentUpon>ConfigDynamic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\DepartamentosVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\DepartamentosVista.Designer.cs">
+      <DependentUpon>DepartamentosVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\DiasAnticipacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\DiasAnticipacion.Designer.cs">
+      <DependentUpon>DiasAnticipacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\DiasFeriadosVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\DiasFeriadosVista.Designer.cs">
+      <DependentUpon>DiasFeriadosVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EmpaqueVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\EmpaqueVista.Designer.cs">
+      <DependentUpon>EmpaqueVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Reporte\vistaReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Reporte\vistaReporte.Designer.cs">
+      <DependentUpon>vistaReporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\VistasEstilos\EstilosdeProduccionAM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\VistasEstilos\EstilosdeProduccionAM.Designer.cs">
+      <DependentUpon>EstilosdeProduccionAM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\VistasEstilos\EstilosdeProduccionVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\VistasEstilos\EstilosdeProduccionVista.Designer.cs">
+      <DependentUpon>EstilosdeProduccionVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FitVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\FitVista.Designer.cs">
+      <DependentUpon>FitVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\BodyVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\BodyVista.Designer.cs">
+      <DependentUpon>BodyVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\InseamVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\InseamVista.Designer.cs">
+      <DependentUpon>InseamVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\LoginVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\LoginVista.Designer.cs">
+      <DependentUpon>LoginVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ManoDeObraVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\ManoDeObraVista.Designer.cs">
+      <DependentUpon>ManoDeObraVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\MenuPrincipalVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\MenuPrincipalVista.Designer.cs">
+      <DependentUpon>MenuPrincipalVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\PresupuestosVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\PresupuestosVista.Designer.cs">
+      <DependentUpon>PresupuestosVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ProcesosVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\ProcesosVista.Designer.cs">
+      <DependentUpon>ProcesosVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\SegmentosVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\SegmentosVista.Designer.cs">
+      <DependentUpon>SegmentosVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\SegundasVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\SegundasVista.Designer.cs">
+      <DependentUpon>SegundasVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\TareasVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\TareasVista.Designer.cs">
+      <DependentUpon>TareasVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\TemporadasVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\TemporadasVista.Designer.cs">
+      <DependentUpon>TemporadasVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\TrimsVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\TrimsVista.Designer.cs">
+      <DependentUpon>TrimsVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\UsuarioVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\UsuarioVista.Designer.cs">
+      <DependentUpon>UsuarioVista.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Informes\ReporteBomCosteado.rdlc" />
+    <EmbeddedResource Include="Informes\ReporteBom.rdlc" />
+    <EmbeddedResource Include="Notificaciones\Notificacion.resx">
+      <DependentUpon>Notificacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Vista\BitacoradeEventosVista.resx">
+      <DependentUpon>BitacoradeEventosVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\BOM\BOM.resx">
+      <DependentUpon>BOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\BOM\BomTarea.resx">
+      <DependentUpon>BomTarea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\BOM\ConsultaBom.resx">
+      <DependentUpon>ConsultaBom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\BOM\ConsultaBomCosteado.resx">
+      <DependentUpon>ConsultaBomCosteado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\BOM\DetailBomVista.resx">
+      <DependentUpon>DetailBomVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\BOM\BomNotas.resx">
+      <DependentUpon>BomNotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Busqueda\BusquedaVista.resx">
+      <DependentUpon>BusquedaVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Busqueda\Hilo.resx">
+      <DependentUpon>Hilo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Busqueda\Input.resx">
+      <DependentUpon>Input.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Busqueda\TareaHilo.resx">
+      <DependentUpon>TareaHilo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\CategoryDosVista.resx">
+      <DependentUpon>CategoryDosVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\ConfigConexionVista.resx">
+      <DependentUpon>ConfigConexionVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\ConfigDynamic.resx">
+      <DependentUpon>ConfigDynamic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\DepartamentosVista.resx">
+      <DependentUpon>DepartamentosVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\DiasAnticipacion.resx">
+      <DependentUpon>DiasAnticipacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\DiasFeriadosVista.resx">
+      <DependentUpon>DiasFeriadosVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\EmpaqueVista.resx">
+      <DependentUpon>EmpaqueVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Reporte\vistaReporte.resx">
+      <DependentUpon>vistaReporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\VistasEstilos\EstilosdeProduccionAM.resx">
+      <DependentUpon>EstilosdeProduccionAM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\VistasEstilos\EstilosdeProduccionVista.resx">
+      <DependentUpon>EstilosdeProduccionVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\FitVista.resx">
+      <DependentUpon>FitVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\BodyVista.resx">
+      <DependentUpon>BodyVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\InseamVista.resx">
+      <DependentUpon>InseamVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\loginVista.resx">
+      <DependentUpon>LoginVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\ManoDeObraVista.resx">
+      <DependentUpon>ManoDeObraVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\MenuPrincipalVista.resx">
+      <DependentUpon>MenuPrincipalVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\PresupuestosVista.resx">
+      <DependentUpon>PresupuestosVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\ProcesosVista.resx">
+      <DependentUpon>ProcesosVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\SegmentosVista.resx">
+      <DependentUpon>SegmentosVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\SegundasVista.resx">
+      <DependentUpon>SegundasVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\TareasVista.resx">
+      <DependentUpon>TareasVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\TemporadasVista.resx">
+      <DependentUpon>TemporadasVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\TrimsVista.resx">
+      <DependentUpon>TrimsVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\UsuarioVista.resx">
+      <DependentUpon>UsuarioVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="bin\Debug\Conexion.ini" />
+    <None Include="bin\Debug\PLM.exe.config" />
+    <None Include="bin\Debug\PLM.vshost.exe.config" />
+    <None Include="bin\Debug\PLM.vshost.exe.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\PLM.Modelo.Boms.datasource" />
+    <None Include="Properties\DataSources\PLM.Modelo.BomsDetails.datasource" />
+    <None Include="Properties\DataSources\PLM.Modelo.Reportes.DetalleBom.datasource" />
+    <None Include="Properties\DataSources\PLM.Modelo.Reportes.DetalleUsuario.datasource" />
+    <None Include="Properties\DataSources\PLM.Modelo.Reportes.EncabezadoEstilo.datasource" />
+    <None Include="Properties\DataSources\PLM.Modelo.Reportes.HilosDetalle.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\ArcangelDialogs.dll" />
+    <Content Include="bin\Debug\Bunifu_UI_v1.5.3.dll" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\MetroFramework.Design.dll" />
+    <Content Include="bin\Debug\MetroFramework.dll" />
+    <Content Include="bin\Debug\MetroFramework.Fonts.dll" />
+    <Content Include="bin\Debug\PLM.exe" />
+    <Content Include="bin\Debug\PLM.pdb" />
+    <Content Include="bin\Debug\PLM.vshost.exe" />
+    <Content Include="icono.ico" />
+    <None Include="Resources\RECIBIR.png" />
+    <None Include="Resources\Open.png" />
+    <None Include="Resources\SaveTool.png" />
+    <None Include="Resources\Save.png" />
+    <None Include="Resources\Nuevo.png" />
+    <None Include="Resources\Atras.png" />
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\EditDocument1.png" />
+    <None Include="Resources\Cancel.png" />
+    <None Include="Resources\Copy.png" />
+    <Content Include="Resources\estado0.png" />
+    <Content Include="Resources\estado1.png" />
+    <Content Include="Resources\estado2.png" />
+    <Content Include="Resources\estado3.png" />
+    <None Include="Resources\NewDocument.png" />
+    <None Include="Resources\LockInformation.png" />
+    <None Include="Resources\LogoRiosul.png" />
+    <Content Include="Resources\Notification32px.png" />
+    <Content Include="Resources\Notification32pxRed.png" />
+    <Content Include="Resources\Notification64px.png" />
+    <Content Include="Resources\Notification64pxRed.png" />
+    <None Include="Resources\user.png" />
+    <None Include="Resources\sesion.png" />
+    <None Include="Resources\main.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
