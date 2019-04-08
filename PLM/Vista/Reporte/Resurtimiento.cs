@@ -28,7 +28,7 @@ namespace PLM.Vista.Reporte
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            Res.GetReporte(dtpFechaI.Value, dtpFechaF.Value,"302");
+            Res.GetReporte(dtpFechaI.Value, dtpFechaF.Value,"112",dtpFechaOC.Value);
 
             
             

@@ -313,6 +313,12 @@ namespace PLM.Reportes {
             
             private global::System.Data.DataColumn columnCLIENTE_ID;
             
+            private global::System.Data.DataColumn columnFECHA_REQ;
+            
+            private global::System.Data.DataColumn columnFECHA_ENTR;
+            
+            private global::System.Data.DataColumn columnDIAS;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public dsReporteDataTable() {
@@ -484,6 +490,30 @@ namespace PLM.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FECHA_REQColumn {
+                get {
+                    return this.columnFECHA_REQ;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FECHA_ENTRColumn {
+                get {
+                    return this.columnFECHA_ENTR;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DIASColumn {
+                get {
+                    return this.columnDIAS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -522,21 +552,24 @@ namespace PLM.Reportes {
             public dsReporteRow AdddsReporteRow(
                         string CLAVE, 
                         string DESCRIPCION, 
-                        string CANT_ORD, 
+                        decimal CANT_ORD, 
                         string OT, 
                         string TIPO_MATERIAL, 
-                        string EXISTENCIA, 
+                        decimal EXISTENCIA, 
                         string UNIDAD_COMPRA, 
                         string ORDEN_VENTA, 
                         string PO, 
-                        string ADICIONAL, 
-                        string CANTIDAD_ORD_VENTA, 
+                        decimal ADICIONAL, 
+                        decimal CANTIDAD_ORD_VENTA, 
                         string COD_PROVEEDOR, 
                         string DESC_PROVEEDOR, 
                         string PROVEEDOR, 
                         string TIEMPO_ENTREGA, 
                         string FECHA_EMBARQUE, 
-                        string CLIENTE_ID) {
+                        string CLIENTE_ID, 
+                        string FECHA_REQ, 
+                        string FECHA_ENTR, 
+                        decimal DIAS) {
                 dsReporteRow rowdsReporteRow = ((dsReporteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CLAVE,
@@ -555,7 +588,10 @@ namespace PLM.Reportes {
                         PROVEEDOR,
                         TIEMPO_ENTREGA,
                         FECHA_EMBARQUE,
-                        CLIENTE_ID};
+                        CLIENTE_ID,
+                        FECHA_REQ,
+                        FECHA_ENTR,
+                        DIAS};
                 rowdsReporteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdsReporteRow);
                 return rowdsReporteRow;
@@ -595,6 +631,9 @@ namespace PLM.Reportes {
                 this.columnTIEMPO_ENTREGA = base.Columns["TIEMPO_ENTREGA"];
                 this.columnFECHA_EMBARQUE = base.Columns["FECHA_EMBARQUE"];
                 this.columnCLIENTE_ID = base.Columns["CLIENTE_ID"];
+                this.columnFECHA_REQ = base.Columns["FECHA_REQ"];
+                this.columnFECHA_ENTR = base.Columns["FECHA_ENTR"];
+                this.columnDIAS = base.Columns["DIAS"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -604,13 +643,13 @@ namespace PLM.Reportes {
                 base.Columns.Add(this.columnCLAVE);
                 this.columnDESCRIPCION = new global::System.Data.DataColumn("DESCRIPCION", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDESCRIPCION);
-                this.columnCANT_ORD = new global::System.Data.DataColumn("CANT_ORD", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnCANT_ORD = new global::System.Data.DataColumn("CANT_ORD", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCANT_ORD);
                 this.columnOT = new global::System.Data.DataColumn("OT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOT);
                 this.columnTIPO_MATERIAL = new global::System.Data.DataColumn("TIPO_MATERIAL", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTIPO_MATERIAL);
-                this.columnEXISTENCIA = new global::System.Data.DataColumn("EXISTENCIA", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEXISTENCIA = new global::System.Data.DataColumn("EXISTENCIA", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEXISTENCIA);
                 this.columnUNIDAD_COMPRA = new global::System.Data.DataColumn("UNIDAD_COMPRA", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUNIDAD_COMPRA);
@@ -618,9 +657,9 @@ namespace PLM.Reportes {
                 base.Columns.Add(this.columnORDEN_VENTA);
                 this.columnPO = new global::System.Data.DataColumn("PO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPO);
-                this.columnADICIONAL = new global::System.Data.DataColumn("ADICIONAL", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnADICIONAL = new global::System.Data.DataColumn("ADICIONAL", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnADICIONAL);
-                this.columnCANTIDAD_ORD_VENTA = new global::System.Data.DataColumn("CANTIDAD_ORD_VENTA", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnCANTIDAD_ORD_VENTA = new global::System.Data.DataColumn("CANTIDAD_ORD_VENTA", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCANTIDAD_ORD_VENTA);
                 this.columnCOD_PROVEEDOR = new global::System.Data.DataColumn("COD_PROVEEDOR", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCOD_PROVEEDOR);
@@ -634,6 +673,12 @@ namespace PLM.Reportes {
                 base.Columns.Add(this.columnFECHA_EMBARQUE);
                 this.columnCLIENTE_ID = new global::System.Data.DataColumn("CLIENTE_ID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCLIENTE_ID);
+                this.columnFECHA_REQ = new global::System.Data.DataColumn("FECHA_REQ", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFECHA_REQ);
+                this.columnFECHA_ENTR = new global::System.Data.DataColumn("FECHA_ENTR", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFECHA_ENTR);
+                this.columnDIAS = new global::System.Data.DataColumn("DIAS", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDIAS);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -808,10 +853,10 @@ namespace PLM.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string CANT_ORD {
+            public decimal CANT_ORD {
                 get {
                     try {
-                        return ((string)(this[this.tabledsReporte.CANT_ORDColumn]));
+                        return ((decimal)(this[this.tabledsReporte.CANT_ORDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'CANT_ORD\' de la tabla \'dsReporte\' es DBNull.", e);
@@ -856,10 +901,10 @@ namespace PLM.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string EXISTENCIA {
+            public decimal EXISTENCIA {
                 get {
                     try {
-                        return ((string)(this[this.tabledsReporte.EXISTENCIAColumn]));
+                        return ((decimal)(this[this.tabledsReporte.EXISTENCIAColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'EXISTENCIA\' de la tabla \'dsReporte\' es DBNull.", e);
@@ -920,10 +965,10 @@ namespace PLM.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string ADICIONAL {
+            public decimal ADICIONAL {
                 get {
                     try {
-                        return ((string)(this[this.tabledsReporte.ADICIONALColumn]));
+                        return ((decimal)(this[this.tabledsReporte.ADICIONALColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'ADICIONAL\' de la tabla \'dsReporte\' es DBNull.", e);
@@ -936,10 +981,10 @@ namespace PLM.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string CANTIDAD_ORD_VENTA {
+            public decimal CANTIDAD_ORD_VENTA {
                 get {
                     try {
-                        return ((string)(this[this.tabledsReporte.CANTIDAD_ORD_VENTAColumn]));
+                        return ((decimal)(this[this.tabledsReporte.CANTIDAD_ORD_VENTAColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'CANTIDAD_ORD_VENTA\' de la tabla \'dsReporte\' es DBNull.", e);
@@ -1043,6 +1088,54 @@ namespace PLM.Reportes {
                 }
                 set {
                     this[this.tabledsReporte.CLIENTE_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string FECHA_REQ {
+                get {
+                    try {
+                        return ((string)(this[this.tabledsReporte.FECHA_REQColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FECHA_REQ\' de la tabla \'dsReporte\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledsReporte.FECHA_REQColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string FECHA_ENTR {
+                get {
+                    try {
+                        return ((string)(this[this.tabledsReporte.FECHA_ENTRColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FECHA_ENTR\' de la tabla \'dsReporte\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledsReporte.FECHA_ENTRColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal DIAS {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabledsReporte.DIASColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DIAS\' de la tabla \'dsReporte\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledsReporte.DIASColumn] = value;
                 }
             }
             
@@ -1248,6 +1341,42 @@ namespace PLM.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetCLIENTE_IDNull() {
                 this[this.tabledsReporte.CLIENTE_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsFECHA_REQNull() {
+                return this.IsNull(this.tabledsReporte.FECHA_REQColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetFECHA_REQNull() {
+                this[this.tabledsReporte.FECHA_REQColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsFECHA_ENTRNull() {
+                return this.IsNull(this.tabledsReporte.FECHA_ENTRColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetFECHA_ENTRNull() {
+                this[this.tabledsReporte.FECHA_ENTRColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDIASNull() {
+                return this.IsNull(this.tabledsReporte.DIASColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDIASNull() {
+                this[this.tabledsReporte.DIASColumn] = global::System.Convert.DBNull;
             }
         }
         

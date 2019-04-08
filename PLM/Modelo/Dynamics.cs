@@ -19,8 +19,8 @@ namespace PLM.Modelo
 		public Dynamics()
 		{
 			//"Data Source=OMARTUAPC;Initial Catalog=RIOSULAPP;User Id=sa;Password=********;"            
-			//conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + ";");
-			conexion = new SqlConnection(@"Data Source= DESKTOP-JBDH3N9; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
+			conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + ";");
+			//conexion = new SqlConnection(@"Data Source= DESKTOP-JBDH3N9; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
 		}
 
 		// recorda que quitamos el LeadTime
@@ -643,15 +643,15 @@ FROM            dbo.SOHeader INNER JOIN
 						{
 							clave = miDt.Rows[i][0].ToString().Trim(),
 							descripcion = miDt.Rows[i][1].ToString().Trim(),
-							cant_ord = miDt.Rows[i][2].ToString().Trim(),
+							cant_ord = miDt.Rows[i][2].ToString().Trim() ?? "0",
 							ot = miDt.Rows[i][3].ToString().Trim(),
 							tipo_material = miDt.Rows[i][4].ToString().Trim(),
-							existencia = miDt.Rows[i][5].ToString().Trim(),
+							existencia = miDt.Rows[i][5].ToString().Trim() ?? "0",
 							unidad_compra = miDt.Rows[i][6].ToString().Trim(),
 							orden_venta = miDt.Rows[i][7].ToString().Trim(),
 							po = miDt.Rows[i][8].ToString().Trim(),
-							adicional = miDt.Rows[i][9].ToString().Trim(),
-							cantidad_ordenes_venta = miDt.Rows[i][10].ToString().Trim(),
+							adicional = miDt.Rows[i][9].ToString().Trim() ?? "0",
+							cantidad_ordenes_venta = miDt.Rows[i][10].ToString().Trim() ?? "0",
 							cod_proveedor = miDt.Rows[i][11].ToString().Trim(),
 							desc_proveedor = miDt.Rows[i][12].ToString().Trim(),
 							proveedor = miDt.Rows[i][13].ToString().Trim(),
