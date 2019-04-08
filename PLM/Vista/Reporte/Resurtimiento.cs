@@ -25,5 +25,13 @@ namespace PLM.Vista.Reporte
         {
             Res.GetClientes(cbClientes);
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Res.GetReporte(dtpFechaI.Value, dtpFechaF.Value,"302");
+
+            
+            
+        }
     }
 }

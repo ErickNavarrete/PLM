@@ -8,6 +8,7 @@ using System.Data;
 using PLM.Modelo;
 using ArcangelDialogs;
 using PLM.Clases;
+using PLM.Modelo.Reportes;
 
 namespace PLM.Modelo
 {
@@ -591,6 +592,85 @@ namespace PLM.Modelo
 				}
 			}
 			catch (SqlException ex)
+			{
+				Dialogs.Show(ex.Message, DialogsType.Error);
+				return null;
+			}
+			finally
+			{
+				conexion.Close();
+				miDa.Dispose();
+				miDs.Dispose();
+				miDt.Dispose();
+			}
+		}
+
+		public List<RepResurtimiento> Reporte1(string fecha1, string fecha2, string cliente)
+		{
+			SqlCommand comando = new SqlCommand(@"SELECT        TOP (100) PERCENT A.InvtID, B.Descr AS DescrArt, A.QtyWOReqd AS CantOrd, A.WONbr, dbo.InventoryADG.ProdLineID AS MaterialType, dbo.ItemSite.QtyOnHand AS Existencia, B.DfltPOUnit AS UnidadCompra, 
+						 dbo.SOHeader.OrdNbr AS OrdenVenta, dbo.SOHeader.CustOrdNbr AS Po, dbo.InventoryADG.User6 AS PorAdicional, dbo.ItemSite.QtyOnPO AS CantidadOrdenesVta, dbo.ItemXRef.AlternateID AS CodProv, 
+						 dbo.ItemXRef.Descr AS DescProv, B.Supplr1 AS Proveedor, B.LeadTime AS TempoEntregaCompras, dbo.SOHeader.User9 AS FechaEmbarque, dbo.SOHeader.CustID
+FROM            dbo.SOHeader INNER JOIN
+						 dbo.WOMatlReq AS A INNER JOIN
+						 dbo.Inventory AS B ON A.InvtID = B.InvtID INNER JOIN
+						 dbo.INUnit AS C ON B.StkUnit = C.ToUnit AND B.DfltPOUnit = C.FromUnit INNER JOIN
+						 dbo.WOHeader AS D ON A.WONbr = D.WONbr INNER JOIN
+						 dbo.ProductClass AS F ON F.ClassID = B.ClassID INNER JOIN
+						 dbo.RsVw_1265001A AS G ON G.Wonbr = D.WONbr INNER JOIN
+						 dbo.RsTb_Plantas AS E ON E.Planta = D.User5 ON dbo.SOHeader.OrdNbr = D.User9 LEFT OUTER JOIN
+						 dbo.ItemXRef ON B.InvtID = dbo.ItemXRef.InvtID LEFT OUTER JOIN
+						 dbo.ItemSite INNER JOIN
+						 dbo.InventoryADG ON dbo.ItemSite.InvtID = dbo.InventoryADG.InvtID RIGHT OUTER JOIN
+						 dbo.INDfltSites ON dbo.ItemSite.DfltPickBin = dbo.INDfltSites.DfltPickBin AND dbo.ItemSite.InvtID = dbo.INDfltSites.InvtID AND dbo.ItemSite.SiteID = dbo.INDfltSites.DfltSiteID ON 
+						 B.InvtID = dbo.INDfltSites.InvtID
+						WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term') 
+						AND SOHeader.User9 >= '" + fecha1 + "' AND SOHeader.User9 <= '" + fecha2 + "' " + cliente, conexion);
+			SqlDataAdapter miDa = new SqlDataAdapter();
+			DataSet miDs = new DataSet();
+			DataTable miDt = new DataTable();
+			List<RepResurtimiento> miLista = new List<RepResurtimiento>();
+			try
+			{
+				conexion.Open();
+				miDa.SelectCommand = comando;
+				miDa.Fill(miDs);
+				miDt = miDs.Tables[0];
+				if (miDt.Rows.Count > 0)
+				{
+					for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+					{
+						RepResurtimiento objetoInv = new RepResurtimiento
+						{
+							clave = miDt.Rows[i][0].ToString().Trim(),
+							descripcion = miDt.Rows[i][1].ToString().Trim(),
+							cant_ord = miDt.Rows[i][2].ToString().Trim(),
+							ot = miDt.Rows[i][3].ToString().Trim(),
+							tipo_material = miDt.Rows[i][4].ToString().Trim(),
+							existencia = miDt.Rows[i][5].ToString().Trim(),
+							unidad_compra = miDt.Rows[i][6].ToString().Trim(),
+							orden_venta = miDt.Rows[i][7].ToString().Trim(),
+							po = miDt.Rows[i][8].ToString().Trim(),
+							adicional = miDt.Rows[i][9].ToString().Trim(),
+							cantidad_ordenes_venta = miDt.Rows[i][10].ToString().Trim(),
+							cod_proveedor = miDt.Rows[i][11].ToString().Trim(),
+							desc_proveedor = miDt.Rows[i][12].ToString().Trim(),
+							proveedor = miDt.Rows[i][13].ToString().Trim(),
+							tiempo_entrega = miDt.Rows[i][14].ToString().Trim(),
+							fecha_embarque = miDt.Rows[i][15].ToString().Trim(),
+							cliente_id = miDt.Rows[i][16].ToString().Trim(),
+						};
+						miLista.Add(objetoInv);
+					}
+				
+
+					return miLista;
+				}
+				else
+				{
+					return null;
+				}
+			}
+			catch (Exception ex)
 			{
 				Dialogs.Show(ex.Message, DialogsType.Error);
 				return null;
