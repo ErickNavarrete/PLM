@@ -19,8 +19,8 @@ namespace PLM.Modelo
 		public Dynamics()
 		{
 			//"Data Source=OMARTUAPC;Initial Catalog=RIOSULAPP;User Id=sa;Password=********;"            
-			conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + ";");
-			//conexion = new SqlConnection(@"Data Source= DESKTOP-JBDH3N9; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
+			conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + "; Integrated Security=False;");
+			//conexion = new SqlConnection(@"Data Source=DESKTOP-JBDH3N9; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
 		}
 
 		// recorda que quitamos el LeadTime
@@ -609,7 +609,7 @@ namespace PLM.Modelo
 		{
 			SqlCommand comando = new SqlCommand(@"SELECT        TOP (100) PERCENT A.InvtID, B.Descr AS DescrArt, A.QtyWOReqd AS CantOrd, A.WONbr, dbo.InventoryADG.ProdLineID AS MaterialType, dbo.ItemSite.QtyOnHand AS Existencia, B.DfltPOUnit AS UnidadCompra, 
 						 dbo.SOHeader.OrdNbr AS OrdenVenta, dbo.SOHeader.CustOrdNbr AS Po, dbo.InventoryADG.User6 AS PorAdicional, dbo.ItemSite.QtyOnPO AS CantidadOrdenesVta, dbo.ItemXRef.AlternateID AS CodProv, 
-						 dbo.ItemXRef.Descr AS DescProv, B.Supplr1 AS Proveedor, B.LeadTime AS TempoEntregaCompras, dbo.SOHeader.User9 AS FechaEmbarque, dbo.SOHeader.CustID
+						 dbo.ItemXRef.Descr AS DescProv, B.Supplr1 AS Proveedor, B.LeadTime AS TempoEntregaCompras, dbo.SOHeader.User9 AS FechaEmbarque, dbo.SOHeader.CustID, D.QtyOrig AS CantFabric
 FROM            dbo.SOHeader INNER JOIN
 						 dbo.WOMatlReq AS A INNER JOIN
 						 dbo.Inventory AS B ON A.InvtID = B.InvtID INNER JOIN
@@ -623,7 +623,7 @@ FROM            dbo.SOHeader INNER JOIN
 						 dbo.InventoryADG ON dbo.ItemSite.InvtID = dbo.InventoryADG.InvtID RIGHT OUTER JOIN
 						 dbo.INDfltSites ON dbo.ItemSite.DfltPickBin = dbo.INDfltSites.DfltPickBin AND dbo.ItemSite.InvtID = dbo.INDfltSites.InvtID AND dbo.ItemSite.SiteID = dbo.INDfltSites.DfltSiteID ON 
 						 B.InvtID = dbo.INDfltSites.InvtID
-						WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term') 
+WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term') 
 						AND SOHeader.User9 >= '" + fecha1 + "' AND SOHeader.User9 <= '" + fecha2 + "' " + cliente, conexion);
 			SqlDataAdapter miDa = new SqlDataAdapter();
 			DataSet miDs = new DataSet();
@@ -658,10 +658,69 @@ FROM            dbo.SOHeader INNER JOIN
 							tiempo_entrega = miDt.Rows[i][14].ToString().Trim(),
 							fecha_embarque = miDt.Rows[i][15].ToString().Trim(),
 							cliente_id = miDt.Rows[i][16].ToString().Trim(),
+							cant_fabr = miDt.Rows[i][17].ToString().Trim()
 						};
 						miLista.Add(objetoInv);
 					}
 				
+
+					return miLista;
+				}
+				else
+				{
+					return null;
+				}
+			}
+			catch (Exception ex)
+			{
+				Dialogs.Show(ex.Message, DialogsType.Error);
+				return null;
+			}
+			finally
+			{
+				conexion.Close();
+				miDa.Dispose();
+				miDs.Dispose();
+				miDt.Dispose();
+			}
+		}
+
+		public List<RepResurtimiento> Reporte2(string fecha1, string fecha2, string cliente, string PO)
+		{
+			string concat = "";
+			SqlCommand comando = new SqlCommand(@"SELECT        Distinct(A.WONbr)
+FROM            dbo.SOHeader INNER JOIN
+						 dbo.WOMatlReq AS A INNER JOIN
+						 dbo.Inventory AS B ON A.InvtID = B.InvtID INNER JOIN
+						 dbo.INUnit AS C ON B.StkUnit = C.ToUnit AND B.DfltPOUnit = C.FromUnit INNER JOIN
+						 dbo.WOHeader AS D ON A.WONbr = D.WONbr INNER JOIN
+						 dbo.ProductClass AS F ON F.ClassID = B.ClassID INNER JOIN
+						 dbo.RsVw_1265001A AS G ON G.Wonbr = D.WONbr INNER JOIN
+						 dbo.RsTb_Plantas AS E ON E.Planta = D.User5 ON dbo.SOHeader.OrdNbr = D.User9 LEFT OUTER JOIN
+						 dbo.ItemXRef ON B.InvtID = dbo.ItemXRef.InvtID LEFT OUTER JOIN
+						 dbo.ItemSite INNER JOIN
+						 dbo.InventoryADG ON dbo.ItemSite.InvtID = dbo.InventoryADG.InvtID RIGHT OUTER JOIN
+						 dbo.INDfltSites ON dbo.ItemSite.DfltPickBin = dbo.INDfltSites.DfltPickBin AND dbo.ItemSite.InvtID = dbo.INDfltSites.InvtID AND dbo.ItemSite.SiteID = dbo.INDfltSites.DfltSiteID ON 
+						 B.InvtID = dbo.INDfltSites.InvtID
+						WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term') 
+						AND SOHeader.User9 >= '"+ fecha1 +"' AND SOHeader.User9 <= '"+ fecha2 +"' and SOHeader.CustOrdNbr = '"+ PO +"' " + cliente, conexion);
+			SqlDataAdapter miDa = new SqlDataAdapter();
+			DataSet miDs = new DataSet();
+			DataTable miDt = new DataTable();
+			List<RepResurtimiento> miLista = new List<RepResurtimiento>();
+			try
+			{
+				conexion.Open();
+				miDa.SelectCommand = comando;
+				miDa.Fill(miDs);
+				miDt = miDs.Tables[0];
+				if (miDt.Rows.Count > 0)
+				{
+					for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+					{
+						
+					}
+
 
 					return miLista;
 				}

@@ -40,6 +40,7 @@
             this.dtpFechaOC = new MetroFramework.Controls.MetroDateTime();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnPrint = new System.Windows.Forms.ToolStripButton();
+            this.pbResurtimiento = new MetroFramework.Controls.MetroProgressBar();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,7 +115,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(22, 212);
+            this.metroLabel4.Location = new System.Drawing.Point(22, 179);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(70, 19);
             this.metroLabel4.TabIndex = 10;
@@ -124,7 +125,7 @@
             // 
             this.dtpFechaOC.CustomFormat = "dd/MM/yyyy";
             this.dtpFechaOC.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaOC.Location = new System.Drawing.Point(96, 212);
+            this.dtpFechaOC.Location = new System.Drawing.Point(96, 179);
             this.dtpFechaOC.MinimumSize = new System.Drawing.Size(0, 29);
             this.dtpFechaOC.Name = "dtpFechaOC";
             this.dtpFechaOC.Size = new System.Drawing.Size(180, 29);
@@ -149,11 +150,19 @@
             this.btnPrint.Text = "Imprimir";
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // pbResurtimiento
+            // 
+            this.pbResurtimiento.Location = new System.Drawing.Point(22, 258);
+            this.pbResurtimiento.Name = "pbResurtimiento";
+            this.pbResurtimiento.Size = new System.Drawing.Size(558, 23);
+            this.pbResurtimiento.TabIndex = 13;
+            // 
             // Resurtimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(633, 293);
+            this.Controls.Add(this.pbResurtimiento);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dtpFechaOC);
             this.Controls.Add(this.metroLabel4);
@@ -191,5 +200,6 @@
         private MetroFramework.Controls.MetroDateTime dtpFechaOC;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnPrint;
+        public MetroFramework.Controls.MetroProgressBar pbResurtimiento;
     }
 }

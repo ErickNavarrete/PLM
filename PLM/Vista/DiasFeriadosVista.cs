@@ -52,8 +52,8 @@ namespace PLM.Vista
                 if (DiasF.ExisteDiasFeriadossP(frmBusqueda.dato))
                 {
                     Dialogs.Show("El proveedor ya se encuentra registrado", DialogsType.Error);
-                    txtBusqueda.Text = string.Empty;
-                    DiasF.DiasF(txtBusqueda.Text, dtDatos);
+                    //txtBusqueda.Text = string.Empty;
+                    //DiasF.DiasF(txtBusqueda.Text, dtDatos);
                 }
                 DiasF.DiasF(txtBusqueda.Text, dtDatos);                
             }

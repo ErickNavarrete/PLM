@@ -148,6 +148,7 @@ namespace PLM.Controlador
                     controlView.Columns[2].HeaderText = "DIAS FERIADOS E INAHBILES";
                     controlView.Columns[1].Width = 320;
                     controlView.Columns[2].Width = 364;
+                    
                 }
                 catch (Exception ex)
                 {

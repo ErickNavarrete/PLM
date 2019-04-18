@@ -12,7 +12,7 @@
   <xs:element name="dsResurtimineto" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsResurtimineto" msprop:Generator_UserDSName="dsResurtimineto">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="dsReporte" msprop:Generator_TableClassName="dsReporteDataTable" msprop:Generator_TableVarName="tabledsReporte" msprop:Generator_TablePropName="dsReporte" msprop:Generator_RowDeletingName="dsReporteRowDeleting" msprop:Generator_RowChangingName="dsReporteRowChanging" msprop:Generator_RowEvHandlerName="dsReporteRowChangeEventHandler" msprop:Generator_RowDeletedName="dsReporteRowDeleted" msprop:Generator_UserTableName="dsReporte" msprop:Generator_RowChangedName="dsReporteRowChanged" msprop:Generator_RowEvArgName="dsReporteRowChangeEvent" msprop:Generator_RowClassName="dsReporteRow">
+        <xs:element name="dsReporte" msprop:Generator_TableClassName="dsReporteDataTable" msprop:Generator_TableVarName="tabledsReporte" msprop:Generator_RowChangedName="dsReporteRowChanged" msprop:Generator_TablePropName="dsReporte" msprop:Generator_RowDeletingName="dsReporteRowDeleting" msprop:Generator_RowChangingName="dsReporteRowChanging" msprop:Generator_RowEvHandlerName="dsReporteRowChangeEventHandler" msprop:Generator_RowDeletedName="dsReporteRowDeleted" msprop:Generator_RowClassName="dsReporteRow" msprop:Generator_UserTableName="dsReporte" msprop:Generator_RowEvArgName="dsReporteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CLAVE" msprop:Generator_ColumnVarNameInTable="columnCLAVE" msprop:Generator_ColumnPropNameInRow="CLAVE" msprop:Generator_ColumnPropNameInTable="CLAVEColumn" msprop:Generator_UserColumnName="CLAVE" type="xs:string" minOccurs="0" />
@@ -35,6 +35,23 @@
               <xs:element name="FECHA_REQ" msprop:Generator_ColumnVarNameInTable="columnFECHA_REQ" msprop:Generator_ColumnPropNameInRow="FECHA_REQ" msprop:Generator_ColumnPropNameInTable="FECHA_REQColumn" msprop:Generator_UserColumnName="FECHA_REQ" type="xs:string" minOccurs="0" />
               <xs:element name="FECHA_ENTR" msprop:Generator_ColumnVarNameInTable="columnFECHA_ENTR" msprop:Generator_ColumnPropNameInRow="FECHA_ENTR" msprop:Generator_ColumnPropNameInTable="FECHA_ENTRColumn" msprop:Generator_UserColumnName="FECHA_ENTR" type="xs:string" minOccurs="0" />
               <xs:element name="DIAS" msprop:Generator_ColumnVarNameInTable="columnDIAS" msprop:Generator_ColumnPropNameInRow="DIAS" msprop:Generator_ColumnPropNameInTable="DIASColumn" msprop:Generator_UserColumnName="DIAS" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dsOT" msprop:Generator_TableClassName="dsOTDataTable" msprop:Generator_TableVarName="tabledsOT" msprop:Generator_TablePropName="dsOT" msprop:Generator_RowDeletingName="dsOTRowDeleting" msprop:Generator_RowChangingName="dsOTRowChanging" msprop:Generator_RowEvHandlerName="dsOTRowChangeEventHandler" msprop:Generator_RowDeletedName="dsOTRowDeleted" msprop:Generator_UserTableName="dsOT" msprop:Generator_RowChangedName="dsOTRowChanged" msprop:Generator_RowEvArgName="dsOTRowChangeEvent" msprop:Generator_RowClassName="dsOTRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PO" msprop:Generator_ColumnVarNameInTable="columnPO" msprop:Generator_ColumnPropNameInRow="PO" msprop:Generator_ColumnPropNameInTable="POColumn" msprop:Generator_UserColumnName="PO" type="xs:string" minOccurs="0" />
+              <xs:element name="OT" msprop:Generator_ColumnVarNameInTable="columnOT" msprop:Generator_ColumnPropNameInRow="OT" msprop:Generator_ColumnPropNameInTable="OTColumn" msprop:Generator_UserColumnName="OT" type="xs:string" minOccurs="0" />
+              <xs:element name="CANTIDAD" msprop:Generator_ColumnVarNameInTable="columnCANTIDAD" msprop:Generator_ColumnPropNameInRow="CANTIDAD" msprop:Generator_ColumnPropNameInTable="CANTIDADColumn" msprop:Generator_UserColumnName="CANTIDAD" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dsGeneral" msprop:Generator_TableClassName="dsGeneralDataTable" msprop:Generator_TableVarName="tabledsGeneral" msprop:Generator_TablePropName="dsGeneral" msprop:Generator_RowDeletingName="dsGeneralRowDeleting" msprop:Generator_RowChangingName="dsGeneralRowChanging" msprop:Generator_RowEvHandlerName="dsGeneralRowChangeEventHandler" msprop:Generator_RowDeletedName="dsGeneralRowDeleted" msprop:Generator_UserTableName="dsGeneral" msprop:Generator_RowChangedName="dsGeneralRowChanged" msprop:Generator_RowEvArgName="dsGeneralRowChangeEvent" msprop:Generator_RowClassName="dsGeneralRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FECHAS" msprop:Generator_ColumnVarNameInTable="columnFECHAS" msprop:Generator_ColumnPropNameInRow="FECHAS" msprop:Generator_ColumnPropNameInTable="FECHASColumn" msprop:Generator_UserColumnName="FECHAS" type="xs:string" minOccurs="0" />
+              <xs:element name="CLIENTE" msprop:Generator_ColumnVarNameInTable="columnCLIENTE" msprop:Generator_ColumnPropNameInRow="CLIENTE" msprop:Generator_ColumnPropNameInTable="CLIENTEColumn" msprop:Generator_UserColumnName="CLIENTE" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

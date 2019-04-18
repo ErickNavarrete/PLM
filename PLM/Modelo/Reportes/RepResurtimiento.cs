@@ -25,5 +25,6 @@ namespace PLM.Modelo.Reportes
         public string tiempo_entrega { get; set; }
         public string fecha_embarque { get; set; }
         public string cliente_id { get; set; }
+        public string cant_fabr { get; set; }
     }
 }
