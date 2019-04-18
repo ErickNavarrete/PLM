@@ -295,14 +295,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PLM.exe" size="1857496">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PLM.exe" size="1858008">
       <assemblyIdentity name="PLM" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5ooTKgSTHufD8FOrh2Z5amu63YHPEg2cy4f2h5WqGLc=</dsig:DigestValue>
+        <dsig:DigestValue>QKZBBzF41I3l6zz3Zj0w1TAjS95R5OnWI8WHBQlaMVY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -417,7 +417,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>4bAvqSbKpw95AeQEHdEEkGBwsvQ7koz6DYarmp5Y3mE=</dsig:DigestValue>
+      <dsig:DigestValue>PporFrQXKhuXmjm8c4wdtWcdhihtPUSv/SbUMAAZ+k0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Debug\PLM.pdb" size="1019392">
@@ -426,7 +426,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>taHjIa/mpx41Bys5DMMzRTRWuYkwuCDN+Rj6ZuDm55c=</dsig:DigestValue>
+      <dsig:DigestValue>l2u0tP6lylDnC2CmurdE8NlnH1d1WZm3xz2Q0e9hsHc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Debug\PLM.vshost.exe" size="24224">
