@@ -616,14 +616,13 @@ FROM            dbo.SOHeader INNER JOIN
 						 dbo.INUnit AS C ON B.StkUnit = C.ToUnit AND B.DfltPOUnit = C.FromUnit INNER JOIN
 						 dbo.WOHeader AS D ON A.WONbr = D.WONbr INNER JOIN
 						 dbo.ProductClass AS F ON F.ClassID = B.ClassID INNER JOIN
-						 dbo.RsVw_1265001A AS G ON G.Wonbr = D.WONbr INNER JOIN
-						 dbo.RsTb_Plantas AS E ON E.Planta = D.User5 ON dbo.SOHeader.OrdNbr = D.User9 LEFT OUTER JOIN
+						 dbo.RsVw_1265001A AS G ON G.Wonbr = D.WONbr ON dbo.SOHeader.OrdNbr = D.User9 LEFT OUTER JOIN
 						 dbo.ItemXRef ON B.InvtID = dbo.ItemXRef.InvtID LEFT OUTER JOIN
 						 dbo.ItemSite INNER JOIN
 						 dbo.InventoryADG ON dbo.ItemSite.InvtID = dbo.InventoryADG.InvtID RIGHT OUTER JOIN
 						 dbo.INDfltSites ON dbo.ItemSite.DfltPickBin = dbo.INDfltSites.DfltPickBin AND dbo.ItemSite.InvtID = dbo.INDfltSites.InvtID AND dbo.ItemSite.SiteID = dbo.INDfltSites.DfltSiteID ON 
 						 B.InvtID = dbo.INDfltSites.InvtID
-WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term') 
+WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
 						AND SOHeader.User9 >= '" + fecha1 + "' AND SOHeader.User9 <= '" + fecha2 + "' " + cliente, conexion);
 			SqlDataAdapter miDa = new SqlDataAdapter();
 			DataSet miDs = new DataSet();
