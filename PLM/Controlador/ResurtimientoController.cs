@@ -55,6 +55,7 @@ namespace PLM.Controlador
                 int contador = 0;
                 int diasF = 0;
                 int diasA = 0;
+                int dias = 0;
 
                 List <ot> ordenes_trabajo = new List<ot>();
                 List<string> vs = new List<string>();
@@ -73,8 +74,15 @@ namespace PLM.Controlador
                 using (PLMContext db = new PLMContext())
                 {
                     var resurtimineto = dbd.Reporte1(fecha1.ToString("yyyy-MM-dd"), fecha2.ToString("yyyy-MM-dd"), consulta);
-                    diasA = (from x in db.DiasAnticipacion select new { x.DiasdeMargen }).FirstOrDefault().DiasdeMargen;
-
+                    try
+                    {
+                        diasA = (from x in db.DiasAnticipacion select new { x.DiasA }).FirstOrDefault().DiasA;
+                    }
+                    catch (Exception e)
+                    {
+                        diasA = 0;
+                    }
+                    
                     if (resurtimineto != null)
                     {
                         contador = resurtimineto.Count;
@@ -92,9 +100,9 @@ namespace PLM.Controlador
                                 DateTime fecha_aux = fecha_r.AddDays(Convert.ToInt64(item.tiempo_entrega));
                                 DateTime aux = Convert.ToDateTime(item.fecha_embarque);
 
-                                aux = aux.AddDays((diasF * -1));
-                                aux = aux.AddDays(diasA);
+                                dias = (diasF + diasA) * -1;
 
+                                aux = aux.AddDays(dias);
 
                                 fecha_aux = fecha_aux.AddDays(diasF);
 

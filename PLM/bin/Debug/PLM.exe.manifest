@@ -302,7 +302,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>QKZBBzF41I3l6zz3Zj0w1TAjS95R5OnWI8WHBQlaMVY=</dsig:DigestValue>
+        <dsig:DigestValue>Quo+p2ZuIMMQZc/zGuIpdjEuAQj6RyfbLQFsILjyg24=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -411,22 +411,22 @@
       <dsig:DigestValue>yEOGmqylE1wtRylphfNcccqK9EMSiNBNSBxORsyT7iY=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Debug\PLM.exe" size="1856512">
+  <file name="bin\Debug\PLM.exe" size="1857024">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>PporFrQXKhuXmjm8c4wdtWcdhihtPUSv/SbUMAAZ+k0=</dsig:DigestValue>
+      <dsig:DigestValue>mfBXmZxQn9rpWXEnPGCB1G/EPf4eELkeGWzcPjpBZ74=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Debug\PLM.pdb" size="1019392">
+  <file name="bin\Debug\PLM.pdb" size="998912">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>l2u0tP6lylDnC2CmurdE8NlnH1d1WZm3xz2Q0e9hsHc=</dsig:DigestValue>
+      <dsig:DigestValue>ESIAUVgJKLxigLTNM+2Ej9ucgQvlQNdG6CHk1G3uzY8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Debug\PLM.vshost.exe" size="24224">
@@ -447,13 +447,13 @@
       <dsig:DigestValue>trNNGkxCM6cBCxReshQjs5VkfmmSIBCI+HQuaHcq3hY=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="PLM.exe.config" size="5896">
+  <file name="PLM.exe.config" size="5924">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>LqtPGfhRX5hVMiZBSygEKphKPpg99CZhkENwV+Fl5CI=</dsig:DigestValue>
+      <dsig:DigestValue>iotsmrSNyAD9RHZOV4mOQ0SkPZ58J9NbMFSEx5FqsrQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\estado0.png" size="1221">

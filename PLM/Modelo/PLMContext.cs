@@ -17,7 +17,7 @@ namespace PLM.Modelo
         //Contexto(Base de datos PLM)
         //@"Data Source=OMARTUAPC;Initial Catalog=PLM;User Id=sa;Password=21128307omar;"
         //@"Data Source="+ ConfigIni.Host +";Initial Catalog=" + ConfigIni.Bd + ";User Id=" + ConfigIni.Id + ";Password=" + ConfigIni.Password + ";")
-        //public PLMContext() : base(@"Data Source= DESKTOP-JBDH3N9;Initial Catalog=PLM;Integrated Security=True;")
+        //public PLMContext() : base(@"Data Source= DESKTOP-5EQKCQB;Initial Catalog=PLM;Integrated Security=True;")
         //{
 
         //}

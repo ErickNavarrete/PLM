@@ -18,10 +18,10 @@ namespace PLM.Modelo
 
 		public Dynamics()
 		{
-			//"Data Source=OMARTUAPC;Initial Catalog=RIOSULAPP;User Id=sa;Password=********;"            
-			conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + "; Integrated Security=False;");
-			//conexion = new SqlConnection(@"Data Source=DESKTOP-JBDH3N9; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
-		}
+            //"Data Source=OMARTUAPC;Initial Catalog=RIOSULAPP;User Id=sa;Password=********;"            
+            conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + "; Integrated Security=False;");
+            //conexion = new SqlConnection(@"Data Source=DESKTOP-5EQKCQB; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
+        }
 
 		// recorda que quitamos el LeadTime
 		public List<Inventory> Inventario()
