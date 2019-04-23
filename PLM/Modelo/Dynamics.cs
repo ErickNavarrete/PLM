@@ -19,8 +19,8 @@ namespace PLM.Modelo
 		public Dynamics()
 		{
             //"Data Source=OMARTUAPC;Initial Catalog=RIOSULAPP;User Id=sa;Password=********;"            
-            conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + "; Integrated Security=False;");
-            //conexion = new SqlConnection(@"Data Source=DESKTOP-5EQKCQB; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
+            //conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + "; Integrated Security=False;");
+            conexion = new SqlConnection(@"Data Source=DESKTOP-5EQKCQB; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
         }
 
 		// recorda que quitamos el LeadTime
@@ -684,29 +684,13 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
 			}
 		}
 
-		public List<RepResurtimiento> Reporte2(string fecha1, string fecha2, string cliente, string PO)
+		public List<Proveedores> Reporte2()
 		{
-			string concat = "";
-			SqlCommand comando = new SqlCommand(@"SELECT        Distinct(A.WONbr)
-FROM            dbo.SOHeader INNER JOIN
-						 dbo.WOMatlReq AS A INNER JOIN
-						 dbo.Inventory AS B ON A.InvtID = B.InvtID INNER JOIN
-						 dbo.INUnit AS C ON B.StkUnit = C.ToUnit AND B.DfltPOUnit = C.FromUnit INNER JOIN
-						 dbo.WOHeader AS D ON A.WONbr = D.WONbr INNER JOIN
-						 dbo.ProductClass AS F ON F.ClassID = B.ClassID INNER JOIN
-						 dbo.RsVw_1265001A AS G ON G.Wonbr = D.WONbr INNER JOIN
-						 dbo.RsTb_Plantas AS E ON E.Planta = D.User5 ON dbo.SOHeader.OrdNbr = D.User9 LEFT OUTER JOIN
-						 dbo.ItemXRef ON B.InvtID = dbo.ItemXRef.InvtID LEFT OUTER JOIN
-						 dbo.ItemSite INNER JOIN
-						 dbo.InventoryADG ON dbo.ItemSite.InvtID = dbo.InventoryADG.InvtID RIGHT OUTER JOIN
-						 dbo.INDfltSites ON dbo.ItemSite.DfltPickBin = dbo.INDfltSites.DfltPickBin AND dbo.ItemSite.InvtID = dbo.INDfltSites.InvtID AND dbo.ItemSite.SiteID = dbo.INDfltSites.DfltSiteID ON 
-						 B.InvtID = dbo.INDfltSites.InvtID
-						WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term') 
-						AND SOHeader.User9 >= '"+ fecha1 +"' AND SOHeader.User9 <= '"+ fecha2 +"' and SOHeader.CustOrdNbr = '"+ PO +"' " + cliente, conexion);
+			SqlCommand comando = new SqlCommand("select VendId,Name from Vendor", conexion);
 			SqlDataAdapter miDa = new SqlDataAdapter();
 			DataSet miDs = new DataSet();
 			DataTable miDt = new DataTable();
-			List<RepResurtimiento> miLista = new List<RepResurtimiento>();
+			List<Proveedores> miLista = new List<Proveedores>();
 			try
 			{
 				conexion.Open();
@@ -715,13 +699,16 @@ FROM            dbo.SOHeader INNER JOIN
 				miDt = miDs.Tables[0];
 				if (miDt.Rows.Count > 0)
 				{
-					for (int i = 0; i <= miDt.Rows.Count - 1; i++)
-					{
-						
-					}
-
-
-					return miLista;
+                    for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+                    {
+                        Proveedores proveedores = new Proveedores()
+                        {
+                            Clave = miDt.Rows[i][0].ToString(),
+                            Nombre = miDt.Rows[i][1].ToString()
+                        };
+                        miLista.Add(proveedores);
+                    }
+                    return miLista;
 				}
 				else
 				{

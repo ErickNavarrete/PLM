@@ -55,6 +55,7 @@ namespace PLM.Controlador
                 int contador = 0;
                 int diasF = 0;
                 int diasA = 0;
+                int diasMargen = 0;
                 int dias = 0;
 
                 List <ot> ordenes_trabajo = new List<ot>();
@@ -77,6 +78,7 @@ namespace PLM.Controlador
                     try
                     {
                         diasA = (from x in db.DiasAnticipacion select new { x.DiasA }).FirstOrDefault().DiasA;
+                        diasMargen = (from x in db.DiasAnticipacion select new { x.DiasdeMargen }).FirstOrDefault().DiasdeMargen;
                     }
                     catch (Exception e)
                     {
@@ -100,7 +102,7 @@ namespace PLM.Controlador
                                 DateTime fecha_aux = fecha_r.AddDays(Convert.ToInt64(item.tiempo_entrega));
                                 DateTime aux = Convert.ToDateTime(item.fecha_embarque);
 
-                                dias = (diasF + diasA) * -1;
+                                dias = (diasF + diasA + diasMargen) * -1;
 
                                 aux = aux.AddDays(dias);
 
@@ -135,7 +137,7 @@ namespace PLM.Controlador
                             var concat = (from x in ordenes_trabajo where x.PO == item select new { x.OT, x.CantFab }).Distinct().ToList();
                             foreach (var item2 in concat)
                             {
-                                c = c + "," + item2.OT;
+                                c = c + ", " + item2.OT;
                                 suma = suma + Convert.ToDecimal(item2.CantFab);
                             }
 

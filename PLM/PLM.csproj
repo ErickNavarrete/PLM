@@ -177,6 +177,7 @@
     <Compile Include="Modelo\Inventory.cs" />
     <Compile Include="Modelo\Notificacion.cs" />
     <Compile Include="Modelo\Presupuestos.cs" />
+    <Compile Include="Modelo\Proveedores.cs" />
     <Compile Include="Modelo\Reportes\DetalleBom.cs" />
     <Compile Include="Modelo\Reportes\DetalleUsuario.cs" />
     <Compile Include="Modelo\Reportes\EncabezadoEstilo.cs" />

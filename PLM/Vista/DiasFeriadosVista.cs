@@ -87,6 +87,7 @@ namespace PLM.Vista
         private void DiasFeriadosVista_Load(object sender, EventArgs e)
         {
             pnlMenu.Left = Screen.PrimaryScreen.Bounds.Width - (pnlMenu.Width + (Screen.PrimaryScreen.Bounds.Width / 2) - 570);
+            DiasF.DiasF_T(dtDatos);
         }
     }
 }

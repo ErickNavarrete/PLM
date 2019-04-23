@@ -471,22 +471,27 @@ namespace PLM.Controlador
                     break;
                 case 27:
                     var datos17 = DbD.Inventario().Select(x => new { x.Supplier }).ToList();
-                    List<Inventory> temp17 = new List<Inventory>();
+                    var datosP = DbD.Reporte2().ToList();
+                    string nombre = "";    
+                    
+                    List<Proveedores> temp17 = new List<Proveedores>();
                     foreach (var dato in datos17)
                     {
-                        if (temp17.Where(x => x.Supplier == dato.Supplier).Select(x => x.Supplier).FirstOrDefault() == null)
+                        if (temp17.Where(x => x.Clave == dato.Supplier).Select(x => x.Clave).FirstOrDefault() == null)
                         {
-                            temp17.Add(new Inventory { Supplier = dato.Supplier });
+                            nombre = datosP.Where(x => x.Clave == dato.Supplier).Select(x => x.Nombre).FirstOrDefault();
+                            temp17.Add(new Proveedores { Clave = dato.Supplier, Nombre = nombre });
                         }
                         else
                         {
                             continue;
                         }
                     }
-                    datos17 = temp17.Select(x => new { x.Supplier }).ToList();
+                    //datos17 = temp17.Select(x => new { x.Supplier }).ToList();
                     dtDatos.Columns.Clear();
-                    dtDatos.DataSource = datos17;
-                    dtDatos.Columns[0].Width = 500;
+                    dtDatos.DataSource = temp17;
+                    dtDatos.Columns[0].Width = 100;
+                    dtDatos.Columns[1].Width = 500;
                     break;
                 case 17:
                     var datos27 = DbD.Inventario().Select(x => new { x.Marca }).ToList();
