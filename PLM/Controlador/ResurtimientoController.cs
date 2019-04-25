@@ -99,16 +99,16 @@ namespace PLM.Controlador
                                 ot orden = new ot();
                                 diasF = (from x in db.DiasFeriados where x.DiasF >= fecha1 && x.DiasF <= fecha2 && x.Proveedor == item.proveedor select new { x.id }).Count();
 
-                                DateTime fecha_aux = fecha_r.AddDays(Convert.ToInt64(item.tiempo_entrega));
-                                DateTime aux = Convert.ToDateTime(item.fecha_embarque);
+                                DateTime fecha_ent = fecha_r.AddDays(Convert.ToInt64(item.tiempo_entrega));
+                                DateTime fecha_proy = Convert.ToDateTime(item.fecha_embarque);
+                                DateTime fecha_embarque = Convert.ToDateTime(item.fecha_embarque);
 
-                                dias = (diasF + diasA + diasMargen) * -1;
+                                dias = (diasA + diasMargen) * -1;
+                                fecha_proy = fecha_proy.AddDays(dias);
 
-                                aux = aux.AddDays(dias);
+                                fecha_ent = fecha_ent.AddDays(diasF);
 
-                                fecha_aux = fecha_aux.AddDays(diasF);
-
-                                TimeSpan timeSpan = fecha_aux - aux;
+                                TimeSpan timeSpan = fecha_ent - fecha_proy;
 
                                 orden.OT = item.ot;
                                 orden.PO = item.po;
@@ -118,7 +118,7 @@ namespace PLM.Controlador
 
                                 res.dsReporte.AdddsReporteRow(item.clave, item.descripcion, Convert.ToDecimal(item.cant_ord), item.ot, item.tipo_material, Convert.ToDecimal(item.existencia)
                                     , item.unidad_compra, item.orden_venta, item.po, Convert.ToDecimal(item.adicional), Convert.ToDecimal(item.cantidad_ordenes_venta), item.cod_proveedor, item.desc_proveedor, item.proveedor,
-                                    item.tiempo_entrega, aux.ToString("dd/MM/yyyy"), item.cliente_id, fecha_r.ToString("dd/MM/yyyy"), fecha_aux.ToString("dd/MM/yyyy"), timeSpan.Days);
+                                    item.tiempo_entrega, fecha_proy.ToString("dd/MM/yyyy"), item.cliente_id, fecha_r.ToString("dd/MM/yyyy"), fecha_ent.ToString("dd/MM/yyyy"), timeSpan.Days, fecha_embarque.ToString("dd/MM/yyyy"));
                             }
                             catch (Exception e)
                             {
@@ -137,11 +137,11 @@ namespace PLM.Controlador
                             var concat = (from x in ordenes_trabajo where x.PO == item select new { x.OT, x.CantFab }).Distinct().ToList();
                             foreach (var item2 in concat)
                             {
-                                c = c + ", " + item2.OT;
+                                c = c + " , " + item2.OT;
                                 suma = suma + Convert.ToDecimal(item2.CantFab);
                             }
 
-                            c = c.Substring(1);
+                            c = c.Substring(2);
                             res.dsOT.AdddsOTRow(item, c, suma);
                         }
 

@@ -389,6 +389,8 @@ namespace PLM.Reportes {
             
             private global::System.Data.DataColumn columnDIAS;
             
+            private global::System.Data.DataColumn columnFECHA_EMBARQUE2;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public dsReporteDataTable() {
@@ -584,6 +586,14 @@ namespace PLM.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FECHA_EMBARQUE2Column {
+                get {
+                    return this.columnFECHA_EMBARQUE2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -639,7 +649,8 @@ namespace PLM.Reportes {
                         string CLIENTE_ID, 
                         string FECHA_REQ, 
                         string FECHA_ENTR, 
-                        decimal DIAS) {
+                        decimal DIAS, 
+                        string FECHA_EMBARQUE2) {
                 dsReporteRow rowdsReporteRow = ((dsReporteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CLAVE,
@@ -661,7 +672,8 @@ namespace PLM.Reportes {
                         CLIENTE_ID,
                         FECHA_REQ,
                         FECHA_ENTR,
-                        DIAS};
+                        DIAS,
+                        FECHA_EMBARQUE2};
                 rowdsReporteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdsReporteRow);
                 return rowdsReporteRow;
@@ -704,6 +716,7 @@ namespace PLM.Reportes {
                 this.columnFECHA_REQ = base.Columns["FECHA_REQ"];
                 this.columnFECHA_ENTR = base.Columns["FECHA_ENTR"];
                 this.columnDIAS = base.Columns["DIAS"];
+                this.columnFECHA_EMBARQUE2 = base.Columns["FECHA_EMBARQUE2"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -749,6 +762,8 @@ namespace PLM.Reportes {
                 base.Columns.Add(this.columnFECHA_ENTR);
                 this.columnDIAS = new global::System.Data.DataColumn("DIAS", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDIAS);
+                this.columnFECHA_EMBARQUE2 = new global::System.Data.DataColumn("FECHA_EMBARQUE2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFECHA_EMBARQUE2);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1747,6 +1762,22 @@ namespace PLM.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string FECHA_EMBARQUE2 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledsReporte.FECHA_EMBARQUE2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FECHA_EMBARQUE2\' de la tabla \'dsReporte\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledsReporte.FECHA_EMBARQUE2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsCLAVENull() {
                 return this.IsNull(this.tabledsReporte.CLAVEColumn);
             }
@@ -1983,6 +2014,18 @@ namespace PLM.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetDIASNull() {
                 this[this.tabledsReporte.DIASColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsFECHA_EMBARQUE2Null() {
+                return this.IsNull(this.tabledsReporte.FECHA_EMBARQUE2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetFECHA_EMBARQUE2Null() {
+                this[this.tabledsReporte.FECHA_EMBARQUE2Column] = global::System.Convert.DBNull;
             }
         }
         
