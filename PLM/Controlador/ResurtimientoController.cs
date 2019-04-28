@@ -108,7 +108,7 @@ namespace PLM.Controlador
 
                                 fecha_ent = fecha_ent.AddDays(diasF);
 
-                                TimeSpan timeSpan = fecha_ent - fecha_proy;
+                                TimeSpan timeSpan = fecha_proy - fecha_ent;
 
                                 orden.OT = item.ot;
                                 orden.PO = item.po;
