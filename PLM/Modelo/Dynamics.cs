@@ -309,7 +309,6 @@ namespace PLM.Modelo
 				miDt.Dispose();
 			}
 		}
-
 		public List<Inventory> Inventario1()
 		{
 			SqlCommand comando = new SqlCommand("SELECT  Style FROM InventoryADG", conexion);
@@ -513,7 +512,6 @@ namespace PLM.Modelo
 				miDt.Dispose();
 			}
 		}
-
 		public List<Inventory> Inventario4()
 		{
 			SqlCommand comando = new SqlCommand("SELECT AlternateId,InvtId FROM ItemXRef", conexion);
@@ -558,7 +556,6 @@ namespace PLM.Modelo
 				miDt.Dispose();
 			}
 		}
-
 		public List<Inventory> Inventario2()
 		{
 			SqlCommand comando = new SqlCommand("SELECT custid, name,curyid FROM customer order by name", conexion);
@@ -604,7 +601,6 @@ namespace PLM.Modelo
 				miDt.Dispose();
 			}
 		}
-
 		public List<RepResurtimiento> Reporte1(string fecha1, string fecha2, string cliente)
 		{
 			SqlCommand comando = new SqlCommand(@"SELECT        TOP (100) PERCENT A.InvtID, B.Descr AS DescrArt, A.QtyWOReqd AS CantOrd, A.WONbr, dbo.InventoryADG.ProdLineID AS MaterialType, dbo.ItemSite.QtyOnHand AS Existencia, B.DfltPOUnit AS UnidadCompra, 
@@ -683,7 +679,6 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
 				miDt.Dispose();
 			}
 		}
-
 		public List<Proveedores> Reporte2()
 		{
 			SqlCommand comando = new SqlCommand("select VendId,Name from Vendor", conexion);
@@ -728,7 +723,6 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
 				miDt.Dispose();
 			}
 		}
-
 		public string BuscarThreadDescripcion(string InvtID)
 		{
 			SqlCommand comando = new SqlCommand("SELECT descr FROM Inventory WHERE InvtId = @id", conexion);
@@ -766,6 +760,214 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
 				miDt.Dispose();
 			}
 		}
-
-	}
+        public string PURORDDET(string WONbr)
+        {
+            SqlCommand comando = new SqlCommand("select PONbr From PURORDDET where projectid = @id", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            string temp = string.Empty;
+            try
+            {
+                comando.Parameters.AddWithValue("@id", WONbr);
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    temp = miDt.Rows[0][0].ToString();
+                    return temp;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return string.Empty;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public string PURCHORD(string PONbr)
+        {
+            SqlCommand comando = new SqlCommand("select Status From PURCHORD where ponbr = @id", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            string temp = string.Empty;
+            try
+            {
+                comando.Parameters.AddWithValue("@id", PONbr);
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    temp = miDt.Rows[0][0].ToString();
+                    return temp;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return string.Empty;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public string CuryRate(string Fecha)
+        {
+            SqlCommand comando = new SqlCommand("Select * From CuryRate where EffDate = @id", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            string temp = string.Empty;
+            try
+            {
+                comando.Parameters.AddWithValue("@id", Fecha);
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    temp = miDt.Rows[0][0].ToString();
+                    return temp;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return string.Empty;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public List<WOMatlReq> wOMatlReqs()
+        {
+            SqlCommand comando = new SqlCommand("select InvtID,QtyWOReqd,SiteID, WONbr from WOMatlReq", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            List<WOMatlReq> miLista = new List<WOMatlReq>();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+                    {
+                        WOMatlReq proveedores = new WOMatlReq()
+                        {
+                            InvtID = miDt.Rows[i][0].ToString().Trim(),
+                            QtyWOReqd = miDt.Rows[i][1].ToString().Trim(),
+                            SiteID = miDt.Rows[i][2].ToString().Trim(),
+                            WONbr = miDt.Rows[i][3].ToString().Trim()
+                        };
+                        miLista.Add(proveedores);
+                    }
+                    return miLista;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public List<InventoryOT> Inventario5()
+        {
+            SqlCommand comando = new SqlCommand("select InvtID,Supplr1,user3,LastCost,ReordQty,ReordPt,StkUnit,DfltPOUnit,Descr,MaterialType From Inventory", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            List<InventoryOT> miLista = new List<InventoryOT>();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+                    {
+                        InventoryOT objetoInv = new InventoryOT
+                        {
+                            InvtID = miDt.Rows[i][0].ToString(),
+                            Supplr1 = miDt.Rows[i][1].ToString(),
+                            user3 = miDt.Rows[i][2].ToString(),
+                            LastCost = miDt.Rows[i][3].ToString(),
+                            ReordQty = miDt.Rows[i][4].ToString(),
+                            ReordPt = miDt.Rows[i][5].ToString(),
+                            StkUnit = miDt.Rows[i][6].ToString(),
+                            DfltPOUnit = miDt.Rows[i][7].ToString(),
+                            Descr = miDt.Rows[i][8].ToString(),
+                            MaterialType = miDt.Rows[i][9].ToString()
+                        };
+                        miLista.Add(objetoInv);
+                    }
+                    return miLista;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+    }
 }

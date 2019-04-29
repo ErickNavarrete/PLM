@@ -175,6 +175,7 @@
     <Compile Include="Modelo\Hilos.cs" />
     <Compile Include="Modelo\HilosDetails.cs" />
     <Compile Include="Modelo\Inventory.cs" />
+    <Compile Include="Modelo\InventoryOT.cs" />
     <Compile Include="Modelo\Notificacion.cs" />
     <Compile Include="Modelo\Presupuestos.cs" />
     <Compile Include="Modelo\Proveedores.cs" />
@@ -202,6 +203,7 @@
     <Compile Include="Modelo\Trims.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Modelo\PLMContext.cs" />
+    <Compile Include="Modelo\WOMatlReq.cs" />
     <Compile Include="Notificaciones\Notificacion.cs">
       <SubType>Form</SubType>
     </Compile>

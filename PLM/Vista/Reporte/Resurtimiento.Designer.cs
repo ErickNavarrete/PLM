@@ -41,6 +41,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnPrint = new System.Windows.Forms.ToolStripButton();
             this.pbResurtimiento = new MetroFramework.Controls.MetroProgressBar();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,7 +135,8 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnPrint});
+            this.btnPrint,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(633, 25);
@@ -156,6 +158,15 @@
             this.pbResurtimiento.Name = "pbResurtimiento";
             this.pbResurtimiento.Size = new System.Drawing.Size(558, 23);
             this.pbResurtimiento.TabIndex = 13;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(92, 22);
+            this.toolStripButton1.Text = "Orden Venta";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // Resurtimiento
             // 
@@ -201,5 +212,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnPrint;
         public MetroFramework.Controls.MetroProgressBar pbResurtimiento;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

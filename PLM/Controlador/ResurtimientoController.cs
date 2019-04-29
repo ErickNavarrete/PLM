@@ -183,6 +183,64 @@ namespace PLM.Controlador
                 return "";
             }
         }
+
+        public bool CreateOrdenVenta(string WONbr)
+        {
+            decimal TC,Qty;
+            decimal costext, costo;
+            string InvtID,VendID;
+            DateTime FechaAct;
+            List<RsTb_GeneraOC> OC = new List<RsTb_GeneraOC>();
+
+            //OBTENEMOS EL PONBR DEPENDIENDO LA ORDEN DE TRABAJO
+            string purorddet = dbd.PURORDDET(WONbr);
+            if(purorddet == ""){
+                return false;
+            }
+
+            string status = dbd.PURCHORD(purorddet);
+            if (status != "X")
+            {
+                MessageBox.Show("No se puede Generar Orden de Compra para esta Orden de Trabajo");
+                return false;
+            }
+
+            FechaAct = DateTime.Now;
+            string CuryRate = dbd.CuryRate(FechaAct.ToString("yyyy-MM-dd"));
+            TC = Convert.ToDecimal(CuryRate);
+            var bWOMatlReq = (from x in dbd.wOMatlReqs() select new {x}).Where(x=> x.x.WONbr == WONbr).ToList();
+
+            foreach(var item in bWOMatlReq)
+            {
+                InvtID = item.x.InvtID;
+                Qty = Convert.ToDecimal(item.x.QtyWOReqd);
+                if(item.x.SiteID == "MAT. PRIMA")
+                {
+                    var bInventario = (from x in dbd.Inventario5() select new {x}).Where(x=> x.x.InvtID == item.x.InvtID).FirstOrDefault();
+                    if(bInventario != null)
+                    {
+                        VendID = bInventario.x.Supplr1;
+                        if(bInventario.x.user3 == "0")
+                        {
+                            costext = Convert.ToDecimal(Qty) * Convert.ToDecimal(bInventario.x.LastCost);
+                            costo = Convert.ToDecimal(bInventario.x.LastCost);
+                        }
+                        else
+                        {
+                            costext = Convert.ToDecimal(Qty) * Convert.ToDecimal(bInventario.x.user3);
+                            costo = Convert.ToDecimal(bInventario.x.user3);
+                        }
+                        if(VendID == "")
+                        {
+                            MessageBox.Show("El Articulo No tiene Proveedor..  " + item.x.InvtID + "   NO SE GENERAR� LA OC");
+                        }
+                        
+                    }
+                    RsTb_GeneraOC rsTb_ = new RsTb_GeneraOC();
+                }                
+            }
+            return true;
+        }
     }
 
     public partial class ot
@@ -190,5 +248,16 @@ namespace PLM.Controlador
         public string PO;
         public string OT;
         public string CantFab;
+    }
+
+    public partial class RsTb_GeneraOC
+    {
+        public string InvtId;
+        public decimal Qty;
+        public string VendId;
+        public string WonBr;
+        public string User1;
+        public string User5;
+        public string User6;
     }
 }
