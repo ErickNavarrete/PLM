@@ -186,11 +186,43 @@ namespace PLM.Controlador
 
         public bool CreateOrdenVenta(string WONbr)
         {
+            #region VARIABLES
             decimal TC,Qty;
-            decimal costext, costo;
-            string InvtID,VendID;
+            decimal costext = 0, costo = 0;
+            string InvtID,VendID = "";
+            string tax1 = "";
+            string tax2 = "";
+            string tax3 = "";
+            string tax4 = "";
+            string Terms = "";
+            string va1 = "";
+            string va2 = "";
+            string vf = "";
+            string vp = "";
+            string vn = "";
+            string ve = "";
+            string va = "";
+            string vci = "";
+            string vc = "";
+            string vs = "";
+            string vz = "";
+            string vcuryid = "";
+            string CuryID = "";
+            string Addr1 = "";
+            string Addr2 = "";
+            string City = "";
+            string State = "";
+            string Attn = "";
+            string email = "";
+            string Fax = "";
+            string NameR = "";
+            string Phone = "";
+            string Zip = "";
+            string Country = "";
+            string OC = "";
+
             DateTime FechaAct;
-            List<RsTb_GeneraOC> OC = new List<RsTb_GeneraOC>();
+            #endregion
 
             //OBTENEMOS EL PONBR DEPENDIENDO LA ORDEN DE TRABAJO
             string purorddet = dbd.PURORDDET(WONbr);
@@ -208,9 +240,18 @@ namespace PLM.Controlador
             FechaAct = DateTime.Now;
             string CuryRate = dbd.CuryRate(FechaAct.ToString("yyyy-MM-dd"));
             TC = Convert.ToDecimal(CuryRate);
+            //HACEMOS TRUNCATE A LAS TABLAS
+            dbd.Truncate_Rstb_GeneraOC();
+            dbd.Truncate_RsTb_Vendid();
             var bWOMatlReq = (from x in dbd.wOMatlReqs() select new {x}).Where(x=> x.x.WONbr == WONbr).ToList();
 
-            foreach(var item in bWOMatlReq)
+            if(bWOMatlReq == null)
+            {
+                MessageBox.Show("No hay lista de Materiales asignada a esta Orden de Trabajo");
+                return false;
+            }
+
+            foreach (var item in bWOMatlReq)
             {
                 InvtID = item.x.InvtID;
                 Qty = Convert.ToDecimal(item.x.QtyWOReqd);
@@ -236,8 +277,71 @@ namespace PLM.Controlador
                         }
                         
                     }
-                    RsTb_GeneraOC rsTb_ = new RsTb_GeneraOC();
+                    dbd.Insert_Rstb_GeneraOC(InvtID, Qty, VendID, WONbr, item.x.SiteID, costext, costo);
                 }                
+            }
+
+            var bRsTb_GeneraOC = dbd.RsTb_GeneraOC();   
+            foreach(var item in bRsTb_GeneraOC)
+            {
+                var bInventory = (from x in dbd.Inventario5() select new { x }).Where(x => x.x.InvtID == item.InvtId ).FirstOrDefault();
+                if(bInventory.x.ReordQty != "0" && bInventory.x.ReordPt != "0")
+                {
+                    dbd.delete_Rstb_GeneraOC(item.InvtId);
+                }
+            }
+
+            //LLAMAMOS AL STORED PROCEDURE
+
+            var bRsTb_Vendid = dbd.Rstb_Vendid();
+            foreach(var item in bRsTb_Vendid)
+            {
+                var bVendor = (from x in dbd.Vendor() select new {x}).Where(x=> x.x.VendId == item).FirstOrDefault();
+                if(bVendor != null)
+                {
+                    if(bVendor.x.CuryId == "MN")
+                    {
+                        TC = 1;
+                    }
+                    if(bVendor.x.CuryId == "")
+                    {
+                        CuryID = "USD";
+                    }
+                    else
+                    {
+                        CuryID = bVendor.x.CuryId;
+                    }
+                    tax1 = bVendor.x.TaxId00;
+                    tax2 = bVendor.x.TaxId01;
+                    tax3 = bVendor.x.TaxId02;
+                    tax4 = bVendor.x.TaxId03;
+                    Terms = bVendor.x.Terms;
+                    va1 = bVendor.x.Addr1;
+                    va2 = bVendor.x.Addr2;
+                    vf = bVendor.x.Fax;
+                    vp = bVendor.x.Phone;
+                    vn = bVendor.x.Name;
+                    ve = bVendor.x.EMailAddr;
+                    va = bVendor.x.Attn;
+                    vci = bVendor.x.City;
+                    vc = bVendor.x.Country;
+                    vs = bVendor.x.State;
+                    vz = bVendor.x.Zip;
+                    vcuryid = bVendor.x.CuryId;
+                }
+                var bPOSetup = dbd.PoSetup();
+                Addr1 = bPOSetup.ShipAddr1;
+                Addr2 = bPOSetup.ShipAddr2;
+                City = bPOSetup.ShipCity;
+                State = bPOSetup.ShipState;
+                Attn = bPOSetup.ShipAttn;
+                email = bPOSetup.ShipEmail;
+                Fax = bPOSetup.ShipFax;
+                NameR = bPOSetup.ShipName;
+                Phone = bPOSetup.ShipPhone;
+                Zip = bPOSetup.ShipZip;
+                Country = bPOSetup.ShipCountry;
+                OC = bPOSetup.LastPONbr + 1;
             }
             return true;
         }
@@ -257,7 +361,7 @@ namespace PLM.Controlador
         public string VendId;
         public string WonBr;
         public string User1;
-        public string User5;
-        public string User6;
+        public decimal User5;
+        public decimal User6;
     }
 }

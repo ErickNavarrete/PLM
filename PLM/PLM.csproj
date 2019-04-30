@@ -177,6 +177,7 @@
     <Compile Include="Modelo\Inventory.cs" />
     <Compile Include="Modelo\InventoryOT.cs" />
     <Compile Include="Modelo\Notificacion.cs" />
+    <Compile Include="Modelo\POSetup.cs" />
     <Compile Include="Modelo\Presupuestos.cs" />
     <Compile Include="Modelo\Proveedores.cs" />
     <Compile Include="Modelo\Reportes\DetalleBom.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Modelo\Reportes\HilosDetalle.cs" />
     <Compile Include="Modelo\Reportes\RepResurtimiento.cs" />
     <Compile Include="Modelo\Reportes\RepResurtimiento2.cs" />
+    <Compile Include="Modelo\RsTb_GeneraOC.cs" />
     <Compile Include="Modelo\Segundas.cs" />
     <Compile Include="Modelo\BitacoraDeEventos.cs" />
     <Compile Include="Modelo\Body.cs" />
@@ -203,6 +205,7 @@
     <Compile Include="Modelo\Trims.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Modelo\PLMContext.cs" />
+    <Compile Include="Modelo\Vendor.cs" />
     <Compile Include="Modelo\WOMatlReq.cs" />
     <Compile Include="Notificaciones\Notificacion.cs">
       <SubType>Form</SubType>

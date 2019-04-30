@@ -969,5 +969,342 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                 miDt.Dispose();
             }
         }
+        public bool Truncate_Rstb_GeneraOC()
+        {
+            SqlCommand comando = new SqlCommand("Truncate table Rstb_GeneraOC", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public bool Truncate_RsTb_Vendid()
+        {
+            SqlCommand comando = new SqlCommand("Truncate table RsTb_Vendid", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public bool Insert_Rstb_GeneraOC(string InvtId, decimal Qty, string VendId, string WonBr, string User1, decimal User5, decimal User6)
+        {
+            SqlCommand comando = new SqlCommand(@"Insert into RsTb_GeneraOC (InvtId,Qty,Vendid,WoNbr,User1,User5,User6) 
+                                                  values ("+ InvtId + "," + Qty + "," + VendId + "," + WonBr + "," + User1 + "," + User5 + "," + User6 + ")", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public List<RsTb_GeneraOC> RsTb_GeneraOC()
+        {
+            SqlCommand comando = new SqlCommand("select InvtId,Qty,Vendid,WoNbr,User1,User5,User6 from RsTb_GeneraOC", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            List<RsTb_GeneraOC> miLista = new List<RsTb_GeneraOC>();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+                    {
+                        RsTb_GeneraOC oc = new RsTb_GeneraOC()
+                        {
+                            InvtId = miDt.Rows[i][0].ToString().Trim(),
+                            Qty = Convert.ToDecimal(miDt.Rows[i][1].ToString()),
+                            VendId = miDt.Rows[i][2].ToString().Trim(),
+                            WonBr = miDt.Rows[i][3].ToString().Trim(),
+                            User1 = miDt.Rows[i][4].ToString().Trim(),
+                            User5 = Convert.ToDecimal(miDt.Rows[i][5].ToString()),
+                            User6 = Convert.ToDecimal(miDt.Rows[i][6].ToString())
+                        };
+                        miLista.Add(oc);
+                    }
+                    return miLista;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public bool delete_Rstb_GeneraOC(string InvtID)
+        {
+            SqlCommand comando = new SqlCommand("Delete from Rstb_generaOC where invtid = " + InvtID + "", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public List<string> Rstb_Vendid()
+        {
+            SqlCommand comando = new SqlCommand("Select vendid From Rstb_Vendid", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            List<string> miLista = new List<string>();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+                    {
+                        miLista.Add(miDt.Rows[i][0].ToString().Trim());
+                    }
+                    return miLista;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public List<Vendor> Vendor()
+        {
+            SqlCommand comando = new SqlCommand(@"select CuryId, TaxId00, TaxId01, TaxId02, TaxId03, Terms,Addr1,Addr2,Fax,Phone,Name,EMailAddr,Attn,City,Country,State,Zip,VendId 
+                                                    from Vendor", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            List<Vendor> miLista = new List<Vendor>();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+                    {
+                        Vendor v = new Vendor()
+                        {
+                            CuryId = miDt.Rows[i][0].ToString().Trim(),
+                            TaxId00 = miDt.Rows[i][1].ToString().Trim(),
+                            TaxId01 = miDt.Rows[i][2].ToString().Trim(),
+                            TaxId02 = miDt.Rows[i][3].ToString().Trim(),
+                            TaxId03 = miDt.Rows[i][4].ToString().Trim(),
+                            Terms = miDt.Rows[i][5].ToString().Trim(),
+                            Addr1 = miDt.Rows[i][6].ToString().Trim(),
+                            Addr2 = miDt.Rows[i][7].ToString().Trim(),
+                            Fax = miDt.Rows[i][8].ToString().Trim(),
+                            Phone = miDt.Rows[i][9].ToString().Trim(),
+                            Name = miDt.Rows[i][10].ToString().Trim(),
+                            EMailAddr = miDt.Rows[i][11].ToString().Trim(),
+                            Attn = miDt.Rows[i][12].ToString().Trim(),
+                            City = miDt.Rows[i][13].ToString().Trim(),
+                            Country = miDt.Rows[i][14].ToString().Trim(),
+                            State = miDt.Rows[i][15].ToString().Trim(),
+                            Zip = miDt.Rows[i][16].ToString().Trim(),
+                            VendId = miDt.Rows[i][17].ToString().Trim(),
+                        };
+                        miLista.Add(v);
+                    }
+                    return miLista;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public POSetup PoSetup()
+        {
+            SqlCommand comando = new SqlCommand(@"select ShipAddr1,ShipAddr2,ShipCity,ShipState,ShipAttn,ShipEmail,ShipFax,ShipName,ShipPhone,ShipZip,ShipCountry,LastPONbr
+                                                    from POSetup", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            POSetup PO = new POSetup();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+                    {
+                        PO.ShipAddr1 = miDt.Rows[i][0].ToString().Trim();
+                        PO.ShipAddr2 = miDt.Rows[i][1].ToString().Trim();
+                        PO.ShipCity = miDt.Rows[i][2].ToString().Trim();
+                        PO.ShipState = miDt.Rows[i][3].ToString().Trim();
+                        PO.ShipAttn = miDt.Rows[i][4].ToString().Trim();
+                        PO.ShipEmail = miDt.Rows[i][5].ToString().Trim();
+                        PO.ShipFax = miDt.Rows[i][6].ToString().Trim();
+                        PO.ShipName = miDt.Rows[i][7].ToString().Trim();
+                        PO.ShipPhone = miDt.Rows[i][8].ToString().Trim();
+                        PO.ShipZip = miDt.Rows[i][9].ToString().Trim();
+                        PO.ShipCountry = miDt.Rows[i][10].ToString().Trim();
+                        PO.LastPONbr = miDt.Rows[i][11].ToString().Trim();
+                    }
+                    return PO;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
     }
 }
