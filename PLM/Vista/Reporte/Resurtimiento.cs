@@ -48,7 +48,7 @@ namespace PLM.Vista.Reporte
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-
+            Res.CreateOrdenVenta("");
         }
     }
 }

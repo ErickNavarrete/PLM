@@ -190,36 +190,12 @@ namespace PLM.Controlador
             decimal TC,Qty;
             decimal costext = 0, costo = 0;
             string InvtID,VendID = "";
-            string tax1 = "";
-            string tax2 = "";
-            string tax3 = "";
-            string tax4 = "";
-            string Terms = "";
-            string va1 = "";
-            string va2 = "";
-            string vf = "";
-            string vp = "";
-            string vn = "";
-            string ve = "";
-            string va = "";
-            string vci = "";
-            string vc = "";
-            string vs = "";
-            string vz = "";
-            string vcuryid = "";
-            string CuryID = "";
-            string Addr1 = "";
-            string Addr2 = "";
-            string City = "";
-            string State = "";
-            string Attn = "";
-            string email = "";
-            string Fax = "";
-            string NameR = "";
-            string Phone = "";
-            string Zip = "";
-            string Country = "";
-            string OC = "";
+            string tax1 = "",tax2 = "",tax3 = "",tax4 = "",Terms = "",va1 = "",va2 = "",vf = "",vp = "",vn = "",ve = "",va = "",vci = "",vc = "",vs = "",vz = "";
+            string vcuryid = "",CuryID = "",Addr1 = "",Addr2 = "",City = "",State = "",Attn = "",email = "",Fax = "",NameR = "",Phone = "";
+            string Zip = "",Country = "",OC = "", LineRef = "", SiteID = "", cantidad = "", factalmac = "", factcomp = "", Descr = "", tipomaterial = "";
+            decimal sumcuryextcost = 0, cantcost = 0, GranTotal = 0, sumextcost = 0, total = 0, factor = 0, ultimocosto = 0, nvacant = 0, CuryExtCost = 0;
+            decimal CuryUnitCost = 0, ExtCost = 0 , cantidadcomp = 0;
+            int Num = 0;
 
             DateTime FechaAct;
             #endregion
@@ -230,6 +206,7 @@ namespace PLM.Controlador
                 return false;
             }
 
+            //purorddet = "010600";
             string status = dbd.PURCHORD(purorddet);
             if (status != "X")
             {
@@ -239,6 +216,12 @@ namespace PLM.Controlador
 
             FechaAct = DateTime.Now;
             string CuryRate = dbd.CuryRate(FechaAct.ToString("yyyy-MM-dd"));
+            //string CuryRate = dbd.CuryRate("2017-11-30");
+            if (CuryRate == "")
+            {
+                MessageBox.Show("No hay tipo de cambio registrado en el sistema");
+                return false;
+            } 
             TC = Convert.ToDecimal(CuryRate);
             //HACEMOS TRUNCATE A LAS TABLAS
             dbd.Truncate_Rstb_GeneraOC();
@@ -285,10 +268,13 @@ namespace PLM.Controlador
             foreach(var item in bRsTb_GeneraOC)
             {
                 var bInventory = (from x in dbd.Inventario5() select new { x }).Where(x => x.x.InvtID == item.InvtId ).FirstOrDefault();
-                if(bInventory.x.ReordQty != "0" && bInventory.x.ReordPt != "0")
+                if (bInventory != null)
                 {
-                    dbd.delete_Rstb_GeneraOC(item.InvtId);
-                }
+                    if (bInventory.x.ReordQty != "0" && bInventory.x.ReordPt != "0")
+                    {
+                        dbd.delete_Rstb_GeneraOC(item.InvtId);
+                    }
+                }                
             }
 
             //LLAMAMOS AL STORED PROCEDURE
@@ -296,6 +282,7 @@ namespace PLM.Controlador
             var bRsTb_Vendid = dbd.Rstb_Vendid();
             foreach(var item in bRsTb_Vendid)
             {
+                Num = 0;
                 var bVendor = (from x in dbd.Vendor() select new {x}).Where(x=> x.x.VendId == item).FirstOrDefault();
                 if(bVendor != null)
                 {
@@ -329,6 +316,7 @@ namespace PLM.Controlador
                     vz = bVendor.x.Zip;
                     vcuryid = bVendor.x.CuryId;
                 }
+
                 var bPOSetup = dbd.PoSetup();
                 Addr1 = bPOSetup.ShipAddr1;
                 Addr2 = bPOSetup.ShipAddr2;
@@ -342,6 +330,100 @@ namespace PLM.Controlador
                 Zip = bPOSetup.ShipZip;
                 Country = bPOSetup.ShipCountry;
                 OC = bPOSetup.LastPONbr + 1;
+                if(Convert.ToInt64(OC) >= 1000 && Convert.ToInt64(OC) < 10000)
+                {
+                    OC = "00" + OC;
+                }else if(Convert.ToInt64(OC) >= 10000 && Convert.ToInt64(OC) < 100000)
+                {
+                    OC = "0" + OC;
+                }
+                sumcuryextcost = 0;
+                sumextcost = 0;
+
+                var bRsTb_GeneraOC2 = (from x in dbd.RsTb_GeneraOC() select new { x }).Where(x => x.x.VendId == item).ToList();
+                foreach(var item2 in bRsTb_GeneraOC2)
+                {
+                    Num += 1;
+                    if(Num < 10)
+                    {
+                        LineRef = "0000" + Num;
+                    }else if(Num >= 10 && Num < 100)
+                    {
+                        LineRef = "000" + Num;
+                    }else if(Num >= 100 && Num< 1000)
+                    {
+                        LineRef = "00" + Num;
+                    }
+                    else
+                    {
+                        LineRef = "0" + Num;
+                    }
+                    SiteID = item2.x.User1;
+                    cantidad = Convert.ToString(item2.x.Qty);
+                    cantcost = item2.x.User5;
+                    GranTotal = GranTotal + total;
+
+                    var bInventory2 = (from x in dbd.Inventario5() select new { x }).Where(x => x.x.InvtID == item2.x.InvtId).FirstOrDefault();
+                    if(bInventory2 != null)
+                    {
+                        factalmac = bInventory2.x.StkUnit;
+                        factcomp = bInventory2.x.DfltPOUnit;
+                        Descr = bInventory2.x.Descr;
+                        tipomaterial = bInventory2.x.MaterialType;
+                        decimal bINUnit = dbd.InUnit(factalmac,factcomp);
+                        if(bINUnit != 0)
+                        {
+                            factor = bINUnit;
+                        }
+                        if(bInventory2.x.user3 == "0")
+                        {
+                            if(factcomp.Substring(1,1) == "C" || factcomp.Substring(1, 1) == "R" || factcomp.Substring(1, 1) == "Y")
+                            {
+                                total = TC * item2.x.User5;
+                                ultimocosto = item2.x.User6 * factor / TC;
+                                cantidadcomp = Convert.ToDecimal(cantidad) / factor;
+                                nvacant = Math.Round(cantidadcomp, 0);
+                                cantidadcomp = nvacant;
+                                CuryExtCost = item2.x.User6 * factor * cantidadcomp / TC;
+                                CuryUnitCost = item2.x.User6 * factor / TC;
+                                ExtCost = CuryExtCost * TC;
+                            }
+                            else
+                            {
+                                total = TC * item2.x.User5;
+                                ultimocosto = item2.x.User6 * factor / TC;
+                                cantidadcomp = Convert.ToDecimal(cantidad) / factor;
+                                CuryExtCost = item2.x.User6 * factor * cantidadcomp / TC;
+                                CuryUnitCost = item2.x.User6 * factor / TC;
+                                ExtCost = CuryExtCost * TC;
+                            }
+                        }
+                        else
+                        {
+                            if (factcomp.Substring(1, 1) == "C" || factcomp.Substring(1, 1) == "R" || factcomp.Substring(1, 1) == "Y")
+                            {
+                                total = item2.x.User5;
+                                ultimocosto = item2.x.User6;
+                                cantidadcomp = Convert.ToDecimal(cantidad) / factor;
+                                nvacant = Math.Round(cantidadcomp, 0);
+                                cantidadcomp = nvacant;
+                                CuryExtCost = item2.x.User6 * cantidadcomp;
+                                CuryUnitCost = item2.x.User6;
+                                ExtCost = CuryExtCost;
+                            }
+                            else
+                            {
+                                total = item2.x.User5;
+                                ultimocosto = item2.x.User6;
+                                cantidadcomp = Convert.ToDecimal(cantidad) / factor;
+                                CuryExtCost = item2.x.User6 * cantidadcomp;
+                                CuryUnitCost = item2.x.User6;
+                                ExtCost = CuryExtCost;
+                            }
+                        }
+                        //INSERT STATEMENTS
+                    }
+                }
             }
             return true;
         }

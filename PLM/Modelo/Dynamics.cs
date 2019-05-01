@@ -19,8 +19,8 @@ namespace PLM.Modelo
 		public Dynamics()
 		{
             //"Data Source=OMARTUAPC;Initial Catalog=RIOSULAPP;User Id=sa;Password=********;"            
-            conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + "; Integrated Security=False;");
-            //conexion = new SqlConnection(@"Data Source=DESKTOP-5EQKCQB; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
+            //conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + "; Integrated Security=False;");
+            conexion = new SqlConnection(@"Data Source=DESKTOP-5EQKCQB; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
         }
 
 		// recorda que quitamos el LeadTime
@@ -836,7 +836,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
         }
         public string CuryRate(string Fecha)
         {
-            SqlCommand comando = new SqlCommand("Select * From CuryRate where EffDate = @id", conexion);
+            SqlCommand comando = new SqlCommand("Select Rate From CuryRate where EffDate = @id", conexion);
             SqlDataAdapter miDa = new SqlDataAdapter();
             DataSet miDs = new DataSet();
             DataTable miDt = new DataTable();
@@ -1297,6 +1297,42 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
             {
                 Dialogs.Show(ex.Message, DialogsType.Error);
                 return null;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public decimal InUnit(string factalmac, string factcomp)
+        {
+            SqlCommand comando = new SqlCommand("select * From InUnit where tounit = " + factalmac + " and fromUnit = " + factcomp + "", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            decimal temp = 0;
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    temp = Convert.ToDecimal(miDt.Rows[0][0].ToString());
+                    return temp;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return string.Empty;
             }
             finally
             {
