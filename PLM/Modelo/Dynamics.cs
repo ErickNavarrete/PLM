@@ -1308,7 +1308,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
         }
         public decimal InUnit(string factalmac, string factcomp)
         {
-            SqlCommand comando = new SqlCommand("select * From InUnit where tounit = " + factalmac + " and fromUnit = " + factcomp + "", conexion);
+            SqlCommand comando = new SqlCommand("select CnvFact From InUnit where tounit = " + factalmac + " and fromUnit = " + factcomp + "", conexion);
             SqlDataAdapter miDa = new SqlDataAdapter();
             DataSet miDs = new DataSet();
             DataTable miDt = new DataTable();
@@ -1332,7 +1332,261 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
             catch (SqlException ex)
             {
                 Dialogs.Show(ex.Message, DialogsType.Error);
-                return string.Empty;
+                return 0;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public List<POREQDET> POREQDET()
+        {
+            SqlCommand comando = new SqlCommand("select ReqNbr,ExtCost,CuryExtCost From POREQDET", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            List<POREQDET> miLista = new List<POREQDET>();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+                    {
+                        POREQDET v = new POREQDET()
+                        {
+                            ReqNbr = miDt.Rows[i][0].ToString().Trim(),
+                            ExtCost = Convert.ToDecimal(miDt.Rows[i][1].ToString()),
+                            CuryCuryExtCost = Convert.ToDecimal(miDt.Rows[i][2].ToString())
+                        };
+                        miLista.Add(v);
+                    }
+                    return miLista;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public bool Insert_PURORDDET(decimal factor, decimal Qty, string Fecha, string UserId, decimal CuryExtCost, string CuryID,
+                                    decimal TC, decimal CuryUnitCost, decimal ExtCost, string InvtID, int Num, string LineRef, string OC, string WONbr, string factcomp,
+                                    decimal cantidadcomp, string FechaProm, string SiteID, string tax1, string tax2, string tax3, string tax4, string Descr, string User6)
+        {
+            SqlCommand comando = new SqlCommand(@"INSERT INTO PURORDDET values(0,0,'','',0,'','','" + factor + "',0,0,0,''," + Fecha + ",'04250','" + UserId +
+                                                "',0,0,0,'" + CuryExtCost + "','" + CuryID + "','M','" + TC + "',0,0,0,0,0,0,0,0,'" + CuryUnitCost + "','" + 
+                                                ExtCost + "',0,0,0,'" + InvtID + "',1,0,'','" + Num + "','" + Num + "','" + LineRef + "','" + Fecha + "','04250','" + UserId +
+                                                "',0,1,1,'Y','',0,'" + OC +
+                                                 "','OR','" + WONbr + "','','1130010','GI','" + factcomp + "','000000000','" + cantidadcomp + "',0,0,0,'W','105','100'," +
+                                                 "'N','','" + FechaProm + "','','','',0,0,0,0,'','',0,0,'','','',0,'','','','','','','','','','" + SiteID + "','','','',0,'',0," +
+                                                 "'',0,0,0,0,'','GRAVABLE','" + tax1 + "','" + tax2 + "','" + tax3 + "','" + tax4 + "','','" 
+                                                 + Descr + "',0,0,0,0,'" + User6 + "','M',0,'','',0,0,'','','','','N',0,'','',0,NULL)", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public bool Insert_POREQDET(decimal factor, string Fecha, string UserId, decimal CuryExtCost, string CuryID,
+                                    decimal TC, decimal CuryUnitCost, decimal ExtCost, string InvtID, int Num, string LineRef, string OC, string factcomp,
+                                    decimal cantidadcomp, string FechaProm, string SiteID, string tax1, string tax2, string tax3, string tax4, string Descr, string User6, string tipomaterial)
+        {
+            SqlCommand comando = new SqlCommand(@"INSERT INTO POREQDET VALUES('1130010',0,'','','LO','LO','N','','','" + factor + "','" + ExtCost + "','" + Fecha + "', '04250','" + UserId + "','" 
+                                    + CuryExtCost + "', '" + CuryExtCost + "', '" + CuryID + "', 'M', '" + TC + "', 0, 0, 0, 0, 0, 0, 0, 0, '" + CuryUnitCost + "', 0, '', '" + Descr + "', '" +
+                                    ExtCost + "', 0, '" + InvtID + "', 0, '', '', 0, '', '" + Num + "', '" + Num + "', '" + LineRef + "', '" + Fecha + "', '04250', '" + 
+                                    UserId + "', '" + tipomaterial + "', 0, 'N', 'Y', '', 0, 'LO', 'LO', '', '', '" + Fecha + "', 'GI', '" + cantidadcomp + "', 'W', 105, 100, 0, '" + OC + "','" 
+                                    + FechaProm + "', '', '', 0, 0, 0, 0, '', '', 0, 0, '', '', '" + LineRef + "', '', '', '" + SiteID + "', '', 'CR', '000000000','',0,0,0,0,'','GRAVABLE','" +
+                                    tax1 + "','" + tax2 + "','" + tax3 + "','" + tax4 + "','','N',0,0,0,0,'" + factcomp + "','" + User6 + "', 'M', 0, '', '', 0, 0, '', '', '', '', NULL)", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public bool Insert_PurchOrd(string Fecha, string UserId, string CuryID,string CpnyID, decimal sumcuryextcost, string WONbr, string periodo, decimal sumextcost, string email,
+                                    decimal TC, int Num, string OC, string tax1, string tax2, string tax3, string tax4, string Addr1, string Addr2, string Attn, string City, string Country,
+                                    string Fax, string NameR, string Phone, string State, string Zip, string Terms, string va, string va2, string va1, string vci, string vc, string vf,
+                                    string ve, string VendID, string vn, string vp, string vs, string vz)
+        {
+            SqlCommand comando = new SqlCommand(@"Insert PurchOrd values ('','','','','','HG','0','','" + CpnyID + "','" + Fecha + "','04250','" + UserId +
+                "','0','" + Fecha + "','0','" + CuryID + "','M','" + sumcuryextcost + "',0,'" + TC + "','DOF',0,0,0,0,0,0,0,0,0,0,'',0,'','" + Num + "','" +
+                Fecha + "','04250','" + UserId + "',0,0,'','','" + periodo + "','" + sumextcost + "','" + Fecha + "',0,'" + OC + "','OR','" +
+                WONbr + "','','0','N',0,'','','',0,0,0,0,'','',0,0,'','','','" + Addr1 + "','" + Addr2 + "','','" + Attn + "','" + City + "','" + Country
+                + "','','" + email + "','" + Fax + "', '" + NameR + "','" + Phone + "','','" + State + "','','P','','','','" + Zip + "','P','','','','','" 
+                + tax1 + "','" + tax2 + "','" + tax3 + "','" + tax4 + "',0,0,0,0,'" + Terms + "',0,0,0,0,'','',0,0,'','','','','" + va1 + "','" + va2 +
+                "','DEFAULT','" + va + "', '" + vci + "', '" + vc + "','" + ve + "', '" + vf + "','" + VendID + "','" + vn + "','" + vp + "','" 
+                + vs + "','" + vz + "','N',NULL)", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+
+        public bool Insert_PoReqHdr(string Fecha, string UserId, string CuryID, string CpnyID, decimal sumcuryextcost, string WONbr, string periodo, decimal sumextcost, string email,
+                                    decimal TC, int Num, string OC, string tax1, string tax2, string tax3, string tax4, string Addr1, string Addr2, string Attn, string City, string Country,
+                                    string Fax, string NameR, string Phone, string State, string Zip, string Terms, string va, string va2, string va1, string vci, string vc, string vf,
+                                    string ve, string VendID, string vn, string vp, string vs, string vz)
+        {
+            SqlCommand comando = new SqlCommand(@"Insert into PoReqHdr values('" + va1 + "','" + va2 + "','','','','','" + va + "', '" + Addr1 + "','" 
+                + Addr2 + "','" + Attn + "','" + City + "','" + Country + "','" + email + "','" + Fax + "','" + NameR + "', '" + Phone 
+                + "','" + State + "','" + Zip + "', '','','HG',0,'" + vci + "', '',0,'" + vc + "','" + CpnyID + "', '','" + Fecha + "','04250','" 
+                + UserId + "','" + Fecha + "', 0,'" + CuryID + "', 'M',0,'" + TC + "','DOF','" + sumcuryextcost + "','','','','','','','','','','','CP','',''," 
+                + vf + "','',0,1,'" + Fecha + "','04250','" + UserId + "','" + vn + "', 0,'N','N','N','','" + periodo + "','" + vp + "', '" + Fecha +
+                "', '','','" + OC + "',0,'OR',0,'" + WONbr + "','',0,'" + OC + "', '" + sumextcost + "','SR','" + UserId + "','','','','',0,0,0,0,'','',0,0,'','','" 
+                + Addr1 + "', '" + Addr2 + "', 'DEFAULT','" + Attn + "','" + City + "', '" + Country + "', '" + email + "','" + Fax + "','" 
+                + NameR + "', '" + Phone + "', '" + State + "', '','" + Zip + "', '" + vs + "', 'CR',0,0,0,0,'" + tax1 + "','" + tax2 + "','" 
+                + tax3 + "','" + tax4 + "',0,0,0,0,'" + Terms + "', 0,'',0,0,0,0,'','',0,0,'','','','','DEFAULT','" + VendID + "', '" + vz + "' ,NULL)", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+
+        public bool RsSp_InsertVendid()
+        {
+            SqlCommand comando = new SqlCommand("RsSp_InsertVendid", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return false;
             }
             finally
             {

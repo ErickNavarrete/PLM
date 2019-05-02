@@ -184,12 +184,12 @@ namespace PLM.Controlador
             }
         }
 
-        public bool CreateOrdenVenta(string WONbr)
+        public bool CreateOrdenVenta(string WONbr, string UserId, string CpnyID)
         {
             #region VARIABLES
-            decimal TC,Qty;
+            decimal TC = 0,Qty = 0;
             decimal costext = 0, costo = 0;
-            string InvtID,VendID = "";
+            string InvtID = "",VendID = "", periodo = "";
             string tax1 = "",tax2 = "",tax3 = "",tax4 = "",Terms = "",va1 = "",va2 = "",vf = "",vp = "",vn = "",ve = "",va = "",vci = "",vc = "",vs = "",vz = "";
             string vcuryid = "",CuryID = "",Addr1 = "",Addr2 = "",City = "",State = "",Attn = "",email = "",Fax = "",NameR = "",Phone = "";
             string Zip = "",Country = "",OC = "", LineRef = "", SiteID = "", cantidad = "", factalmac = "", factcomp = "", Descr = "", tipomaterial = "";
@@ -216,6 +216,8 @@ namespace PLM.Controlador
 
             FechaAct = DateTime.Now;
             string CuryRate = dbd.CuryRate(FechaAct.ToString("yyyy-MM-dd"));
+            string Fecha = FechaAct.ToString("yyyy-MM-dd");
+            periodo = FechaAct.ToString("yyyyMM");
             //string CuryRate = dbd.CuryRate("2017-11-30");
             if (CuryRate == "")
             {
@@ -278,6 +280,7 @@ namespace PLM.Controlador
             }
 
             //LLAMAMOS AL STORED PROCEDURE
+            dbd.RsSp_InsertVendid();
 
             var bRsTb_Vendid = dbd.Rstb_Vendid();
             foreach(var item in bRsTb_Vendid)
@@ -422,13 +425,32 @@ namespace PLM.Controlador
                             }
                         }
                         //INSERT STATEMENTS
+                        dbd.Insert_PURORDDET(factor,Qty,Fecha,UserId,CuryExtCost,CuryID,TC,CuryUnitCost,ExtCost,InvtID,Num,LineRef,OC,WONbr,factcomp, cantidadcomp,Fecha, SiteID,
+                            tax1,tax2,tax3,tax4,Descr,item2.x.User6.ToString());
+
+                        dbd.Insert_POREQDET(factor, Fecha,UserId,CuryExtCost,CuryID,TC,CuryUnitCost,ExtCost,InvtID,Num,LineRef,OC,factcomp,cantidadcomp,Fecha,SiteID,tax1,tax2,
+                            tax3,tax4,Descr,item2.x.User6.ToString(),tipomaterial);
+
+                        var bPOReqDet = (from x in dbd.POREQDET() select new { x }).Where(x => x.x.ReqNbr == OC).ToList();
+                        foreach(var item3 in bPOReqDet)
+                        {
+                            sumextcost = sumextcost + item3.x.ExtCost;
+                            sumcuryextcost = sumcuryextcost + item3.x.CuryCuryExtCost;
+                        }
+
+                        //INSERT STATEMENTS
+                        dbd.Insert_PurchOrd(Fecha,UserId,CuryID,CpnyID,sumcuryextcost,WONbr,periodo,sumextcost,email,TC,Num,OC,tax1,tax2,tax3,tax4,Addr1,Addr2,Attn,City,Country,Fax,NameR,
+                            Phone,State,Zip,Terms,va,va2,va1,vci,vc,vf,ve,VendID,vn,vp,vs,vz);
+
+                        dbd.Insert_PoReqHdr(Fecha,UserId,CuryID,CpnyID,sumcuryextcost,WONbr,periodo,sumextcost,email,TC,Num,OC,tax1,tax2,tax3,tax4,Addr1,Addr2,Attn,City,Country,Fax,
+                            NameR,Phone,State,Zip,Terms,va,va2,va1,vci,vc,vf,ve,VendID,vn,vp,vs,vz);
                     }
                 }
             }
             return true;
         }
     }
-
+    
     public partial class ot
     {
         public string PO;
