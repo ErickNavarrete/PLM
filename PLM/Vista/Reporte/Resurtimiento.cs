@@ -48,7 +48,22 @@ namespace PLM.Vista.Reporte
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            Res.CreateOrdenVenta("");
+            string cliente = "";
+            string c_cliente = "TODOS";
+
+            if (chbOpcion.Checked == false)
+            {
+                c_cliente = cbClientes.Text.ToUpper();
+                cliente = Res.GetIdCliente(cbClientes.Text);
+            }
+            var Wonbr = Res.GetWONBR(dtpFechaI.Value, dtpFechaF.Value, cliente, dtpFechaOC.Value, c_cliente, this.pbResurtimiento);
+            if(Wonbr != null)
+            {
+                foreach(string item in Wonbr)
+                {
+                    Res.CreateOrdenVenta(item,"","", dtpFechaOC.Value);
+                }
+            }
         }
     }
 }

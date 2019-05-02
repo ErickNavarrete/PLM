@@ -184,7 +184,7 @@ namespace PLM.Controlador
             }
         }
 
-        public bool CreateOrdenVenta(string WONbr, string UserId, string CpnyID)
+        public bool CreateOrdenVenta(string WONbr, string UserId, string CpnyID, DateTime fecha_r)
         {
             #region VARIABLES
             decimal TC = 0,Qty = 0;
@@ -206,7 +206,7 @@ namespace PLM.Controlador
                 return false;
             }
 
-            //purorddet = "010600";
+            purorddet = "010600";
             string status = dbd.PURCHORD(purorddet);
             if (status != "X")
             {
@@ -214,11 +214,11 @@ namespace PLM.Controlador
                 return false;
             }
 
-            FechaAct = DateTime.Now;
-            string CuryRate = dbd.CuryRate(FechaAct.ToString("yyyy-MM-dd"));
+            FechaAct = fecha_r;
+            //string CuryRate = dbd.CuryRate(FechaAct.ToString("yyyy-MM-dd"));
             string Fecha = FechaAct.ToString("yyyy-MM-dd");
             periodo = FechaAct.ToString("yyyyMM");
-            //string CuryRate = dbd.CuryRate("2017-11-30");
+            string CuryRate = dbd.CuryRate("2017-11-30");
             if (CuryRate == "")
             {
                 MessageBox.Show("No hay tipo de cambio registrado en el sistema");
@@ -266,8 +266,14 @@ namespace PLM.Controlador
                 }                
             }
 
-            var bRsTb_GeneraOC = dbd.RsTb_GeneraOC();   
-            foreach(var item in bRsTb_GeneraOC)
+            var bRsTb_GeneraOC = dbd.RsTb_GeneraOC(); 
+            
+            if(bRsTb_GeneraOC == null)
+            {
+                return false;
+            }
+
+            foreach (var item in bRsTb_GeneraOC)
             {
                 var bInventory = (from x in dbd.Inventario5() select new { x }).Where(x => x.x.InvtID == item.InvtId ).FirstOrDefault();
                 if (bInventory != null)
@@ -448,6 +454,46 @@ namespace PLM.Controlador
                 }
             }
             return true;
+        }
+
+        public List<string> GetWONBR(DateTime fecha1, DateTime fecha2, string id_cliente, DateTime fecha_r, string c_cliente, MetroProgressBar view_r)
+        {
+            try
+            {
+                int contador = 0;
+                string consulta = "";
+                List<string> vs = new List<string>();
+
+                if (id_cliente == String.Empty)
+                {
+                    consulta = "";
+                }
+                else
+                {
+                    consulta = "AND SOHeader.CustID = '" + id_cliente + "'";
+                }
+
+                var resurtimineto = dbd.Reporte1(fecha1.ToString("yyyy-MM-dd"), fecha2.ToString("yyyy-MM-dd"), consulta);
+                if (resurtimineto != null)
+                {
+                    contador = resurtimineto.Count;
+                    view_r.Minimum = 0;
+                    view_r.Maximum = contador;
+                    foreach (var item in resurtimineto)
+                    {
+                        view_r.Value = view_r.Value + 1;
+                        vs.Add(item.po);
+                    }
+                }
+                
+                var WONBR = vs.Distinct().ToList();
+                return WONBR;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
         }
     }
     

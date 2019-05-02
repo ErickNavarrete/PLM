@@ -980,15 +980,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                 conexion.Open();
                 miDa.SelectCommand = comando;
                 miDa.Fill(miDs);
-                miDt = miDs.Tables[0];
-                if (miDt.Rows.Count > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
             catch (SqlException ex)
             {
@@ -1014,15 +1006,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                 conexion.Open();
                 miDa.SelectCommand = comando;
                 miDa.Fill(miDs);
-                miDt = miDs.Tables[0];
-                if (miDt.Rows.Count > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
             catch (SqlException ex)
             {
@@ -1049,15 +1033,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                 conexion.Open();
                 miDa.SelectCommand = comando;
                 miDa.Fill(miDs);
-                miDt = miDs.Tables[0];
-                if (miDt.Rows.Count > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
             catch (SqlException ex)
             {
@@ -1132,15 +1108,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                 conexion.Open();
                 miDa.SelectCommand = comando;
                 miDa.Fill(miDs);
-                miDt = miDs.Tables[0];
-                if (miDt.Rows.Count > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
             catch (SqlException ex)
             {
@@ -1407,15 +1375,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                 conexion.Open();
                 miDa.SelectCommand = comando;
                 miDa.Fill(miDs);
-                miDt = miDs.Tables[0];
-                if (miDt.Rows.Count > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
             catch (SqlException ex)
             {
@@ -1448,15 +1408,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                 conexion.Open();
                 miDa.SelectCommand = comando;
                 miDa.Fill(miDs);
-                miDt = miDs.Tables[0];
-                if (miDt.Rows.Count > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
             catch (SqlException ex)
             {
@@ -1492,15 +1444,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                 conexion.Open();
                 miDa.SelectCommand = comando;
                 miDa.Fill(miDs);
-                miDt = miDs.Tables[0];
-                if (miDt.Rows.Count > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
             catch (SqlException ex)
             {
@@ -1538,15 +1482,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                 conexion.Open();
                 miDa.SelectCommand = comando;
                 miDa.Fill(miDs);
-                miDt = miDs.Tables[0];
-                if (miDt.Rows.Count > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
             catch (SqlException ex)
             {
@@ -1573,15 +1509,8 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                 conexion.Open();
                 miDa.SelectCommand = comando;
                 miDa.Fill(miDs);
-                miDt = miDs.Tables[0];
-                if (miDt.Rows.Count > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
+
             }
             catch (SqlException ex)
             {
