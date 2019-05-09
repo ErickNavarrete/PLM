@@ -201,24 +201,23 @@ namespace PLM.Controlador
             #endregion
 
             //OBTENEMOS EL PONBR DEPENDIENDO LA ORDEN DE TRABAJO
-            string purorddet = dbd.PURORDDET(WONbr);
-            if(purorddet == ""){
-                return false;
-            }
+            //string purorddet = dbd.PURORDDET(WONbr);
+            //if(purorddet == ""){
+            //    return false;
+            //}
 
-            purorddet = "010600";
-            string status = dbd.PURCHORD(purorddet);
-            if (status != "X")
-            {
-                MessageBox.Show("No se puede Generar Orden de Compra para esta Orden de Trabajo");
-                return false;
-            }
+            //string status = dbd.PURCHORD(purorddet);
+            //if (status != "X")
+            //{
+            //    MessageBox.Show("No se puede Generar Orden de Compra para esta Orden de Trabajo");
+            //    return false;
+            //}
 
             FechaAct = fecha_r;
-            //string CuryRate = dbd.CuryRate(FechaAct.ToString("yyyy-MM-dd"));
+            string CuryRate = dbd.CuryRate(FechaAct.ToString("yyyy-MM-dd"));
             string Fecha = FechaAct.ToString("yyyy-MM-dd");
             periodo = FechaAct.ToString("yyyyMM");
-            string CuryRate = dbd.CuryRate("2017-11-30");
+            //string CuryRate = dbd.CuryRate("2017-11-30");
             if (CuryRate == "")
             {
                 MessageBox.Show("No hay tipo de cambio registrado en el sistema");
@@ -350,7 +349,7 @@ namespace PLM.Controlador
                 sumextcost = 0;
 
                 var bRsTb_GeneraOC2 = (from x in dbd.RsTb_GeneraOC() select new { x }).Where(x => x.x.VendId == item).ToList();
-                foreach(var item2 in bRsTb_GeneraOC2)
+                foreach (var item2 in bRsTb_GeneraOC2)
                 {
                     Num += 1;
                     if(Num < 10)
@@ -444,15 +443,20 @@ namespace PLM.Controlador
                             sumcuryextcost = sumcuryextcost + item3.x.CuryCuryExtCost;
                         }
 
-                        //INSERT STATEMENTS
-                        dbd.Insert_PurchOrd(Fecha,UserId,CuryID,CpnyID,sumcuryextcost,WONbr,periodo,sumextcost,email,TC,Num,OC,tax1,tax2,tax3,tax4,Addr1,Addr2,Attn,City,Country,Fax,NameR,
-                            Phone,State,Zip,Terms,va,va2,va1,vci,vc,vf,ve,VendID,vn,vp,vs,vz);
-
-                        dbd.Insert_PoReqHdr(Fecha,UserId,CuryID,CpnyID,sumcuryextcost,WONbr,periodo,sumextcost,email,TC,Num,OC,tax1,tax2,tax3,tax4,Addr1,Addr2,Attn,City,Country,Fax,
-                            NameR,Phone,State,Zip,Terms,va,va2,va1,vci,vc,vf,ve,VendID,vn,vp,vs,vz);
                     }
                 }
+
+                //INSERT STATEMENTS
+                dbd.Insert_PurchOrd(Fecha, UserId, CuryID, CpnyID, sumcuryextcost, WONbr, periodo, sumextcost, email, TC, Num, OC, tax1, tax2, tax3, tax4, Addr1, Addr2, Attn, City, Country, Fax, NameR,
+                    Phone, State, Zip, Terms, va, va2, va1, vci, vc, vf, ve, VendID, vn, vp, vs, vz);
+
+                dbd.Insert_PoReqHdr(Fecha, UserId, CuryID, CpnyID, sumcuryextcost, WONbr, periodo, sumextcost, email, TC, Num, OC, tax1, tax2, tax3, tax4, Addr1, Addr2, Attn, City, Country, Fax,
+                    NameR, Phone, State, Zip, Terms, va, va2, va1, vci, vc, vf, ve, VendID, vn, vp, vs, vz);
+
+                dbd.Update_PoSetUp(OC);
             }
+
+            dbd.Update_WoHeader(WONbr);
             return true;
         }
 

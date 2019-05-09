@@ -19,8 +19,8 @@ namespace PLM.Modelo
 		public Dynamics()
 		{
             //"Data Source=OMARTUAPC;Initial Catalog=RIOSULAPP;User Id=sa;Password=********;"            
-            //conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + "; Integrated Security=False;");
-            conexion = new SqlConnection(@"Data Source=DESKTOP-5EQKCQB; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
+            conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + "; Integrated Security=False;");
+            //conexion = new SqlConnection(@"Data Source=DESKTOP-5EQKCQB; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
         }
 
 		// recorda que quitamos el LeadTime
@@ -1023,8 +1023,8 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
         }
         public bool Insert_Rstb_GeneraOC(string InvtId, decimal Qty, string VendId, string WonBr, string User1, decimal User5, decimal User6)
         {
-            SqlCommand comando = new SqlCommand(@"Insert into RsTb_GeneraOC (InvtId,Qty,Vendid,WoNbr,User1,User5,User6) 
-                                                  values ("+ InvtId + "," + Qty + "," + VendId + "," + WonBr + "," + User1 + "," + User5 + "," + User6 + ")", conexion);
+            SqlCommand comando = new SqlCommand(@"Insert into RsTb_GeneraOC (InvtId,Qty,Vendid,WoNbr,User1,User5,User6,User2,User3,User4,User7,User8) 
+                                                  values ('"+ InvtId + "','" + Qty + "','" + VendId + "','" + WonBr + "','" + User1 + "','" + User5 + "','" + User6 + "','','','','','')", conexion);
             SqlDataAdapter miDa = new SqlDataAdapter();
             DataSet miDs = new DataSet();
             DataTable miDt = new DataTable();
@@ -1428,14 +1428,12 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                                     string Fax, string NameR, string Phone, string State, string Zip, string Terms, string va, string va2, string va1, string vci, string vc, string vf,
                                     string ve, string VendID, string vn, string vp, string vs, string vz)
         {
-            SqlCommand comando = new SqlCommand(@"Insert PurchOrd values ('','','','','','HG','0','','" + CpnyID + "','" + Fecha + "','04250','" + UserId +
-                "','0','" + Fecha + "','0','" + CuryID + "','M','" + sumcuryextcost + "',0,'" + TC + "','DOF',0,0,0,0,0,0,0,0,0,0,'',0,'','" + Num + "','" +
-                Fecha + "','04250','" + UserId + "',0,0,'','','" + periodo + "','" + sumextcost + "','" + Fecha + "',0,'" + OC + "','OR','" +
-                WONbr + "','','0','N',0,'','','',0,0,0,0,'','',0,0,'','','','" + Addr1 + "','" + Addr2 + "','','" + Attn + "','" + City + "','" + Country
-                + "','','" + email + "','" + Fax + "', '" + NameR + "','" + Phone + "','','" + State + "','','P','','','','" + Zip + "','P','','','','','" 
-                + tax1 + "','" + tax2 + "','" + tax3 + "','" + tax4 + "',0,0,0,0,'" + Terms + "',0,0,0,0,'','',0,0,'','','','','" + va1 + "','" + va2 +
-                "','DEFAULT','" + va + "', '" + vci + "', '" + vc + "','" + ve + "', '" + vf + "','" + VendID + "','" + vn + "','" + vp + "','" 
-                + vs + "','" + vz + "','N',NULL)", conexion);
+            SqlCommand comando = new SqlCommand(@"insert PurchOrd values ('','','','','','','HG','','','" + CpnyID + "','" + Fecha + "','4250','" + UserId + "','','" + Fecha + "','','" + CuryID + "','M','" + sumcuryextcost + "','" + TC + "'," +
+                "'DOF','','','','','','','','','','','','','" + Num + "','" + Fecha + "','4250','" + UserId + "','','','','','','','" + periodo + "','" + sumextcost + "','" + Fecha + "','','OC','OR','WONbr','','','N','','','','','','','','','','','','','',''," +
+                "'','" + Addr1 + "','" + Addr2 + "','','" + Attn + "','" + City + "','" + Country + "',''," +
+                "'"+ email + "','" +Fax + "','" + NameR + "','" + Phone + "','','" + State + "','','P','','','','" + Zip + "','P','','','','','" + tax1 + "','" + tax2 + "','" + tax3 + "'," +
+                "'"+ tax4 + "','','','','','" + Terms + "','','','','','','','','','','','','','" + va1+ "','" + va2 + "','DEFAULT'," +
+                "'" + va + "','" + vci + "','" + vc + "','" + ve + "','" + vf + "','" + VendID + "','" + vn + "','" + vp + "','" + vs + "','" + vz + "','N','',NULL)", conexion);
             SqlDataAdapter miDa = new SqlDataAdapter();
             DataSet miDs = new DataSet();
             DataTable miDt = new DataTable();
@@ -1511,6 +1509,60 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                 miDa.Fill(miDs);
                 return true;
 
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+
+        public bool Update_PoSetUp(string OC)
+        {
+            SqlCommand comando = new SqlCommand(@"Update PoSetUp set LastPONbr = '" + OC + "'", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return false;
+            }   
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+
+        public bool Update_WoHeader(string wonbr)
+        {
+            SqlCommand comando = new SqlCommand(@"Update WoHeader set user2 = 1 where wonbr = '" + wonbr + "'", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                return true;
             }
             catch (SqlException ex)
             {
