@@ -32,16 +32,19 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.dtpFechaI = new MetroFramework.Controls.MetroDateTime();
-            this.dtpFechaF = new MetroFramework.Controls.MetroDateTime();
             this.cbClientes = new MetroFramework.Controls.MetroComboBox();
             this.chbOpcion = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.dtpFechaOC = new MetroFramework.Controls.MetroDateTime();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnPrint = new System.Windows.Forms.ToolStripButton();
-            this.pbResurtimiento = new MetroFramework.Controls.MetroProgressBar();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.pbResurtimiento = new MetroFramework.Controls.MetroProgressBar();
+            this.clbOrdenTrabajo = new System.Windows.Forms.CheckedListBox();
+            this.dtpFechaI = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaF = new System.Windows.Forms.DateTimePicker();
+            this.tbOrdenTrabajo = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.dtpFechaOC = new System.Windows.Forms.DateTimePicker();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +60,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(301, 62);
+            this.metroLabel2.Location = new System.Drawing.Point(330, 62);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(24, 19);
             this.metroLabel2.TabIndex = 3;
@@ -72,31 +75,11 @@
             this.metroLabel3.TabIndex = 5;
             this.metroLabel3.Text = "Clientes:";
             // 
-            // dtpFechaI
-            // 
-            this.dtpFechaI.CustomFormat = "dd/MM/yyyy";
-            this.dtpFechaI.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaI.Location = new System.Drawing.Point(96, 54);
-            this.dtpFechaI.MinimumSize = new System.Drawing.Size(0, 29);
-            this.dtpFechaI.Name = "dtpFechaI";
-            this.dtpFechaI.Size = new System.Drawing.Size(180, 29);
-            this.dtpFechaI.TabIndex = 6;
-            // 
-            // dtpFechaF
-            // 
-            this.dtpFechaF.CustomFormat = "dd/MM/yyyy";
-            this.dtpFechaF.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaF.Location = new System.Drawing.Point(374, 58);
-            this.dtpFechaF.MinimumSize = new System.Drawing.Size(0, 29);
-            this.dtpFechaF.Name = "dtpFechaF";
-            this.dtpFechaF.Size = new System.Drawing.Size(180, 29);
-            this.dtpFechaF.TabIndex = 7;
-            // 
             // cbClientes
             // 
             this.cbClientes.FormattingEnabled = true;
             this.cbClientes.ItemHeight = 23;
-            this.cbClientes.Location = new System.Drawing.Point(96, 101);
+            this.cbClientes.Location = new System.Drawing.Point(125, 101);
             this.cbClientes.Name = "cbClientes";
             this.cbClientes.Size = new System.Drawing.Size(386, 29);
             this.cbClientes.TabIndex = 8;
@@ -106,7 +89,7 @@
             // 
             this.chbOpcion.AutoSize = true;
             this.chbOpcion.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chbOpcion.Location = new System.Drawing.Point(520, 101);
+            this.chbOpcion.Location = new System.Drawing.Point(549, 101);
             this.chbOpcion.Name = "chbOpcion";
             this.chbOpcion.Size = new System.Drawing.Size(60, 19);
             this.chbOpcion.TabIndex = 9;
@@ -116,21 +99,11 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(22, 179);
+            this.metroLabel4.Location = new System.Drawing.Point(22, 285);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(70, 19);
             this.metroLabel4.TabIndex = 10;
             this.metroLabel4.Text = "Fecha OC:";
-            // 
-            // dtpFechaOC
-            // 
-            this.dtpFechaOC.CustomFormat = "dd/MM/yyyy";
-            this.dtpFechaOC.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaOC.Location = new System.Drawing.Point(96, 179);
-            this.dtpFechaOC.MinimumSize = new System.Drawing.Size(0, 29);
-            this.dtpFechaOC.Name = "dtpFechaOC";
-            this.dtpFechaOC.Size = new System.Drawing.Size(180, 29);
-            this.dtpFechaOC.TabIndex = 11;
             // 
             // toolStrip1
             // 
@@ -152,13 +125,6 @@
             this.btnPrint.Text = "Imprimir";
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
-            // pbResurtimiento
-            // 
-            this.pbResurtimiento.Location = new System.Drawing.Point(22, 258);
-            this.pbResurtimiento.Name = "pbResurtimiento";
-            this.pbResurtimiento.Size = new System.Drawing.Size(558, 23);
-            this.pbResurtimiento.TabIndex = 13;
-            // 
             // toolStripButton1
             // 
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
@@ -168,19 +134,104 @@
             this.toolStripButton1.Text = "Orden Venta";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // pbResurtimiento
+            // 
+            this.pbResurtimiento.Location = new System.Drawing.Point(22, 328);
+            this.pbResurtimiento.Name = "pbResurtimiento";
+            this.pbResurtimiento.Size = new System.Drawing.Size(558, 23);
+            this.pbResurtimiento.TabIndex = 13;
+            // 
+            // clbOrdenTrabajo
+            // 
+            this.clbOrdenTrabajo.FormattingEnabled = true;
+            this.clbOrdenTrabajo.Location = new System.Drawing.Point(125, 184);
+            this.clbOrdenTrabajo.Name = "clbOrdenTrabajo";
+            this.clbOrdenTrabajo.Size = new System.Drawing.Size(386, 64);
+            this.clbOrdenTrabajo.TabIndex = 14;
+            // 
+            // dtpFechaI
+            // 
+            this.dtpFechaI.CustomFormat = "dd/MMMM/yyyy";
+            this.dtpFechaI.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaI.Location = new System.Drawing.Point(125, 58);
+            this.dtpFechaI.Name = "dtpFechaI";
+            this.dtpFechaI.Size = new System.Drawing.Size(180, 20);
+            this.dtpFechaI.TabIndex = 15;
+            // 
+            // dtpFechaF
+            // 
+            this.dtpFechaF.CustomFormat = "dd/MMMM/yyyy";
+            this.dtpFechaF.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaF.Location = new System.Drawing.Point(360, 58);
+            this.dtpFechaF.Name = "dtpFechaF";
+            this.dtpFechaF.Size = new System.Drawing.Size(180, 20);
+            this.dtpFechaF.TabIndex = 16;
+            // 
+            // tbOrdenTrabajo
+            // 
+            // 
+            // 
+            // 
+            this.tbOrdenTrabajo.CustomButton.Image = null;
+            this.tbOrdenTrabajo.CustomButton.Location = new System.Drawing.Point(358, 1);
+            this.tbOrdenTrabajo.CustomButton.Name = "";
+            this.tbOrdenTrabajo.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.tbOrdenTrabajo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbOrdenTrabajo.CustomButton.TabIndex = 1;
+            this.tbOrdenTrabajo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbOrdenTrabajo.CustomButton.UseSelectable = true;
+            this.tbOrdenTrabajo.CustomButton.Visible = false;
+            this.tbOrdenTrabajo.Lines = new string[0];
+            this.tbOrdenTrabajo.Location = new System.Drawing.Point(125, 156);
+            this.tbOrdenTrabajo.MaxLength = 32767;
+            this.tbOrdenTrabajo.Name = "tbOrdenTrabajo";
+            this.tbOrdenTrabajo.PasswordChar = '\0';
+            this.tbOrdenTrabajo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbOrdenTrabajo.SelectedText = "";
+            this.tbOrdenTrabajo.SelectionLength = 0;
+            this.tbOrdenTrabajo.SelectionStart = 0;
+            this.tbOrdenTrabajo.ShortcutsEnabled = true;
+            this.tbOrdenTrabajo.Size = new System.Drawing.Size(386, 29);
+            this.tbOrdenTrabajo.TabIndex = 17;
+            this.tbOrdenTrabajo.UseSelectable = true;
+            this.tbOrdenTrabajo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbOrdenTrabajo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbOrdenTrabajo.TextChanged += new System.EventHandler(this.tbOrdenTrabajo_TextChanged);
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(22, 156);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(97, 19);
+            this.metroLabel5.TabIndex = 18;
+            this.metroLabel5.Text = "Orden Trabajo:";
+            // 
+            // dtpFechaOC
+            // 
+            this.dtpFechaOC.CustomFormat = "dd/MMMM/yyyy";
+            this.dtpFechaOC.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaOC.Location = new System.Drawing.Point(125, 285);
+            this.dtpFechaOC.Name = "dtpFechaOC";
+            this.dtpFechaOC.Size = new System.Drawing.Size(180, 20);
+            this.dtpFechaOC.TabIndex = 19;
+            // 
             // Resurtimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 293);
+            this.ClientSize = new System.Drawing.Size(633, 362);
+            this.Controls.Add(this.dtpFechaOC);
+            this.Controls.Add(this.metroLabel5);
+            this.Controls.Add(this.tbOrdenTrabajo);
+            this.Controls.Add(this.dtpFechaF);
+            this.Controls.Add(this.dtpFechaI);
+            this.Controls.Add(this.clbOrdenTrabajo);
             this.Controls.Add(this.pbResurtimiento);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.dtpFechaOC);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.chbOpcion);
             this.Controls.Add(this.cbClientes);
-            this.Controls.Add(this.dtpFechaF);
-            this.Controls.Add(this.dtpFechaI);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
@@ -203,15 +254,18 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroDateTime dtpFechaI;
-        private MetroFramework.Controls.MetroDateTime dtpFechaF;
         private MetroFramework.Controls.MetroComboBox cbClientes;
         private MetroFramework.Controls.MetroCheckBox chbOpcion;
         private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroDateTime dtpFechaOC;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnPrint;
         public MetroFramework.Controls.MetroProgressBar pbResurtimiento;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.CheckedListBox clbOrdenTrabajo;
+        private System.Windows.Forms.DateTimePicker dtpFechaI;
+        private System.Windows.Forms.DateTimePicker dtpFechaF;
+        private MetroFramework.Controls.MetroTextBox tbOrdenTrabajo;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private System.Windows.Forms.DateTimePicker dtpFechaOC;
     }
 }

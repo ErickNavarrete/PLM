@@ -25,6 +25,7 @@ namespace PLM.Vista.Reporte
         private void Resurtimiento_Load(object sender, EventArgs e)
         {
             Res.GetClientes(cbClientes);
+            Res.PutWonbr(clbOrdenTrabajo, tbOrdenTrabajo);
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -40,7 +41,7 @@ namespace PLM.Vista.Reporte
 
             this.pbResurtimiento.Value = 0;
             
-            if (!Res.GetReporte(dtpFechaI.Value, dtpFechaF.Value, cliente, dtpFechaOC.Value, this.pbResurtimiento, c_cliente))
+            if (!Res.GetReporte(dtpFechaI.Value, dtpFechaF.Value, cliente, dtpFechaOC.Value, this.pbResurtimiento, c_cliente, clbOrdenTrabajo))
             {
                 Dialogs.Show("Sin datos por mostrar", DialogsType.Info);
             }
@@ -64,6 +65,11 @@ namespace PLM.Vista.Reporte
                     Res.CreateOrdenVenta(item,"","", dtpFechaOC.Value);
                 }
             }
+        }
+
+        private void tbOrdenTrabajo_TextChanged(object sender, EventArgs e)
+        {
+            Res.PutWonbr(clbOrdenTrabajo, tbOrdenTrabajo);
         }
     }
 }

@@ -42,13 +42,14 @@ namespace PLM.Controlador
             }
         }
 
-        public bool GetReporte(DateTime fecha1, DateTime fecha2,string id_cliente, DateTime fecha_r, MetroProgressBar view_r, string c_cliente)
+        public bool GetReporte(DateTime fecha1, DateTime fecha2,string id_cliente, DateTime fecha_r, MetroProgressBar view_r, string c_cliente, CheckedListBox Wonbr)
         {
             try
             {
                 dsResurtimineto res = new dsResurtimineto();
                 crResurtimineto cr = new crResurtimineto();
                 string consulta = "";
+                string consulta2 = "";
                 string fecha = "DEL " + fecha1.ToString("dd/MMMM/yyyy") + " AL " + fecha2.ToString("dd/MMMM/yyyy");
                 string cliente = c_cliente.ToUpper();
 
@@ -72,9 +73,22 @@ namespace PLM.Controlador
                     consulta = "AND SOHeader.CustID = '"+ id_cliente +"'";
                 }
 
+                if(Wonbr.CheckedItems.Count > 0)
+                {
+                    consulta2 = "and (";
+                    foreach(string item in Wonbr.CheckedItems)
+                    {
+                        consulta2 = consulta2 + "A.WONbr = '" + item + "' OR ";
+                    }
+                    consulta2 = consulta2.TrimEnd(' ');
+                    consulta2 = consulta2.TrimEnd('R');
+                    consulta2 = consulta2.TrimEnd('O');
+                    consulta2 = consulta2 + ")";
+                }
+
                 using (PLMContext db = new PLMContext())
                 {
-                    var resurtimineto = dbd.Reporte1(fecha1.ToString("yyyy-MM-dd"), fecha2.ToString("yyyy-MM-dd"), consulta);
+                    var resurtimineto = dbd.Reporte1(fecha1.ToString("yyyy-MM-dd"), fecha2.ToString("yyyy-MM-dd"), consulta, consulta2);
                     try
                     {
                         diasA = (from x in db.DiasAnticipacion select new { x.DiasA }).FirstOrDefault().DiasA;
@@ -477,7 +491,7 @@ namespace PLM.Controlador
                     consulta = "AND SOHeader.CustID = '" + id_cliente + "'";
                 }
 
-                var resurtimineto = dbd.Reporte1(fecha1.ToString("yyyy-MM-dd"), fecha2.ToString("yyyy-MM-dd"), consulta);
+                var resurtimineto = dbd.Reporte1(fecha1.ToString("yyyy-MM-dd"), fecha2.ToString("yyyy-MM-dd"), consulta, "");
                 if (resurtimineto != null)
                 {
                     contador = resurtimineto.Count;
@@ -497,6 +511,35 @@ namespace PLM.Controlador
             {
                 MessageBox.Show(ex.ToString());
                 return null;
+            }
+        }
+
+        public bool PutWonbr(CheckedListBox Wonbr, MetroTextBox tbWonbr)
+        {
+            List<string> OT = new List<string>();
+            Wonbr.Items.Clear();
+            
+            try
+            {
+                if(tbWonbr.Text == "")
+                {
+                    OT = (from x in dbd.GetWonbr() select new { x }).Where(x => x.x.Contains(tbWonbr.Text)).Select(x => x.x).ToList();
+                }
+                else
+                {
+                    OT = (from x in dbd.GetWonbr() select new { x }).Where(x => x.x.Contains(tbWonbr.Text)).Select(x => x.x).ToList();
+                }
+
+                foreach(string item in OT)
+                {
+                    Wonbr.Items.Add(item);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return false;
             }
         }
     }

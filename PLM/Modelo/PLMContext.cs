@@ -22,10 +22,15 @@ namespace PLM.Modelo
 
         //}
 
-        public PLMContext() : base(@"Data Source=" + ConfigIni.Host + ";Initial Catalog=" + ConfigIni.Bd + ";User Id=" + ConfigIni.Id + ";Password=" + ConfigIni.Password + "; Integrated Security=False;")
+        public PLMContext() : base(@"Data Source= DESKTOP-JBDH3N9;Initial Catalog=PLM;Integrated Security=True;")
         {
 
         }
+
+        //public PLMContext() : base(@"Data Source=" + ConfigIni.Host + ";Initial Catalog=" + ConfigIni.Bd + ";User Id=" + ConfigIni.Id + ";Password=" + ConfigIni.Password + "; Integrated Security=False;")
+        //{
+
+        //}
 
         //Tablas del sistema en base a los modelos creados
         public virtual DbSet<Usuario> Usuarios { get; set; }
