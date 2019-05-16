@@ -45,6 +45,7 @@
             this.tbOrdenTrabajo = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.dtpFechaOC = new System.Windows.Forms.DateTimePicker();
+            this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,12 +90,13 @@
             // 
             this.chbOpcion.AutoSize = true;
             this.chbOpcion.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chbOpcion.Location = new System.Drawing.Point(549, 101);
+            this.chbOpcion.Location = new System.Drawing.Point(561, 101);
             this.chbOpcion.Name = "chbOpcion";
-            this.chbOpcion.Size = new System.Drawing.Size(60, 19);
+            this.chbOpcion.Size = new System.Drawing.Size(61, 19);
             this.chbOpcion.TabIndex = 9;
-            this.chbOpcion.Text = "Todas";
+            this.chbOpcion.Text = "Todos";
             this.chbOpcion.UseSelectable = true;
+            this.chbOpcion.Visible = false;
             // 
             // metroLabel4
             // 
@@ -216,11 +218,24 @@
             this.dtpFechaOC.Size = new System.Drawing.Size(180, 20);
             this.dtpFechaOC.TabIndex = 19;
             // 
+            // metroCheckBox1
+            // 
+            this.metroCheckBox1.AutoSize = true;
+            this.metroCheckBox1.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.metroCheckBox1.Location = new System.Drawing.Point(561, 166);
+            this.metroCheckBox1.Name = "metroCheckBox1";
+            this.metroCheckBox1.Size = new System.Drawing.Size(61, 19);
+            this.metroCheckBox1.TabIndex = 20;
+            this.metroCheckBox1.Text = "Todos";
+            this.metroCheckBox1.UseSelectable = true;
+            this.metroCheckBox1.Visible = false;
+            // 
             // Resurtimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(633, 362);
+            this.Controls.Add(this.metroCheckBox1);
             this.Controls.Add(this.dtpFechaOC);
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.tbOrdenTrabajo);
@@ -267,5 +282,6 @@
         private MetroFramework.Controls.MetroTextBox tbOrdenTrabajo;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private System.Windows.Forms.DateTimePicker dtpFechaOC;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
     }
 }

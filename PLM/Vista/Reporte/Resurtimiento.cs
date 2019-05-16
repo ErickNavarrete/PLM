@@ -30,11 +30,16 @@ namespace PLM.Vista.Reporte
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            string cliente = "";
+             string cliente = "";
             string c_cliente = "TODOS";
 
             if (chbOpcion.Checked == false)
             {
+                //if(cbClientes.Text == "")
+                //{
+                //    Dialogs.Show("Sin datos por mostrar", DialogsType.Warning);
+                //    return;
+                //}
                 c_cliente = cbClientes.Text.ToUpper();
                 cliente = Res.GetIdCliente(cbClientes.Text);
             }

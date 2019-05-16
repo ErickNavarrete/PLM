@@ -213,19 +213,21 @@ namespace PLM.Controlador
 
             DateTime FechaAct;
             #endregion
+            WONbr = "9124290";
 
             //OBTENEMOS EL PONBR DEPENDIENDO LA ORDEN DE TRABAJO
-            //string purorddet = dbd.PURORDDET(WONbr);
-            //if(purorddet == ""){
-            //    return false;
-            //}
+            string purorddet = dbd.PURORDDET(WONbr);
+            if (purorddet != "")
+            {
+                return false;
+            }
 
-            //string status = dbd.PURCHORD(purorddet);
-            //if (status != "X")
-            //{
-            //    MessageBox.Show("No se puede Generar Orden de Compra para esta Orden de Trabajo");
-            //    return false;
-            //}
+            string status = dbd.PURCHORD(purorddet);
+            if (status == "X")
+            {
+                MessageBox.Show("No se puede Generar Orden de Compra para esta Orden de Trabajo");
+                return false;
+            }
 
             FechaAct = fecha_r;
             string CuryRate = dbd.CuryRate(FechaAct.ToString("yyyy-MM-dd"));
@@ -243,7 +245,7 @@ namespace PLM.Controlador
             dbd.Truncate_RsTb_Vendid();
             var bWOMatlReq = (from x in dbd.wOMatlReqs() select new {x}).Where(x=> x.x.WONbr == WONbr).ToList();
 
-            if(bWOMatlReq == null)
+            if(bWOMatlReq.Count == 0)
             {
                 MessageBox.Show("No hay lista de Materiales asignada a esta Orden de Trabajo");
                 return false;
@@ -368,7 +370,7 @@ namespace PLM.Controlador
                     Num += 1;
                     if(Num < 10)
                     {
-                        LineRef = "0000" + Num;
+                        LineRef = "000" + Num;
                     }else if(Num >= 10 && Num < 100)
                     {
                         LineRef = "000" + Num;

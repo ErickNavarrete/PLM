@@ -18,11 +18,11 @@ namespace PLM.Modelo
 
 		public Dynamics()
 		{
-			//"Data Source=OMARTUAPC;Initial Catalog=RIOSULAPP;User Id=sa;Password=********;"            
-			//conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + "; Integrated Security=False;");
-			//conexion = new SqlConnection(@"Data Source=DESKTOP-5EQKCQB; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
-			conexion = new SqlConnection(@"Data Source=DESKTOP-JBDH3N9; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
-		}
+            //"Data Source=OMARTUAPC;Initial Catalog=RIOSULAPP;User Id=sa;Password=********;"            
+            //conexion = new SqlConnection(@"Data Source=" + ConfigIni.HostDynamic + ";Initial Catalog=" + ConfigIni.BdDynamic + ";User Id=" + ConfigIni.IdDynamic + ";Password=" + ConfigIni.PasswordDynamic + "; Integrated Security=False;");
+            conexion = new SqlConnection(@"Data Source=DESKTOP-5EQKCQB; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
+            //conexion = new SqlConnection(@"Data Source=DESKTOP-JBDH3N9; Initial Catalog=RIOSULPRUEBAS9 ;Integrated Security=True;");
+        }
 
 		// recorda que quitamos el LeadTime
 		public List<Inventory> Inventario()
@@ -978,16 +978,16 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
 					{
 						InventoryOT objetoInv = new InventoryOT
 						{
-							InvtID = miDt.Rows[i][0].ToString(),
-							Supplr1 = miDt.Rows[i][1].ToString(),
-							user3 = miDt.Rows[i][2].ToString(),
-							LastCost = miDt.Rows[i][3].ToString(),
-							ReordQty = miDt.Rows[i][4].ToString(),
-							ReordPt = miDt.Rows[i][5].ToString(),
-							StkUnit = miDt.Rows[i][6].ToString(),
-							DfltPOUnit = miDt.Rows[i][7].ToString(),
-							Descr = miDt.Rows[i][8].ToString(),
-							MaterialType = miDt.Rows[i][9].ToString()
+							InvtID = miDt.Rows[i][0].ToString().Trim(),
+							Supplr1 = miDt.Rows[i][1].ToString().Trim(),
+							user3 = miDt.Rows[i][2].ToString().Trim(),
+							LastCost = miDt.Rows[i][3].ToString().Trim(),
+							ReordQty = miDt.Rows[i][4].ToString().Trim(),
+							ReordPt = miDt.Rows[i][5].ToString().Trim(),
+							StkUnit = miDt.Rows[i][6].ToString().Trim(),
+							DfltPOUnit = miDt.Rows[i][7].ToString().Trim(),
+							Descr = miDt.Rows[i][8].ToString().Trim(),
+							MaterialType = miDt.Rows[i][9].ToString().Trim()
 						};
 						miLista.Add(objetoInv);
 					}
@@ -1141,7 +1141,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
 		}
 		public bool delete_Rstb_GeneraOC(string InvtID)
 		{
-			SqlCommand comando = new SqlCommand("Delete from Rstb_generaOC where invtid = " + InvtID + "", conexion);
+			SqlCommand comando = new SqlCommand("Delete from Rstb_generaOC where invtid = '" + InvtID + "' ", conexion);
 			SqlDataAdapter miDa = new SqlDataAdapter();
 			DataSet miDs = new DataSet();
 			DataTable miDt = new DataTable();
@@ -1318,7 +1318,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
 		}
 		public decimal InUnit(string factalmac, string factcomp)
 		{
-			SqlCommand comando = new SqlCommand("select CnvFact From InUnit where tounit = " + factalmac + " and fromUnit = " + factcomp + "", conexion);
+			SqlCommand comando = new SqlCommand("select CnvFact From InUnit where tounit = '" + factalmac + "' and fromUnit = '" + factcomp + "' ", conexion);
 			SqlDataAdapter miDa = new SqlDataAdapter();
 			DataSet miDs = new DataSet();
 			DataTable miDt = new DataTable();
@@ -1470,13 +1470,20 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
 									string Fax, string NameR, string Phone, string State, string Zip, string Terms, string va, string va2, string va1, string vci, string vc, string vf,
 									string ve, string VendID, string vn, string vp, string vs, string vz)
 		{
-			SqlCommand comando = new SqlCommand(@"insert PurchOrd values ('','','','','','','HG','','','" + CpnyID + "','" + Fecha + "','4250','" + UserId + "','','" + Fecha + "','','" + CuryID + "','M','" + sumcuryextcost + "','" + TC + "'," +
-				"'DOF','','','','','','','','','','','','','" + Num + "','" + Fecha + "','4250','" + UserId + "','','','','','','','" + periodo + "','" + sumextcost + "','" + Fecha + "','','OC','OR','WONbr','','','N','','','','','','','','','','','','','',''," +
-				"'','" + Addr1 + "','" + Addr2 + "','','" + Attn + "','" + City + "','" + Country + "',''," +
-				"'"+ email + "','" +Fax + "','" + NameR + "','" + Phone + "','','" + State + "','','P','','','','" + Zip + "','P','','','','','" + tax1 + "','" + tax2 + "','" + tax3 + "'," +
-				"'"+ tax4 + "','','','','','" + Terms + "','','','','','','','','','','','','','" + va1+ "','" + va2 + "','DEFAULT'," +
-				"'" + va + "','" + vci + "','" + vc + "','" + ve + "','" + vf + "','" + VendID + "','" + vn + "','" + vp + "','" + vs + "','" + vz + "','N','',NULL)", conexion);
-			SqlDataAdapter miDa = new SqlDataAdapter();
+            //SqlCommand comando = new SqlCommand(@"insert PurchOrd values ('','','','','','','HG','','','" + CpnyID + "','" + Fecha + "','4250','" + UserId + "','','" + Fecha + "','','" + CuryID + "','M','" + sumcuryextcost + "','" + TC + "'," +
+            //	"'DOF','','','','','','','','','','','','','" + Num + "','" + Fecha + "','4250','" + UserId + "','','','','','','','" + periodo + "','" + sumextcost + "','" + Fecha + "','','OC','OR','WONbr','','','N','','','','','','','','','','','','','',''," +
+            //	"'','" + Addr1 + "','" + Addr2 + "','','" + Attn + "','" + City + "','" + Country + "',''," +
+            //	"'"+ email + "','" +Fax + "','" + NameR + "','" + Phone + "','','" + State + "','','P','','','','" + Zip + "','P','','','','','" + tax1 + "','" + tax2 + "','" + tax3 + "'," +
+            //	"'"+ tax4 + "','','','','','" + Terms + "','','','','','','','','','','','','','" + va1+ "','" + va2 + "','DEFAULT'," +
+            //	"'" + va + "','" + vci + "','" + vc + "','" + ve + "','" + vf + "','" + VendID + "','" + vn + "','" + vp + "','" + vs + "','" + vz + "','N','',NULL)", conexion);
+
+            SqlCommand comando = new SqlCommand(@"insert PurchOrd values ('','','','','','','HG','','','" + CpnyID + "','" + Fecha + "','4250','" + UserId + "','','" + Fecha + "','','" + CuryID + "','M','" + sumcuryextcost + "','" + TC + "'," +
+                "'DOF','','','','','','','','','','','','','" + Num + "','" + Fecha + "','4250','" + UserId + "','','','','','','','" + periodo + "','" + sumextcost + "','" + Fecha + "','','OC','OR','WONbr','','','N','','','','','','','','','','','','','',''," +
+                "'','" + Addr1 + "','" + Addr2 + "','','" + Attn + "','" + City + "','" + Country + "',''," +
+                "'" + email + "','" + Fax + "','" + NameR + "','" + Phone + "','','" + State + "','','P','','','','" + Zip + "','P','','','','','" + tax1 + "','" + tax2 + "','" + tax3 + "'," +
+                "'" + tax4 + "','','','','','" + Terms + "','','','','','','','','','','','','','" + va1 + "','" + va2 + "','DEFAULT'," +
+                "'" + va + "','" + vci + "','" + vc + "','" + ve + "','" + vf + "','" + VendID + "','" + vn + "','" + vp + "','" + vs + "','" + vz + "','N','',NULL)", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
 			DataSet miDs = new DataSet();
 			DataTable miDt = new DataTable();
 			try
