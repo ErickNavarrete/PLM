@@ -34,8 +34,6 @@ namespace PLM.Vista
             }
         }
 
-     
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
              DialogsResults respuesta = Dialogs.Show("Esta seguro que desea eliminar el item? ", DialogsType.Question);
@@ -68,8 +66,7 @@ namespace PLM.Vista
                 }
              }
           }
-
-          
+         
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             if (txtBusqueda.Text != string.Empty)
@@ -95,8 +92,6 @@ namespace PLM.Vista
               
             }
         }
-
-       
 
         public void clearTxt()
         {
@@ -215,8 +210,8 @@ namespace PLM.Vista
                     }
                 }
             }
-                else if (flag == 0)
-                {
+            else if (flag == 0)
+            {
                     DialogsResults respuesta = Dialogs.Show("Esta seguro que desea guardar el item? ", DialogsType.Question);
                     if (respuesta == DialogsResults.Yes)
                     {
@@ -255,7 +250,6 @@ namespace PLM.Vista
                 }
             }
         
-
         private void btnAtras_Click(object sender, EventArgs e)
         {
             this.Close();

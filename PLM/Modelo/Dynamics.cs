@@ -1478,7 +1478,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
             //	"'" + va + "','" + vci + "','" + vc + "','" + ve + "','" + vf + "','" + VendID + "','" + vn + "','" + vp + "','" + vs + "','" + vz + "','N','',NULL)", conexion);
 
             SqlCommand comando = new SqlCommand(@"insert PurchOrd values ('','','','','','','HG','','','" + CpnyID + "','" + Fecha + "','4250','" + UserId + "','','" + Fecha + "','','" + CuryID + "','M','" + sumcuryextcost + "','" + TC + "'," +
-                "'DOF','','','','','','','','','','','','','" + Num + "','" + Fecha + "','4250','" + UserId + "','','','','','','','" + periodo + "','" + sumextcost + "','" + Fecha + "','','OC','OR','WONbr','','','N','','','','','','','','','','','','','',''," +
+                "'','','','','','','','','','','','','','" + Num + "','" + Fecha + "','4250','" + UserId + "','','','','','','','" + periodo + "','" + sumextcost + "','" + Fecha + "','','" + OC + "','OR','WONbr','','','N','','','','','','','','','','','','','',''," +
                 "'','" + Addr1 + "','" + Addr2 + "','','" + Attn + "','" + City + "','" + Country + "',''," +
                 "'" + email + "','" + Fax + "','" + NameR + "','" + Phone + "','','" + State + "','','P','','','','" + Zip + "','P','','','','','" + tax1 + "','" + tax2 + "','" + tax3 + "'," +
                 "'" + tax4 + "','','','','','" + Terms + "','','','','','','','','','','','','','" + va1 + "','" + va2 + "','DEFAULT'," +
@@ -1515,7 +1515,7 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
 			SqlCommand comando = new SqlCommand(@"Insert into PoReqHdr values('" + va1 + "','" + va2 + "','','','','','" + va + "', '" + Addr1 + "','" 
 				+ Addr2 + "','" + Attn + "','" + City + "','" + Country + "','" + email + "','" + Fax + "','" + NameR + "', '" + Phone 
 				+ "','" + State + "','" + Zip + "', '','','HG',0,'" + vci + "', '',0,'" + vc + "','" + CpnyID + "', '','" + Fecha + "','04250','" 
-				+ UserId + "','" + Fecha + "', 0,'" + CuryID + "', 'M',0,'" + TC + "','DOF','" + sumcuryextcost + "','','','','','','','','','','','CP','',''," 
+				+ UserId + "','" + Fecha + "', 0,'" + CuryID + "', 'M',0,'" + TC + "','DOF','" + sumcuryextcost + "','','','','','','','','','','','CP','','','" 
 				+ vf + "','',0,1,'" + Fecha + "','04250','" + UserId + "','" + vn + "', 0,'N','N','N','','" + periodo + "','" + vp + "', '" + Fecha +
 				"', '','','" + OC + "',0,'OR',0,'" + WONbr + "','',0,'" + OC + "', '" + sumextcost + "','SR','" + UserId + "','','','','',0,0,0,0,'','',0,0,'','','" 
 				+ Addr1 + "', '" + Addr2 + "', 'DEFAULT','" + Attn + "','" + City + "', '" + Country + "', '" + email + "','" + Fax + "','" 
@@ -1626,5 +1626,94 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
 				miDt.Dispose();
 			}
 		}
+
+        public List<RSVW_REPSURTIMIENTOCANTSURTIDA> RSVW_REPSURTIMIENTOCANTSURTIDAs(string fecha1, string fecha2, string cliente, string Wonbr)
+        {
+            SqlCommand comando = new SqlCommand(@"SELECT InvtID
+                                                  ,DescrArt
+                                                  ,CantOrd
+                                                  ,WONbr
+                                                  ,MaterialType
+                                                  ,Existencia
+                                                  ,UnidadCompra
+                                                  ,OrdenVenta
+                                                  ,Po
+                                                  ,PorAdicional
+                                                  ,CantidadOrdenesVta
+                                                  ,CodProv
+                                                  ,DescProv
+                                                  ,Proveedor
+                                                  ,TempoEntregaCompras
+                                                  ,FechaEmbarque
+                                                  ,CustID
+                                                  ,CantFabric
+                                                  ,QtyVouched
+                                                  ,FechaRecepcion
+                                                  ,CantidadRecepcion
+                                                  ,ClassID
+                                              FROM RSVW_REPSURTIMIENTOCANTSURTIDA where FechaEmbarque >= '"+ fecha1 + "' and FechaEmbarque <= '" + fecha2 + "' " + cliente + Wonbr, conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            List<RSVW_REPSURTIMIENTOCANTSURTIDA> miLista = new List<RSVW_REPSURTIMIENTOCANTSURTIDA>();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+                    {
+                        RSVW_REPSURTIMIENTOCANTSURTIDA objetoInv = new RSVW_REPSURTIMIENTOCANTSURTIDA
+                        {
+                            InvtID = miDt.Rows[i][0].ToString().Trim(),
+                            DescrArt = miDt.Rows[i][1].ToString().Trim(),
+                            CantOrd = miDt.Rows[i][2].ToString().Trim(),
+                            WONbr = miDt.Rows[i][3].ToString().Trim(),
+                            MaterialType = miDt.Rows[i][4].ToString().Trim(),
+                            Existencia = miDt.Rows[i][5].ToString().Trim(),
+                            UnidadCompra = miDt.Rows[i][6].ToString().Trim(),
+                            OrdenVenta = miDt.Rows[i][7].ToString().Trim(),
+                            Po = miDt.Rows[i][8].ToString().Trim(),
+                            PorAdicional = miDt.Rows[i][9].ToString().Trim(),
+                            CantidadOrdenesVta = miDt.Rows[i][10].ToString().Trim(),
+                            CodProv = miDt.Rows[i][11].ToString().Trim(),
+                            DescProv = miDt.Rows[i][12].ToString().Trim(),
+                            Proveedor = miDt.Rows[i][13].ToString().Trim(),
+                            TempoEntregaCompras = miDt.Rows[i][14].ToString().Trim(),
+                            FechaEmbarque = miDt.Rows[i][15].ToString().Trim(),
+                            CustID = miDt.Rows[i][16].ToString().Trim(),
+                            CantFabric = miDt.Rows[i][17].ToString().Trim(),
+                            QtyVouched = miDt.Rows[i][18].ToString().Trim(),
+                            FechaRecepcion = miDt.Rows[i][19].ToString().Trim(),
+                            CantidadRecepcion = miDt.Rows[i][20].ToString().Trim(),
+                            ClassID = miDt.Rows[i][21].ToString().Trim()
+                        };
+                        miLista.Add(objetoInv);
+                    }
+
+
+                    return miLista;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
 	}
 }

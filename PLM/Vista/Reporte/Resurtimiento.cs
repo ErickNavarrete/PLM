@@ -30,7 +30,7 @@ namespace PLM.Vista.Reporte
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-             string cliente = "";
+            string cliente = "";
             string c_cliente = "TODOS";
 
             if (chbOpcion.Checked == false)
@@ -46,7 +46,7 @@ namespace PLM.Vista.Reporte
 
             this.pbResurtimiento.Value = 0;
             
-            if (!Res.GetReporte(dtpFechaI.Value, dtpFechaF.Value, cliente, dtpFechaOC.Value, this.pbResurtimiento, c_cliente, clbOrdenTrabajo))
+            if (!Res.GetReporte(dtpFechaI.Value, dtpFechaF.Value, cliente, dtpFechaOC.Value, this.pbResurtimiento, c_cliente ,clbOrdenTrabajo))
             {
                 Dialogs.Show("Sin datos por mostrar", DialogsType.Info);
             }

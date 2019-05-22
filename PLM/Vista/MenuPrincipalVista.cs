@@ -421,6 +421,13 @@ namespace PLM.Vista
             view.Show();
             view.BringToFront();
         }
+
+        private void btnRepSurEnt_Click(object sender, EventArgs e)
+        {
+            SurtimientoEntregado view = new SurtimientoEntregado();
+            view.Show();
+            view.BringToFront();
+        }
     }
 }
 

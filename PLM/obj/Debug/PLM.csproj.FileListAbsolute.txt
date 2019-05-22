@@ -357,3 +357,4 @@ E:\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
 E:\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
 E:\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 E:\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+E:\GitHub\PLM\PLM\obj\Debug\PLM.Vista.Reporte.SurtimientoEntregado.resources

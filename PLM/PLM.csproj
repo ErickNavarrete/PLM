@@ -161,6 +161,7 @@
     <Compile Include="Controlador\ResurtimientoController.cs" />
     <Compile Include="Controlador\SegmentoController.cs" />
     <Compile Include="Controlador\SegundasController.cs" />
+    <Compile Include="Controlador\SurtimientoEntregadoController.cs" />
     <Compile Include="Controlador\TareaController.cs" />
     <Compile Include="Controlador\TemporadasController.cs" />
     <Compile Include="Controlador\TrimController.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="Modelo\Reportes\HilosDetalle.cs" />
     <Compile Include="Modelo\Reportes\RepResurtimiento.cs" />
     <Compile Include="Modelo\Reportes\RepResurtimiento2.cs" />
+    <Compile Include="Modelo\Reportes\RSVW_REPSURTIMIENTOCANTSURTIDA.cs" />
     <Compile Include="Modelo\RsTb_GeneraOC.cs" />
     <Compile Include="Modelo\Segundas.cs" />
     <Compile Include="Modelo\BitacoraDeEventos.cs" />
@@ -223,6 +225,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>crResurtimineto.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crSurtimientoEntregado.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crSurtimientoEntregado.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\dsResurtimineto.cs">
@@ -346,6 +354,12 @@
     </Compile>
     <Compile Include="Vista\Reporte\Resurtimiento.Designer.cs">
       <DependentUpon>Resurtimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Reporte\SurtimientoEntregado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Reporte\SurtimientoEntregado.Designer.cs">
+      <DependentUpon>SurtimientoEntregado.cs</DependentUpon>
     </Compile>
     <Compile Include="Vista\Reporte\vistaReporte.cs">
       <SubType>Form</SubType>
@@ -474,6 +488,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crResurtimineto.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crSurtimientoEntregado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSurtimientoEntregado.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista\BitacoradeEventosVista.resx">
       <DependentUpon>BitacoradeEventosVista.cs</DependentUpon>
     </EmbeddedResource>
@@ -530,6 +548,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Reporte\Resurtimiento.resx">
       <DependentUpon>Resurtimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Reporte\SurtimientoEntregado.resx">
+      <DependentUpon>SurtimientoEntregado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Reporte\vistaReporte.resx">
       <DependentUpon>vistaReporte.cs</DependentUpon>

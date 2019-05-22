@@ -63,6 +63,7 @@
             this.bOMCosteadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rLMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRepSurEnt = new System.Windows.Forms.ToolStripMenuItem();
             this.reloj = new System.Windows.Forms.Timer(this.components);
             this.notificacionesShow = new System.Windows.Forms.Timer(this.components);
             this.pbxNotificacion = new System.Windows.Forms.PictureBox();
@@ -330,7 +331,8 @@
             // reportesToolStripMenuItem
             // 
             this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rLMToolStripMenuItem});
+            this.rLMToolStripMenuItem,
+            this.btnRepSurEnt});
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.reportesToolStripMenuItem.Text = "Reportes";
@@ -338,9 +340,16 @@
             // rLMToolStripMenuItem
             // 
             this.rLMToolStripMenuItem.Name = "rLMToolStripMenuItem";
-            this.rLMToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.rLMToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
             this.rLMToolStripMenuItem.Text = "Sugerencia de compra";
             this.rLMToolStripMenuItem.Click += new System.EventHandler(this.rLMToolStripMenuItem_Click);
+            // 
+            // btnRepSurEnt
+            // 
+            this.btnRepSurEnt.Name = "btnRepSurEnt";
+            this.btnRepSurEnt.Size = new System.Drawing.Size(266, 22);
+            this.btnRepSurEnt.Text = "Reporte de surtimiento VS entregado";
+            this.btnRepSurEnt.Click += new System.EventHandler(this.btnRepSurEnt_Click);
             // 
             // reloj
             // 
@@ -488,5 +497,6 @@
         private System.Windows.Forms.ToolStripStatusLabel lblMac;
         private System.Windows.Forms.ToolStripStatusLabel lblUsuario;
         private System.Windows.Forms.ToolStripStatusLabel lblHora;
+        private System.Windows.Forms.ToolStripMenuItem btnRepSurEnt;
     }
 }
