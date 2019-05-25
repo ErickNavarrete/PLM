@@ -75,6 +75,10 @@ namespace PLM.Vista.Busqueda
             {
                 controlador.DatosDynamics(dtDatos,consulta); 
             }
+            if (consulta == 40)
+            {
+                controlador.getArticulos(dtDatos);
+            }
         }
 
         private void selDato()
@@ -127,7 +131,6 @@ namespace PLM.Vista.Busqueda
                     dato1 = "";
                 }
             }
-
             else
             {
                 if (dtDatos.Rows.Count > 0 && consulta != 31)

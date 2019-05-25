@@ -159,6 +159,7 @@
             this.dtpFechaI.Name = "dtpFechaI";
             this.dtpFechaI.Size = new System.Drawing.Size(180, 20);
             this.dtpFechaI.TabIndex = 15;
+            this.dtpFechaI.ValueChanged += new System.EventHandler(this.dtpFechaI_ValueChanged);
             // 
             // dtpFechaF
             // 
@@ -168,6 +169,7 @@
             this.dtpFechaF.Name = "dtpFechaF";
             this.dtpFechaF.Size = new System.Drawing.Size(180, 20);
             this.dtpFechaF.TabIndex = 16;
+            this.dtpFechaF.ValueChanged += new System.EventHandler(this.dtpFechaF_ValueChanged);
             // 
             // tbOrdenTrabajo
             // 

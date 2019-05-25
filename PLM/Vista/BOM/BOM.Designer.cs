@@ -1004,6 +1004,8 @@
             this.DtBOM.Name = "DtBOM";
             this.DtBOM.Size = new System.Drawing.Size(1121, 333);
             this.DtBOM.TabIndex = 1;
+            this.DtBOM.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtBOM_CellContentClick);
+            this.DtBOM.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DtBOM_EditingControlShowing);
             // 
             // SEGMENTOS
             // 
@@ -1119,7 +1121,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn COSTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn UM;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOTAS;
-        public DevComponents.DotNetBar.Bar bar1;
         private DevComponents.DotNetBar.ButtonItem btnGuardarBOM;
         private DevComponents.DotNetBar.ButtonItem btnModificar;
         private DevComponents.DotNetBar.ButtonItem btnCopiar;
@@ -1168,5 +1169,6 @@
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroTextBox txtPO;
+        private DevComponents.DotNetBar.Bar bar1;
     }
 }

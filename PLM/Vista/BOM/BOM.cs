@@ -119,8 +119,7 @@ namespace PLM.Vista.BOM
                 int idPod = 1;
                 String Estilo=frmBusqueda.dato.ToString();
                 Controlador.EstilosdeProduccionController Estilos= new Controlador.EstilosdeProduccionController();
-                Estilos.MostrarPLML(txtEstilo, lblDescr, LblCategoria, LblDivision, LblEstacion, LblCliente, LbLMarca, lblCategory2, txtEspec, LblFit, lblBody, LblLavado, lblInseam, Txtempaque, Estilo, idPod);    
-       
+                Estilos.MostrarPLML(txtEstilo, lblDescr, LblCategoria, LblDivision, LblEstacion, LblCliente, LbLMarca, lblCategory2, txtEspec, LblFit, lblBody, LblLavado, lblInseam, Txtempaque, Estilo, idPod);           
             }
         }
 
@@ -803,6 +802,30 @@ namespace PLM.Vista.BOM
         private void metroLabel10_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void DtBOM_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void DtBOM_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            int index = DtBOM.CurrentRow.Index;
+            if(DtBOM.CurrentCell.ColumnIndex == 3)
+            {
+                TextBox tb = (TextBox)e.Control;
+                tb.KeyDown += new KeyEventHandler(tb_keyDown);
+            }
+        }
+
+        void tb_keyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                Busqueda.Busqueda frmBusqueda = new Busqueda.Busqueda(40);
+                frmBusqueda.ShowDialog();
+            }
         }
 
         private void metroButton2_Click(object sender, EventArgs e)

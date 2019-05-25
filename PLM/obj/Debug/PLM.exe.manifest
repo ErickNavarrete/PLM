@@ -439,14 +439,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PLM.exe" size="2031064">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PLM.exe" size="2035160">
       <assemblyIdentity name="PLM" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LlWoml/cwxc4ifPJnJMM1BRrqVnmwmlTl5BPcMmXtSc=</dsig:DigestValue>
+        <dsig:DigestValue>Gm8a/6jltqtgpUHFhgyBdATIy70Tj4ZpbSsrsFEYIGs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -555,22 +555,22 @@
       <dsig:DigestValue>yEOGmqylE1wtRylphfNcccqK9EMSiNBNSBxORsyT7iY=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Debug\PLM.exe" size="2030080">
+  <file name="bin\Debug\PLM.exe" size="2033664">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>6ir+sewn2FBwvs2cCUDNIn372TaqtuidlqOhFja4fRg=</dsig:DigestValue>
+      <dsig:DigestValue>GeQSi3UZQ/yMAXF6TOPsdJ/sbYBWWacmHy13lMnc94E=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Debug\PLM.pdb" size="1136128">
+  <file name="bin\Debug\PLM.pdb" size="1142272">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rd/mEIyKYILENaB4PdLV6nUWAfus1W1NLIM/gB9IA9I=</dsig:DigestValue>
+      <dsig:DigestValue>05dxzURfZmD/6LkRXJVYUsFL/TdbSKZEuLB5z+1YJk0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Debug\PLM.vshost.exe" size="24224">
@@ -597,7 +597,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>RXQH1iwsq/SQFGAXfL/jRe7x635Rzuy++x/SACUt+mc=</dsig:DigestValue>
+      <dsig:DigestValue>dPqblm2eYqzqoOzt3d2jSMNHIz4Dkk8n8AWqBMylAuE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\estado0.png" size="1221">

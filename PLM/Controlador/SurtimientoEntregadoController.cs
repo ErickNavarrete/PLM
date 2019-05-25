@@ -38,7 +38,7 @@ namespace PLM.Controlador
             }
         }
 
-        public bool GetReporte(DateTime fecha1, DateTime fecha2, string id_cliente, MetroProgressBar view_r, CheckedListBox Wonbr)
+        public bool GetReporte(DateTime fecha1, DateTime fecha2, string id_cliente, MetroProgressBar view_r, CheckedListBox Wonbr, Cursor cursor)
         {
 
             string consulta = "";
@@ -57,6 +57,7 @@ namespace PLM.Controlador
             res.dsGeneral.AdddsGeneralRow(fecha, cliente);
             try
             {
+                cursor = Cursors.WaitCursor;
                 //ARMAMOS LA CONUSLTA PARA LOS CLIENTES
                 if (id_cliente == String.Empty)
                 {
@@ -134,6 +135,7 @@ namespace PLM.Controlador
                 view.ShowDialog();
                 view.BringToFront();
 
+                cursor = Cursors.Default;
                 return true;
             }catch(Exception e)
             {

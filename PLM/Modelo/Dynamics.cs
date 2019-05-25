@@ -724,9 +724,9 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
 				miDt.Dispose();
 			}
 		}
-		public List<string> GetWonbr()
+		public List<string> GetWonbr(string fecha1, string fecha2)
 		{
-			SqlCommand comando = new SqlCommand("select distinct(WONbr) from WOMatlReq", conexion);
+			SqlCommand comando = new SqlCommand("select distinct(WONbr) from RSVW_REPSURTIMIENTOCANTSURTIDA where FechaEmbarque >= '"+ fecha1 + "' and FechaEmbarque <= '" + fecha2 + "' ", conexion);
 			SqlDataAdapter miDa = new SqlDataAdapter();
 			DataSet miDs = new DataSet();
 			DataTable miDt = new DataTable();
@@ -1690,6 +1690,53 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                             FechaRecepcion = miDt.Rows[i][19].ToString().Trim(),
                             CantidadRecepcion = miDt.Rows[i][20].ToString().Trim(),
                             ClassID = miDt.Rows[i][21].ToString().Trim()
+                        };
+                        miLista.Add(objetoInv);
+                    }
+
+
+                    return miLista;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+        public List<Articulos> getArticulos()
+        {
+            SqlCommand comando = new SqlCommand(" select distinct(I.InvtID), I.Descr, w.SiteID from Inventory I join WOMatlReq W on (I.InvtID = W.InvtID) where w.SiteID = 'MAT. PRIMA' ", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            List<Articulos> miLista = new List<Articulos>();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+                    {
+                        Articulos objetoInv = new Articulos()
+                        {
+                            InvitId = miDt.Rows[i][0].ToString().Trim(),
+                            Descr = miDt.Rows[i][1].ToString().Trim(),
+                            SiteID  = miDt.Rows[i][2].ToString().Trim(),
                         };
                         miLista.Add(objetoInv);
                     }

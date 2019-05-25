@@ -61,6 +61,7 @@
             this.dtpFechaI.Name = "dtpFechaI";
             this.dtpFechaI.Size = new System.Drawing.Size(180, 20);
             this.dtpFechaI.TabIndex = 16;
+            this.dtpFechaI.ValueChanged += new System.EventHandler(this.dtpFechaI_ValueChanged);
             // 
             // metroLabel2
             // 
@@ -79,6 +80,7 @@
             this.dtpFechaF.Name = "dtpFechaF";
             this.dtpFechaF.Size = new System.Drawing.Size(180, 20);
             this.dtpFechaF.TabIndex = 18;
+            this.dtpFechaF.ValueChanged += new System.EventHandler(this.dtpFechaF_ValueChanged);
             // 
             // metroLabel3
             // 

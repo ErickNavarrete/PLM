@@ -25,7 +25,7 @@ namespace PLM.Vista.Reporte
         private void Resurtimiento_Load(object sender, EventArgs e)
         {
             Res.GetClientes(cbClientes);
-            Res.PutWonbr(clbOrdenTrabajo, tbOrdenTrabajo);
+            Res.PutWonbr(clbOrdenTrabajo, tbOrdenTrabajo, dtpFechaI.Value.ToString("yyyy-MM-dd"), dtpFechaF.Value.ToString("yyyy-MM-dd"));
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace PLM.Vista.Reporte
 
             this.pbResurtimiento.Value = 0;
             
-            if (!Res.GetReporte(dtpFechaI.Value, dtpFechaF.Value, cliente, dtpFechaOC.Value, this.pbResurtimiento, c_cliente ,clbOrdenTrabajo))
+            if (!Res.GetReporte(dtpFechaI.Value, dtpFechaF.Value, cliente, dtpFechaOC.Value, this.pbResurtimiento, c_cliente ,clbOrdenTrabajo, this.Cursor))
             {
                 Dialogs.Show("Sin datos por mostrar", DialogsType.Info);
             }
@@ -74,7 +74,17 @@ namespace PLM.Vista.Reporte
 
         private void tbOrdenTrabajo_TextChanged(object sender, EventArgs e)
         {
-            Res.PutWonbr(clbOrdenTrabajo, tbOrdenTrabajo);
+            Res.PutWonbr(clbOrdenTrabajo, tbOrdenTrabajo, dtpFechaI.Value.ToString("yyyy-MM-dd"), dtpFechaF.Value.ToString("yyyy-MM-dd"));
+        }
+
+        private void dtpFechaI_ValueChanged(object sender, EventArgs e)
+        {
+            Res.PutWonbr(clbOrdenTrabajo, tbOrdenTrabajo, dtpFechaI.Value.ToString("yyyy-MM-dd"), dtpFechaF.Value.ToString("yyyy-MM-dd"));
+        }
+
+        private void dtpFechaF_ValueChanged(object sender, EventArgs e)
+        {
+            Res.PutWonbr(clbOrdenTrabajo, tbOrdenTrabajo, dtpFechaI.Value.ToString("yyyy-MM-dd"), dtpFechaF.Value.ToString("yyyy-MM-dd"));
         }
     }
 }

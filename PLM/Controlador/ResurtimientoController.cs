@@ -42,10 +42,11 @@ namespace PLM.Controlador
             }
         }
 
-        public bool GetReporte(DateTime fecha1, DateTime fecha2,string id_cliente, DateTime fecha_r, MetroProgressBar view_r, string c_cliente, CheckedListBox Wonbr)
+        public bool GetReporte(DateTime fecha1, DateTime fecha2,string id_cliente, DateTime fecha_r, MetroProgressBar view_r, string c_cliente, CheckedListBox Wonbr, Cursor cursor)
         {
             try
             {
+                cursor = Cursors.WaitCursor;
                 dsResurtimineto res = new dsResurtimineto();
                 crResurtimineto cr = new crResurtimineto();
                 string consulta = "";
@@ -159,6 +160,7 @@ namespace PLM.Controlador
                             res.dsOT.AdddsOTRow(item, c, suma);
                         }
 
+                        cursor = Cursors.Default;
                         //cr.Load(Path.GetFullPath("crResurtimineto.rpt"));
                         cr.SetDataSource(res);
                         vistaReporte2 view = new vistaReporte2();
@@ -516,26 +518,30 @@ namespace PLM.Controlador
             }
         }
 
-        public bool PutWonbr(CheckedListBox Wonbr, MetroTextBox tbWonbr)
+        public bool PutWonbr(CheckedListBox Wonbr, MetroTextBox tbWonbr, string fecha1, string fecha2)
         {
             List<string> OT = new List<string>();
             Wonbr.Items.Clear();
             
             try
             {
-                if(tbWonbr.Text == "")
+                var list_wonbr = dbd.GetWonbr(fecha1, fecha2);
+
+                if(list_wonbr == null)
                 {
-                    OT = (from x in dbd.GetWonbr() select new { x }).Where(x => x.x.Contains(tbWonbr.Text)).Select(x => x.x).ToList();
-                }
-                else
-                {
-                    OT = (from x in dbd.GetWonbr() select new { x }).Where(x => x.x.Contains(tbWonbr.Text)).Select(x => x.x).ToList();
+                    return false;
                 }
 
-                foreach(string item in OT)
+                OT = (from x in list_wonbr select new { x }).Where(x => x.x.Contains(tbWonbr.Text)).Select(x => x.x).ToList();
+
+                if (OT.Count > 0)
                 {
-                    Wonbr.Items.Add(item);
+                    foreach (string item in OT)
+                    {
+                        Wonbr.Items.Add(item);
+                    }
                 }
+                
                 return true;
             }
             catch (Exception ex)

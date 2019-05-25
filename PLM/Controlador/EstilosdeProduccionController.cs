@@ -165,8 +165,6 @@ namespace PLM.Controlador
                 }
             }
         }
-
-      
       
         public void MostrarPLM(MetroTextBox IdEstilos, MetroComboBox Descrip, MetroComboBox Categoria, MetroComboBox Division, MetroComboBox Estacion, MetroComboBox Cliente, MetroComboBox Marca, MetroComboBox Category2, MetroTextBox Espec, MetroComboBox Fit, MetroComboBox Body, MetroComboBox Lavado, MetroComboBox Inseam, MetroComboBox Empaque, string estilo, int id)
         {
@@ -638,5 +636,25 @@ namespace PLM.Controlador
             }
             Cursor.Current = Cursors.Default;
         }     
+
+        public void getArticulos(DataGridView controlView)
+        {
+            try
+            {
+                var datos = DbD.getArticulos().Select(x => new { x.InvitId, x.Descr }).OrderBy(x=> x.InvitId).ToList();
+                controlView.Columns.Clear();
+                controlView.DataSource = datos;
+                controlView.Columns[0].Width = 100;
+                controlView.Columns[1].Width = 500;
+                controlView.Columns[0].Name = "Clave";
+                controlView.Columns[1].Name = "Descripción";
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBoxEx.Show("Error al conectarse a la base de datos: " + ex.ErrorCode.ToString() + " " + ex.Message, "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Cursor.Current = Cursors.Default;
+            }
+        }
     }
 }

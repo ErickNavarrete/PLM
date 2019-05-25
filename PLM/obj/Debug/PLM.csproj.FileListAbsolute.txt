@@ -345,6 +345,7 @@ C:\Users\Asus.DESKTOP-JBDH3N9\Documents\GitHub\PLM\PLM\bin\Debug\CrystalDecision
 C:\Users\Asus.DESKTOP-JBDH3N9\Documents\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
 C:\Users\Asus.DESKTOP-JBDH3N9\Documents\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 C:\Users\Asus.DESKTOP-JBDH3N9\Documents\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+E:\GitHub\PLM\PLM\obj\Debug\PLM.Vista.Reporte.SurtimientoEntregado.resources
 E:\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
 E:\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
 E:\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
@@ -357,4 +358,3 @@ E:\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
 E:\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
 E:\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 E:\GitHub\PLM\PLM\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
-E:\GitHub\PLM\PLM\obj\Debug\PLM.Vista.Reporte.SurtimientoEntregado.resources
