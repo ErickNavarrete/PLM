@@ -641,13 +641,20 @@ namespace PLM.Controlador
         {
             try
             {
-                var datos = DbD.getArticulos().Select(x => new { x.InvitId, x.Descr }).OrderBy(x=> x.InvitId).ToList();
+                var datos = DbD.getArticulos().OrderBy(x=> x.Clave).ToList();
                 controlView.Columns.Clear();
                 controlView.DataSource = datos;
                 controlView.Columns[0].Width = 100;
                 controlView.Columns[1].Width = 500;
                 controlView.Columns[0].Name = "Clave";
                 controlView.Columns[1].Name = "Descripción";
+                controlView.Columns[0].Visible = true;
+                controlView.Columns[1].Visible = true;
+                controlView.Columns[2].Visible = false;
+                controlView.Columns[3].Visible = false;
+                controlView.Columns[4].Visible = false;
+                controlView.Columns[5].Visible = false;
+                controlView.Columns[6].Visible = false;
 
             }
             catch (SqlException ex)

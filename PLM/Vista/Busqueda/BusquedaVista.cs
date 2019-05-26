@@ -27,6 +27,7 @@ namespace PLM.Vista.Busqueda
         Controlador.EstilosdeProduccionController controlador;
         public string dato;
         public string dato1;
+        public Articulos articulo;
         int consulta;        
 
         public Busqueda(int _consulta)
@@ -41,6 +42,7 @@ namespace PLM.Vista.Busqueda
             Temporada = new Controlador.TemporadasController();
             controlador = new Controlador.EstilosdeProduccionController();
             dato = string.Empty;
+            articulo = new Articulos();
             DiasF = new Controlador.DiasFeriadoseInhabiles();
             Bom = new Controlador.BOMController();
             consulta = _consulta;
@@ -138,6 +140,19 @@ namespace PLM.Vista.Busqueda
                     dato = dtDatos.CurrentRow.Cells[0].Value.ToString();
                 }
 
+            }
+            if(consulta == 40)
+            {
+                if (dtDatos.Rows.Count > 0)
+                {
+                    articulo.Clave = dtDatos.CurrentRow.Cells[0].Value.ToString();
+                    articulo.Descr = dtDatos.CurrentRow.Cells[1].Value.ToString();
+                    articulo.Material = dtDatos.CurrentRow.Cells[2].Value.ToString();
+                    articulo.UnidadMedida = dtDatos.CurrentRow.Cells[3].Value.ToString();
+                    articulo.Proveedor = dtDatos.CurrentRow.Cells[4].Value.ToString();
+                    articulo.Categoria = dtDatos.CurrentRow.Cells[5].Value.ToString();
+                    articulo.Color = dtDatos.CurrentRow.Cells[6].Value.ToString();
+                }
             }
             this.Close();
         }

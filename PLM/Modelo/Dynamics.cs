@@ -1717,7 +1717,18 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
         }
         public List<Articulos> getArticulos()
         {
-            SqlCommand comando = new SqlCommand(" select distinct(I.InvtID), I.Descr, w.SiteID from Inventory I join WOMatlReq W on (I.InvtID = W.InvtID) where w.SiteID = 'MAT. PRIMA' ", conexion);
+            SqlCommand comando = new SqlCommand(@" select	
+                                                            distinct(w.InvtID) as Clave,
+                                                            A.Descr as Descripcion,
+                                                            IA.ProdLineID as Material,
+                                                            A.DfltSOUnit as UnidadMedida,
+                                                            A.Supplr1 as Proveedor,
+                                                            A.ClassID as Categoria,
+                                                            A.Color as Color
+                                                    from WOMatlReq W
+                                                    join Inventory A on W.InvtID = A.InvtID
+                                                    join InventoryADG IA on IA.InvtID = W.InvtID
+                                                    where W.SiteID = 'MAT. PRIMA'  ", conexion);
             SqlDataAdapter miDa = new SqlDataAdapter();
             DataSet miDs = new DataSet();
             DataTable miDt = new DataTable();
@@ -1734,9 +1745,13 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                     {
                         Articulos objetoInv = new Articulos()
                         {
-                            InvitId = miDt.Rows[i][0].ToString().Trim(),
+                            Clave = miDt.Rows[i][0].ToString().Trim(),
                             Descr = miDt.Rows[i][1].ToString().Trim(),
-                            SiteID  = miDt.Rows[i][2].ToString().Trim(),
+                            Material = miDt.Rows[i][2].ToString().Trim(),
+                            UnidadMedida = miDt.Rows[i][3].ToString().Trim(),
+                            Proveedor = miDt.Rows[i][4].ToString().Trim(),
+                            Categoria = miDt.Rows[i][5].ToString().Trim(),
+                            Color = miDt.Rows[i][6].ToString().Trim(),
                         };
                         miLista.Add(objetoInv);
                     }

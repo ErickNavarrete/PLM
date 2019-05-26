@@ -982,6 +982,7 @@
             // 
             // DtBOM
             // 
+            this.DtBOM.AllowUserToAddRows = false;
             this.DtBOM.AllowUserToDeleteRows = false;
             this.DtBOM.AllowUserToOrderColumns = true;
             this.DtBOM.BackgroundColor = System.Drawing.Color.White;
@@ -1004,6 +1005,7 @@
             this.DtBOM.Name = "DtBOM";
             this.DtBOM.Size = new System.Drawing.Size(1121, 333);
             this.DtBOM.TabIndex = 1;
+            this.DtBOM.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtBOM_CellClick_1);
             this.DtBOM.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtBOM_CellContentClick);
             this.DtBOM.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DtBOM_EditingControlShowing);
             // 

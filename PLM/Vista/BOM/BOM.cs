@@ -25,13 +25,14 @@ namespace PLM.Vista.BOM
         private List<TareaTemporal> listaTemporal;
         private string TemporalStream;
         private string snotas;
+        private int index;
         private class TareaTemporal
         {
             public string segmento { get; set; }
             public string trim { get; set; }
             public string bom { get; set; }
             public string nacionalidad { get; set; }
-            public int flagNota { get; set; }
+            public int flagNota { get; set; }            
         }
 
         private class EncabezadoBom
@@ -56,6 +57,7 @@ namespace PLM.Vista.BOM
             Bom = new Controlador.BOMController();
             flag = 0;
             flagEstado = 0;
+            index = -1;
             //pbEstadoThread.Image.Tag = 0; 
         }
 
@@ -91,6 +93,7 @@ namespace PLM.Vista.BOM
             txtEstilo.Text = string.Empty;
             lblEtapa.Text = string.Empty;
             lblStatus.Text = string.Empty;
+            index = -1;
             DtBOM.Rows.Clear();
         }
 
@@ -568,7 +571,6 @@ namespace PLM.Vista.BOM
             //}
         }
 
-
         private void txtHilos_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F3)
@@ -811,7 +813,7 @@ namespace PLM.Vista.BOM
 
         private void DtBOM_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            int index = DtBOM.CurrentRow.Index;
+            index = DtBOM.CurrentRow.Index;
             if(DtBOM.CurrentCell.ColumnIndex == 3)
             {
                 TextBox tb = (TextBox)e.Control;
@@ -825,7 +827,24 @@ namespace PLM.Vista.BOM
             {
                 Busqueda.Busqueda frmBusqueda = new Busqueda.Busqueda(40);
                 frmBusqueda.ShowDialog();
+                if(index > -1 && DtBOM.Rows.Count > 0)
+                {
+                    if(frmBusqueda.articulo != null)
+                    {
+                        DtBOM.Rows[index].Cells[3].Value = frmBusqueda.articulo.Clave;
+                        DtBOM.Rows[index].Cells[4].Value = frmBusqueda.articulo.Categoria;
+                        DtBOM.Rows[index].Cells[5].Value = frmBusqueda.articulo.Descr;
+                        DtBOM.Rows[index].Cells[6].Value = frmBusqueda.articulo.Color;
+                        DtBOM.Rows[index].Cells[7].Value = frmBusqueda.articulo.Proveedor;
+                        DtBOM.Rows[index].Cells[10].Value = frmBusqueda.articulo.UnidadMedida;
+                    }
+                }
             }
+        }
+
+        private void DtBOM_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         private void metroButton2_Click(object sender, EventArgs e)
