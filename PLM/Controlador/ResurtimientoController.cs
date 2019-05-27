@@ -200,7 +200,7 @@ namespace PLM.Controlador
             }
         }
 
-        public bool CreateOrdenVenta(string WONbr, string UserId, string CpnyID, DateTime fecha_r)
+        public bool CreateOrdenVenta(string WONbr, string UserId, string CpnyID, DateTime fecha_r, List<OrdenVenta> ordenVentas)
         {
             #region VARIABLES
             decimal TC = 0,Qty = 0;
@@ -215,7 +215,6 @@ namespace PLM.Controlador
 
             DateTime FechaAct;
             #endregion
-            WONbr = "9124290";
 
             //OBTENEMOS EL PONBR DEPENDIENDO LA ORDEN DE TRABAJO
             string purorddet = dbd.PURORDDET(WONbr);
@@ -227,7 +226,8 @@ namespace PLM.Controlador
             string status = dbd.PURCHORD(purorddet);
             if (status == "X")
             {
-                MessageBox.Show("No se puede Generar Orden de Compra para esta Orden de Trabajo");
+                ordenVentas.Add(new OrdenVenta { WONbr = WONbr, Clave = "", OC = "", Status = "No se puede Generar Orden de Compra para esta Orden de Trabajo" });
+                Dialogs.Show("No se puede Generar Orden de Compra para esta Orden de Trabajo: " + WONbr, DialogsType.Warning);
                 return false;
             }
 
@@ -238,7 +238,7 @@ namespace PLM.Controlador
             //string CuryRate = dbd.CuryRate("2017-11-30");
             if (CuryRate == "")
             {
-                MessageBox.Show("No hay tipo de cambio registrado en el sistema");
+                Dialogs.Show("No hay tipo de cambio registrado en el sistema", DialogsType.Warning);
                 return false;
             } 
             TC = Convert.ToDecimal(CuryRate);
@@ -249,7 +249,8 @@ namespace PLM.Controlador
 
             if(bWOMatlReq.Count == 0)
             {
-                MessageBox.Show("No hay lista de Materiales asignada a esta Orden de Trabajo");
+                ordenVentas.Add(new OrdenVenta { WONbr = WONbr, Clave = "", OC = "", Status = "No hay lista de Materiales asignada a esta Orden de Trabajo" });
+                Dialogs.Show("No hay lista de Materiales asignada a esta Orden de Trabajo: " + WONbr, DialogsType.Warning);
                 return false;
             }
 
@@ -273,13 +274,16 @@ namespace PLM.Controlador
                             costext = Convert.ToDecimal(Qty) * Convert.ToDecimal(bInventario.x.user3);
                             costo = Convert.ToDecimal(bInventario.x.user3);
                         }
-                        if(VendID == "")
+                        if(VendID != "")
                         {
-                            MessageBox.Show("El Articulo No tiene Proveedor..  " + item.x.InvtID + "   NO SE GENERAR� LA OC");
+                            dbd.Insert_Rstb_GeneraOC(InvtID, Qty, VendID, WONbr, item.x.SiteID, costext, costo);
                         }
-                        
-                    }
-                    dbd.Insert_Rstb_GeneraOC(InvtID, Qty, VendID, WONbr, item.x.SiteID, costext, costo);
+                        else
+                        {
+                            ordenVentas.Add(new OrdenVenta {WONbr = WONbr, Clave = item.x.InvtID, OC = "", Status = "No tiene Proveedor" });
+                            Dialogs.Show("El Artículo: " + item.x.InvtID + " no tiene proveedor,no se genera la OC", DialogsType.Warning);
+                        }                        
+                    }                   
                 }                
             }
 
@@ -453,7 +457,7 @@ namespace PLM.Controlador
 
                         dbd.Insert_POREQDET(factor, Fecha,UserId,CuryExtCost,CuryID,TC,CuryUnitCost,ExtCost,InvtID,Num,LineRef,OC,factcomp,cantidadcomp,Fecha,SiteID,tax1,tax2,
                             tax3,tax4,Descr,item2.x.User6.ToString(),tipomaterial);
-
+                      
                         var bPOReqDet = (from x in dbd.POREQDET() select new { x }).Where(x => x.x.ReqNbr == OC).ToList();
                         foreach(var item3 in bPOReqDet)
                         {
@@ -461,6 +465,7 @@ namespace PLM.Controlador
                             sumcuryextcost = sumcuryextcost + item3.x.CuryCuryExtCost;
                         }
 
+                        ordenVentas.Add(new OrdenVenta { WONbr = WONbr, Clave = bInventory2.x.InvtID, OC = "", Status = "No tiene Proveedor" });
                     }
                 }
 
@@ -549,6 +554,25 @@ namespace PLM.Controlador
                 Dialogs.Show(ex.Message, DialogsType.Error);
                 return false;
             }
+        }
+
+        public bool create_reporte_orden_venta(List<OrdenVenta> ordenVentas)
+        {
+            dsResurtimineto res = new dsResurtimineto();
+            crOrdenVenta cr = new crOrdenVenta();
+
+            foreach(OrdenVenta item in ordenVentas)
+            {
+                res.dtOrdenVenta.AdddtOrdenVentaRow(item.WONbr,item.Clave,item.Status,item.OC);
+            }
+
+            cr.SetDataSource(res);
+            vistaReporte2 view = new vistaReporte2();
+            view.crv.ReportSource = cr;
+            view.ShowDialog();
+            view.BringToFront();
+
+            return true;
         }
     }
     

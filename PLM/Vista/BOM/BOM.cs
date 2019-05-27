@@ -823,6 +823,11 @@ namespace PLM.Vista.BOM
 
         void tb_keyDown(object sender, KeyEventArgs e)
         {
+            if (e.Handled)
+            {
+                return;
+            }
+
             if (e.KeyCode == Keys.F3)
             {
                 Busqueda.Busqueda frmBusqueda = new Busqueda.Busqueda(40);
@@ -839,6 +844,7 @@ namespace PLM.Vista.BOM
                         DtBOM.Rows[index].Cells[10].Value = frmBusqueda.articulo.UnidadMedida;
                     }
                 }
+                e.Handled = true;
             }
         }
 

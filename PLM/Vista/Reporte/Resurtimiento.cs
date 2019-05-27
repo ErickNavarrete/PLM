@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar.Metro;
 using ArcangelDialogs;
+using PLM.Modelo;
 
 namespace PLM.Vista.Reporte
 {
     public partial class Resurtimiento : MetroForm
     {
+        private List<OrdenVenta> ordenVenta;
         private Controlador.ResurtimientoController Res;
 
         public Resurtimiento()
@@ -56,6 +58,7 @@ namespace PLM.Vista.Reporte
         {
             string cliente = "";
             string c_cliente = "TODOS";
+            ordenVenta = new List<OrdenVenta>();
 
             if (chbOpcion.Checked == false)
             {
@@ -67,8 +70,9 @@ namespace PLM.Vista.Reporte
             {
                 foreach(string item in Wonbr)
                 {
-                    Res.CreateOrdenVenta(item,"","", dtpFechaOC.Value);
+                    Res.CreateOrdenVenta(item,"","", dtpFechaOC.Value, ordenVenta);
                 }
+                Res.create_reporte_orden_venta(ordenVenta);
             }
         }
 
