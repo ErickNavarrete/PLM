@@ -68,7 +68,7 @@ namespace PLM.Vista.Reporte
             var Wonbr = Res.GetWONBR(dtpFechaI.Value, dtpFechaF.Value, cliente, dtpFechaOC.Value, c_cliente, this.pbResurtimiento);
             if(Wonbr != null)
             {
-                foreach(string item in Wonbr)
+                foreach (string item in Wonbr)
                 {
                     Res.CreateOrdenVenta(item,"","", dtpFechaOC.Value, ordenVenta);
                 }
