@@ -304,6 +304,7 @@
             this.simularHojaDeCotizaciónToolStripMenuItem.Name = "simularHojaDeCotizaciónToolStripMenuItem";
             this.simularHojaDeCotizaciónToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.simularHojaDeCotizaciónToolStripMenuItem.Text = "Simular hoja de cotización";
+            this.simularHojaDeCotizaciónToolStripMenuItem.Click += new System.EventHandler(this.simularHojaDeCotizaciónToolStripMenuItem_Click);
             // 
             // consultasToolStripMenuItem
             // 

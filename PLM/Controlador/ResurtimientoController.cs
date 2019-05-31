@@ -200,7 +200,7 @@ namespace PLM.Controlador
             }
         }
 
-        public bool CreateOrdenVenta(string WONbr, string UserId, string CpnyID, DateTime fecha_r, List<OrdenVenta> ordenVentas)
+        public int CreateOrdenVenta(string WONbr, string UserId, string CpnyID, DateTime fecha_r, List<OrdenVenta> ordenVentas)
         {
             #region VARIABLES
             decimal TC = 0,Qty = 0;
@@ -220,15 +220,15 @@ namespace PLM.Controlador
             string purorddet = dbd.PURORDDET(WONbr);
             if (purorddet != "")
             {
-                return false;
+                ordenVentas.Add(new OrdenVenta { WONbr = WONbr, Clave = "", OC = "", Status = "La Orden de Trabajo ya cuenta con una Orden de Compra" });
+                return 2;
             }
 
             string status = dbd.PURCHORD(purorddet);
             if (status == "X")
             {
                 ordenVentas.Add(new OrdenVenta { WONbr = WONbr, Clave = "", OC = "", Status = "No se puede Generar Orden de Compra para esta Orden de Trabajo" });
-                Dialogs.Show("No se puede Generar Orden de Compra para esta Orden de Trabajo: " + WONbr, DialogsType.Warning);
-                return false;
+                return 1;
             }
 
             FechaAct = fecha_r;
@@ -239,7 +239,7 @@ namespace PLM.Controlador
             if (CuryRate == "")
             {
                 Dialogs.Show("No hay tipo de cambio registrado en el sistema", DialogsType.Warning);
-                return false;
+                return 2;
             } 
             TC = Convert.ToDecimal(CuryRate);
             //HACEMOS TRUNCATE A LAS TABLAS
@@ -250,8 +250,7 @@ namespace PLM.Controlador
             if(bWOMatlReq.Count == 0)
             {
                 ordenVentas.Add(new OrdenVenta { WONbr = WONbr, Clave = "", OC = "", Status = "No hay lista de Materiales asignada a esta Orden de Trabajo" });
-                Dialogs.Show("No hay lista de Materiales asignada a esta Orden de Trabajo: " + WONbr, DialogsType.Warning);
-                return false;
+                return 1;
             }
 
             foreach (var item in bWOMatlReq)
@@ -281,7 +280,6 @@ namespace PLM.Controlador
                         else
                         {
                             ordenVentas.Add(new OrdenVenta {WONbr = WONbr, Clave = item.x.InvtID, OC = "", Status = "No tiene Proveedor" });
-                            Dialogs.Show("El Artículo: " + item.x.InvtID + " no tiene proveedor,no se genera la OC", DialogsType.Warning);
                         }                        
                     }                   
                 }                
@@ -291,7 +289,7 @@ namespace PLM.Controlador
             
             if(bRsTb_GeneraOC == null)
             {
-                return false;
+                return 1;
             }
 
             foreach (var item in bRsTb_GeneraOC)
@@ -480,7 +478,7 @@ namespace PLM.Controlador
             }
 
             dbd.Update_WoHeader(WONbr);
-            return true;
+            return 1;
         }
 
         public List<string> GetWONBR(DateTime fecha1, DateTime fecha2, string id_cliente, DateTime fecha_r, string c_cliente, MetroProgressBar view_r)

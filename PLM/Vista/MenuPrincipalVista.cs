@@ -428,6 +428,13 @@ namespace PLM.Vista
             view.Show();
             view.BringToFront();
         }
+
+        private void simularHojaDeCotizaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SimulacionCotizacion view = new SimulacionCotizacion();
+            view.Show();
+            view.BringToFront();
+        }
     }
 }
 

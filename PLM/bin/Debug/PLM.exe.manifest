@@ -302,7 +302,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ACueDK4gcacc0hOR0kA0RayDmA5hoRsQBeD0q6bjVhA=</dsig:DigestValue>
+        <dsig:DigestValue>7nZ/5X5C2wU1pX1Vp+b8NMb8c/IGiMb0fITUjDpqEXY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -417,7 +417,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>AKm+YTHAGoZjwG/GQjT7DR8ti3p9FOzLU3QCWLVqcFs=</dsig:DigestValue>
+      <dsig:DigestValue>HbekbJicmT5WqUHfMs4cYC5JPxaJULdQ4Jt+TIEjai4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Debug\PLM.pdb" size="1175040">
@@ -426,7 +426,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>fqj46Mx5NxhUnMqCHSYiBOvREwP2GmoWq5f8It1alSM=</dsig:DigestValue>
+      <dsig:DigestValue>YYMAtQDZmmrdG43CeQaOaxYXCaJJa2Z5q1gqjD4WQuk=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Debug\PLM.vshost.exe" size="24224">

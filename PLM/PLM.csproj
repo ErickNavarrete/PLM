@@ -381,6 +381,12 @@
     <Compile Include="Vista\Reporte\vistaReporte2.Designer.cs">
       <DependentUpon>vistaReporte2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\SimulacionCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\SimulacionCotizacion.Designer.cs">
+      <DependentUpon>SimulacionCotizacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\VistasEstilos\EstilosdeProduccionAM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -569,6 +575,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Reporte\vistaReporte2.resx">
       <DependentUpon>vistaReporte2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\SimulacionCotizacion.resx">
+      <DependentUpon>SimulacionCotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\VistasEstilos\EstilosdeProduccionAM.resx">
       <DependentUpon>EstilosdeProduccionAM.cs</DependentUpon>

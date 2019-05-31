@@ -37,6 +37,7 @@ namespace PLM.Vista.Reporte
 
         private void btnPrintRep_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             string cliente = Res.GetIdCliente(cbClientes.Text);
             this.pbResurtimiento.Value = 0;
 
@@ -44,6 +45,7 @@ namespace PLM.Vista.Reporte
             {
                 Dialogs.Show("Sin datos por mostrar", DialogsType.Info);
             }
+            Cursor.Current = Cursors.Default;
         }
 
         private void dtpFechaI_ValueChanged(object sender, EventArgs e)

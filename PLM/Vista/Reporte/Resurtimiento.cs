@@ -35,6 +35,7 @@ namespace PLM.Vista.Reporte
             string cliente = "";
             string c_cliente = "TODOS";
 
+            Cursor.Current = Cursors.WaitCursor;
             if (chbOpcion.Checked == false)
             {
                 //if(cbClientes.Text == "")
@@ -52,28 +53,50 @@ namespace PLM.Vista.Reporte
             {
                 Dialogs.Show("Sin datos por mostrar", DialogsType.Info);
             }
+            Cursor.Current = Cursors.Default;
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             string cliente = "";
             string c_cliente = "TODOS";
+            int opcion = 0;
             ordenVenta = new List<OrdenVenta>();
+            this.pbResurtimiento.Value = 0;
 
+            Cursor.Current = Cursors.WaitCursor;
             if (chbOpcion.Checked == false)
             {
                 c_cliente = cbClientes.Text.ToUpper();
                 cliente = Res.GetIdCliente(cbClientes.Text);
             }
             var Wonbr = Res.GetWONBR(dtpFechaI.Value, dtpFechaF.Value, cliente, dtpFechaOC.Value, c_cliente, this.pbResurtimiento);
-            if(Wonbr != null)
+
+            this.pbResurtimiento.Value = 0;
+            this.pbResurtimiento.Minimum = 0;
+            this.pbResurtimiento.Maximum = Wonbr.Count;
+            if (Wonbr.Count > 0)
             {
                 foreach (string item in Wonbr)
                 {
-                    Res.CreateOrdenVenta(item,"","", dtpFechaOC.Value, ordenVenta);
+                    opcion = Res.CreateOrdenVenta(item, "", "", dtpFechaOC.Value, ordenVenta);
+                    this.pbResurtimiento.Value = this.pbResurtimiento.Value + 1;
+                    if (opcion == 2)
+                    {
+                        break;
+                    }
                 }
-                Res.create_reporte_orden_venta(ordenVenta);
+                if(opcion != 2)
+                {
+                    Res.create_reporte_orden_venta(ordenVenta);
+                }
+                Dialogs.Show("Proceso terminado", DialogsType.Info);
             }
+            else
+            {
+                Dialogs.Show("No se encontraron Ordenes de Trabajo en este periodo", DialogsType.Info);
+            }
+            Cursor.Current = Cursors.Default;
         }
 
         private void tbOrdenTrabajo_TextChanged(object sender, EventArgs e)
