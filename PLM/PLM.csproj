@@ -333,6 +333,42 @@
     <Compile Include="Vista\ConfigDynamic.Designer.cs">
       <DependentUpon>ConfigDynamic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Cotización\Cotizacion1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\Cotización\Cotizacion1.Designer.cs">
+      <DependentUpon>Cotizacion1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Cotización\Cotizacion2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\Cotización\Cotizacion2.Designer.cs">
+      <DependentUpon>Cotizacion2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Cotización\Cotizacion3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\Cotización\Cotizacion3.Designer.cs">
+      <DependentUpon>Cotizacion3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Cotización\Cotizacion4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\Cotización\Cotizacion4.Designer.cs">
+      <DependentUpon>Cotizacion4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Cotización\Cotizacion5.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\Cotización\Cotizacion5.Designer.cs">
+      <DependentUpon>Cotizacion5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Cotización\Cotizacion6.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\Cotización\Cotizacion6.Designer.cs">
+      <DependentUpon>Cotizacion6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\DepartamentosVista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -551,6 +587,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\ConfigDynamic.resx">
       <DependentUpon>ConfigDynamic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Cotización\Cotizacion1.resx">
+      <DependentUpon>Cotizacion1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Cotización\Cotizacion2.resx">
+      <DependentUpon>Cotizacion2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Cotización\Cotizacion3.resx">
+      <DependentUpon>Cotizacion3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Cotización\Cotizacion4.resx">
+      <DependentUpon>Cotizacion4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Cotización\Cotizacion5.resx">
+      <DependentUpon>Cotizacion5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Cotización\Cotizacion6.resx">
+      <DependentUpon>Cotizacion6.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\DepartamentosVista.resx">
       <DependentUpon>DepartamentosVista.cs</DependentUpon>

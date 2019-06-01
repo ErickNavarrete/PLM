@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimulacionCotizacion));
             this.btnNuevaCot = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -74,6 +75,14 @@
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
+            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.cotizacion6 = new PLM.Vista.Cotización.Cotizacion6();
+            this.cotizacion5 = new PLM.Vista.Cotización.Cotizacion5();
+            this.cotizacion4 = new PLM.Vista.Cotización.Cotizacion4();
+            this.cotizacion3 = new PLM.Vista.Cotización.Cotizacion3();
+            this.cotizacion2 = new PLM.Vista.Cotización.Cotizacion2();
+            this.cotizacion1 = new PLM.Vista.Cotización.Cotizacion1();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -287,7 +296,7 @@
             this.groupBox2.Controls.Add(this.metroLabel9);
             this.groupBox2.Location = new System.Drawing.Point(12, 182);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1011, 77);
+            this.groupBox2.Size = new System.Drawing.Size(1135, 77);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             // 
@@ -894,11 +903,94 @@
             this.metroLabel13.TabIndex = 15;
             this.metroLabel13.Text = "% de Segundas";
             // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSiguiente.BackgroundImage")));
+            this.btnSiguiente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSiguiente.FlatAppearance.BorderSize = 0;
+            this.btnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSiguiente.Location = new System.Drawing.Point(1104, 721);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(43, 43);
+            this.btnSiguiente.TabIndex = 12;
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAnterior.BackgroundImage")));
+            this.btnAnterior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAnterior.FlatAppearance.BorderSize = 0;
+            this.btnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnterior.Location = new System.Drawing.Point(18, 721);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(43, 43);
+            this.btnAnterior.TabIndex = 13;
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Visible = false;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // cotizacion6
+            // 
+            this.cotizacion6.BackColor = System.Drawing.Color.White;
+            this.cotizacion6.Location = new System.Drawing.Point(7, 265);
+            this.cotizacion6.Name = "cotizacion6";
+            this.cotizacion6.Size = new System.Drawing.Size(1147, 454);
+            this.cotizacion6.TabIndex = 18;
+            // 
+            // cotizacion5
+            // 
+            this.cotizacion5.BackColor = System.Drawing.Color.White;
+            this.cotizacion5.Location = new System.Drawing.Point(7, 265);
+            this.cotizacion5.Name = "cotizacion5";
+            this.cotizacion5.Size = new System.Drawing.Size(1147, 454);
+            this.cotizacion5.TabIndex = 17;
+            // 
+            // cotizacion4
+            // 
+            this.cotizacion4.BackColor = System.Drawing.Color.White;
+            this.cotizacion4.Location = new System.Drawing.Point(7, 265);
+            this.cotizacion4.Name = "cotizacion4";
+            this.cotizacion4.Size = new System.Drawing.Size(1147, 454);
+            this.cotizacion4.TabIndex = 16;
+            // 
+            // cotizacion3
+            // 
+            this.cotizacion3.BackColor = System.Drawing.Color.White;
+            this.cotizacion3.Location = new System.Drawing.Point(7, 265);
+            this.cotizacion3.Name = "cotizacion3";
+            this.cotizacion3.Size = new System.Drawing.Size(1147, 454);
+            this.cotizacion3.TabIndex = 15;
+            // 
+            // cotizacion2
+            // 
+            this.cotizacion2.BackColor = System.Drawing.Color.White;
+            this.cotizacion2.Location = new System.Drawing.Point(7, 265);
+            this.cotizacion2.Name = "cotizacion2";
+            this.cotizacion2.Size = new System.Drawing.Size(1147, 454);
+            this.cotizacion2.TabIndex = 14;
+            // 
+            // cotizacion1
+            // 
+            this.cotizacion1.BackColor = System.Drawing.Color.White;
+            this.cotizacion1.Location = new System.Drawing.Point(7, 265);
+            this.cotizacion1.Name = "cotizacion1";
+            this.cotizacion1.Size = new System.Drawing.Size(1147, 454);
+            this.cotizacion1.TabIndex = 11;
+            // 
             // SimulacionCotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1151, 749);
+            this.ClientSize = new System.Drawing.Size(1151, 766);
+            this.Controls.Add(this.cotizacion6);
+            this.Controls.Add(this.cotizacion5);
+            this.Controls.Add(this.cotizacion4);
+            this.Controls.Add(this.cotizacion3);
+            this.Controls.Add(this.cotizacion2);
+            this.Controls.Add(this.btnAnterior);
+            this.Controls.Add(this.btnSiguiente);
+            this.Controls.Add(this.cotizacion1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -970,5 +1062,13 @@
         private MetroFramework.Controls.MetroLabel metroLabel15;
         private MetroFramework.Controls.MetroLabel metroLabel14;
         private MetroFramework.Controls.MetroLabel metroLabel13;
+        private Cotización.Cotizacion1 cotizacion1;
+        internal System.Windows.Forms.Button btnSiguiente;
+        internal System.Windows.Forms.Button btnAnterior;
+        private Cotización.Cotizacion2 cotizacion2;
+        private Cotización.Cotizacion3 cotizacion3;
+        private Cotización.Cotizacion4 cotizacion4;
+        private Cotización.Cotizacion5 cotizacion5;
+        private Cotización.Cotizacion6 cotizacion6;
     }
 }
