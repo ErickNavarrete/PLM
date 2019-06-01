@@ -25,9 +25,11 @@ namespace PLM.Vista.Busqueda
         public Controlador.EmpaqueController Empaque;
         public Controlador.TemporadasController Temporada;
         Controlador.EstilosdeProduccionController controlador;
+        public Controlador.CotizacionController cotizacion;
         public string dato;
         public string dato1;
         public Articulos articulo;
+        public ArticulosPT articulosPT;
         int consulta;        
 
         public Busqueda(int _consulta)
@@ -41,8 +43,10 @@ namespace PLM.Vista.Busqueda
             Empaque = new Controlador.EmpaqueController();
             Temporada = new Controlador.TemporadasController();
             controlador = new Controlador.EstilosdeProduccionController();
+            cotizacion = new Controlador.CotizacionController();
             dato = string.Empty;
             articulo = new Articulos();
+            articulosPT = new ArticulosPT();
             DiasF = new Controlador.DiasFeriadoseInhabiles();
             Bom = new Controlador.BOMController();
             consulta = _consulta;
@@ -80,6 +84,14 @@ namespace PLM.Vista.Busqueda
             if (consulta == 40)
             {
                 controlador.getArticulos(dtDatos);
+            }
+            if (consulta == 41)
+            {
+                cotizacion.getClientes(dtDatos);
+            }
+            if (consulta == 42)
+            {
+                cotizacion.getArticulosPT(dtDatos);
             }
         }
 
@@ -152,6 +164,23 @@ namespace PLM.Vista.Busqueda
                     articulo.Proveedor = dtDatos.CurrentRow.Cells[4].Value.ToString();
                     articulo.Categoria = dtDatos.CurrentRow.Cells[5].Value.ToString();
                     articulo.Color = dtDatos.CurrentRow.Cells[6].Value.ToString();
+                }
+            }
+            if(consulta == 41)
+            {
+                dato = dtDatos.CurrentRow.Cells[0].Value.ToString();
+                dato1 = dtDatos.CurrentRow.Cells[1].Value.ToString();
+            }
+            if (consulta == 42)
+            {
+                if (dtDatos.Rows.Count > 0)
+                {
+                    articulosPT.Clave = dtDatos.CurrentRow.Cells[0].Value.ToString();
+                    articulosPT.Descr = dtDatos.CurrentRow.Cells[1].Value.ToString();
+                    articulosPT.Categoria = dtDatos.CurrentRow.Cells[2].Value.ToString();
+                    articulosPT.Estilo = dtDatos.CurrentRow.Cells[3].Value.ToString();
+                    articulosPT.Linea = dtDatos.CurrentRow.Cells[4].Value.ToString();
+                    articulosPT.Marca = dtDatos.CurrentRow.Cells[5].Value.ToString();
                 }
             }
             this.Close();

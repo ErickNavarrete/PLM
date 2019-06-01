@@ -16,4 +16,14 @@ namespace PLM.Modelo
         public string Categoria { get; set; }
         public string Color{ get; set; }
     }
+
+    public class ArticulosPT
+    {
+        public string Clave { get; set; }
+        public string Descr { get; set; }
+        public string Categoria { get; set; }
+        public string Estilo { get; set; }
+        public string Linea { get; set; }
+        public string Marca { get; set; }
+    }
 }

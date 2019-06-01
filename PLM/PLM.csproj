@@ -147,6 +147,7 @@
     <Compile Include="Controlador\BodyController.cs" />
     <Compile Include="Controlador\BOMController.cs" />
     <Compile Include="Controlador\CategoriaDosController.cs" />
+    <Compile Include="Controlador\CotizacionController.cs" />
     <Compile Include="Controlador\DepartamentoController.cs" />
     <Compile Include="Controlador\DiasAnticipacionController.cs" />
     <Compile Include="Controlador\DiasFeriadoseInhabiles.cs" />

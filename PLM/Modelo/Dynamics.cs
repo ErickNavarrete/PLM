@@ -559,7 +559,7 @@ namespace PLM.Modelo
 		}
 		public List<Inventory> Inventario2()
 		{
-			SqlCommand comando = new SqlCommand("SELECT custid, name,curyid FROM customer order by name", conexion);
+			SqlCommand comando = new SqlCommand("SELECT custid, name,curyid, Addr1 FROM customer order by name", conexion);
 			SqlDataAdapter miDa = new SqlDataAdapter();
 			DataSet miDs = new DataSet();
 			DataTable miDt = new DataTable();
@@ -579,7 +579,8 @@ namespace PLM.Modelo
 							Cliente = miDt.Rows[i][1].ToString(),
 							IdCliente = miDt.Rows[i][0].ToString(), 
 							ClienteC = miDt.Rows[i][2].ToString(),
-						};
+                            Tienda = miDt.Rows[i][3].ToString()
+                        };
 						miLista.Add(objetoInv);
 					}
 					return miLista;
@@ -1777,5 +1778,64 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                 miDt.Dispose();
             }
         }
-	}
+        public List<ArticulosPT> getArticulosPT()
+        {
+            SqlCommand comando = new SqlCommand(@" select	
+                                                            distinct(w.InvtID) as Clave,
+                                                            A.Descr as Descripcion,
+                                                            A.ClassID as Categoria,
+															A.Style,
+															IA.ProdLineID
+                                                    from WOMatlReq W
+                                                    join Inventory A on W.InvtID = A.InvtID
+                                                    join InventoryADG IA on IA.InvtID = W.InvtID
+                                                    where W.SiteID = 'PROD. TERM'  ", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            List<ArticulosPT> miLista = new List<ArticulosPT>();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+                    {
+                        ArticulosPT objetoInv = new ArticulosPT()
+                        {
+                            Clave = miDt.Rows[i][0].ToString().Trim(),
+                            Descr = miDt.Rows[i][1].ToString().Trim(),
+                            Categoria = miDt.Rows[i][2].ToString().Trim(),
+                            Estilo = miDt.Rows[i][3].ToString().Trim(),
+                            Linea = miDt.Rows[i][4].ToString().Trim(),
+                            Marca = ""
+                        };
+                        miLista.Add(objetoInv);
+                    }
+
+
+                    return miLista;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
+    }
 }

@@ -73,11 +73,6 @@ namespace PLM.Vista
             pantalla = 1;
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             pantalla += 1;
@@ -88,6 +83,37 @@ namespace PLM.Vista
         {
             pantalla -= 1;
             control_uc(pantalla);
+        }
+
+        private void tbCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                Busqueda.Busqueda frmBusqueda = new Busqueda.Busqueda(41);
+                frmBusqueda.ShowDialog();
+                if(frmBusqueda.dato != "")
+                {
+                    tbCliente.Text = frmBusqueda.dato;
+                    tbTienda.Text = frmBusqueda.dato1;
+                }
+            }
+        }
+
+        private void tbEstilo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                Busqueda.Busqueda frmBusqueda = new Busqueda.Busqueda(42);
+                frmBusqueda.ShowDialog();
+                if(frmBusqueda.articulosPT != null)
+                {
+                    tbEstilo.Text = frmBusqueda.articulosPT.Estilo;
+                    tbLinea.Text = frmBusqueda.articulosPT.Linea;
+                    tbDescripcion.Text = frmBusqueda.articulosPT.Descr;
+                    tbCategoria.Text = frmBusqueda.articulosPT.Categoria;
+                    tbMarca.Text = frmBusqueda.articulosPT.Marca;
+                }
+            }
         }
     }
 }

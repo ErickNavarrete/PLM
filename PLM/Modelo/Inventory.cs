@@ -71,5 +71,6 @@ namespace PLM.Modelo
         //public DateTime FechaEntProv { get; set; }
         public float FechaEntProv { get; set; }
 
+        public string Tienda { get; set; }
     }
 }
