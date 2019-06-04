@@ -1,4 +1,6 @@
 ﻿using DevComponents.DotNetBar.Metro;
+using PLM.Controlador;
+using PLM.Modelo;
 using PLM.Vista.Cotización;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,8 @@ namespace PLM.Vista
     public partial class SimulacionCotizacion : MetroForm
     {
         int pantalla = 1;
+        string nacionalidad;
+        CotizacionController cotizacion = new CotizacionController();
 
         #region FUNCIONES
         private void hide_show_cu(UserControl cu)
@@ -70,6 +74,7 @@ namespace PLM.Vista
         {
             InitializeComponent();
             hide_show_cu(cotizacion1);
+            nacionalidad = string.Empty;
             pantalla = 1;
         }
 
@@ -93,8 +98,18 @@ namespace PLM.Vista
                 frmBusqueda.ShowDialog();
                 if(frmBusqueda.dato != "")
                 {
+                    Segundas segundas = new Segundas(); 
                     tbCliente.Text = frmBusqueda.dato;
                     tbTienda.Text = frmBusqueda.dato1;
+                    nacionalidad = frmBusqueda.dato2;
+                    segundas = cotizacion.GetSegundas(tbCliente.Text);
+                    tbTela.Text = segundas.Tela;
+                    tbConf.Text = segundas.Conf;
+                    tbLav.Text = segundas.Lavado;
+                    tbPres.Text = segundas.proc;
+                    tbAvios.Text = segundas.avios;
+                    tbFalt.Text = segundas.faltantes;
+                    tbTotal.Text = segundas.total;
                 }
             }
         }

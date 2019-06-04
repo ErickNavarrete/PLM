@@ -12,7 +12,6 @@ namespace PLM.Modelo
         public int id { get; set; }
 
         [Required]
-        [StringLength(3)]
         public string Cliente { get; set; }
 
         [Required]

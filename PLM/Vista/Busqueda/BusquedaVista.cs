@@ -27,9 +27,10 @@ namespace PLM.Vista.Busqueda
         Controlador.EstilosdeProduccionController controlador;
         public Controlador.CotizacionController cotizacion;
         public string dato;
-        public string dato1;
+        public string dato1, dato2;
         public Articulos articulo;
         public ArticulosPT articulosPT;
+        public ArticulosCot articulosCot;
         int consulta;        
 
         public Busqueda(int _consulta)
@@ -45,8 +46,10 @@ namespace PLM.Vista.Busqueda
             controlador = new Controlador.EstilosdeProduccionController();
             cotizacion = new Controlador.CotizacionController();
             dato = string.Empty;
+            dato2 = string.Empty;
             articulo = new Articulos();
             articulosPT = new ArticulosPT();
+            
             DiasF = new Controlador.DiasFeriadoseInhabiles();
             Bom = new Controlador.BOMController();
             consulta = _consulta;
@@ -92,6 +95,10 @@ namespace PLM.Vista.Busqueda
             if (consulta == 42)
             {
                 cotizacion.getArticulosPT(dtDatos);
+            }
+            if (consulta == 43)
+            {
+                cotizacion.getArticulosCOT(dtDatos);
             }
         }
 
@@ -170,6 +177,7 @@ namespace PLM.Vista.Busqueda
             {
                 dato = dtDatos.CurrentRow.Cells[0].Value.ToString();
                 dato1 = dtDatos.CurrentRow.Cells[1].Value.ToString();
+                dato2 = dtDatos.CurrentRow.Cells[2].Value.ToString();
             }
             if (consulta == 42)
             {
@@ -181,6 +189,19 @@ namespace PLM.Vista.Busqueda
                     articulosPT.Estilo = dtDatos.CurrentRow.Cells[3].Value.ToString();
                     articulosPT.Linea = dtDatos.CurrentRow.Cells[4].Value.ToString();
                     articulosPT.Marca = dtDatos.CurrentRow.Cells[5].Value.ToString();
+                }
+            }
+            if(consulta == 43)
+            {
+                if (dtDatos.Rows.Count > 0)
+                {
+                    articulosCot = new ArticulosCot();
+                    articulosCot.Clave = dtDatos.CurrentRow.Cells[0].Value.ToString();
+                    articulosCot.Descr = dtDatos.CurrentRow.Cells[1].Value.ToString();
+                    articulosCot.Ancho = Convert.ToDecimal(dtDatos.CurrentRow.Cells[2].Value.ToString());
+                    articulosCot.Peso = Convert.ToDecimal(dtDatos.CurrentRow.Cells[3].Value.ToString());
+                    articulosCot.Proveedor = dtDatos.CurrentRow.Cells[4].Value.ToString();
+                    articulosCot.UnidadMedida = dtDatos.CurrentRow.Cells[5].Value.ToString();
                 }
             }
             this.Close();

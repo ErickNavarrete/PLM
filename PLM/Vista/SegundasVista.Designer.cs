@@ -31,7 +31,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SegundasVista));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panelMenu = new System.Windows.Forms.Panel();
@@ -161,6 +161,7 @@
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(130, 142);
             this.btnActualizar.TabIndex = 25;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click_1);
             // 
             // btnAlta
             // 
@@ -301,14 +302,14 @@
             this.dtDatos.AllowUserToDeleteRows = false;
             this.dtDatos.BackgroundColor = System.Drawing.Color.White;
             this.dtDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtDatos.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtDatos.DefaultCellStyle = dataGridViewCellStyle4;
             this.dtDatos.Location = new System.Drawing.Point(45, 213);
             this.dtDatos.Name = "dtDatos";
             this.dtDatos.ReadOnly = true;
@@ -351,7 +352,7 @@
             // 
             this.lblCliente.AutoSize = true;
             this.lblCliente.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblCliente.Location = new System.Drawing.Point(399, 542);
+            this.lblCliente.Location = new System.Drawing.Point(327, 542);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(51, 19);
             this.lblCliente.TabIndex = 20;
@@ -390,7 +391,6 @@
             // 
             // txtCliente
             // 
-            this.txtCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // 
             // 
@@ -404,9 +404,9 @@
             this.txtCliente.CustomButton.UseSelectable = true;
             this.txtCliente.CustomButton.Visible = false;
             this.txtCliente.Lines = new string[0];
-            this.txtCliente.Location = new System.Drawing.Point(402, 569);
+            this.txtCliente.Location = new System.Drawing.Point(327, 569);
             this.txtCliente.Margin = new System.Windows.Forms.Padding(8, 8, 20, 8);
-            this.txtCliente.MaxLength = 3;
+            this.txtCliente.MaxLength = 32767;
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.PasswordChar = '\0';
             this.txtCliente.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -414,7 +414,7 @@
             this.txtCliente.SelectionLength = 0;
             this.txtCliente.SelectionStart = 0;
             this.txtCliente.ShortcutsEnabled = true;
-            this.txtCliente.Size = new System.Drawing.Size(48, 23);
+            this.txtCliente.Size = new System.Drawing.Size(123, 23);
             this.txtCliente.TabIndex = 21;
             this.txtCliente.UseSelectable = true;
             this.txtCliente.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -457,7 +457,7 @@
             this.lblTela.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.lblTela.Location = new System.Drawing.Point(479, 542);
             this.lblTela.Name = "lblTela";
-            this.lblTela.Size = new System.Drawing.Size(33, 19);
+            this.lblTela.Size = new System.Drawing.Size(32, 19);
             this.lblTela.TabIndex = 22;
             this.lblTela.Text = "Tela";
             // 

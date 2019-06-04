@@ -272,9 +272,6 @@ namespace PLM.Vista
             }
         }
         
-
-       
-
         private void SegundasVista_Load(object sender, EventArgs e)
         {
             panelMenu.Left = Screen.PrimaryScreen.Bounds.Width - (panelMenu.Width + (Screen.PrimaryScreen.Bounds.Width / 2) - 570);
@@ -290,7 +287,6 @@ namespace PLM.Vista
             dtDatos.Enabled = true;
         }
         
-
         private void btnAtras_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -325,6 +321,112 @@ namespace PLM.Vista
                     {
                         Segundas.Segundas(dtDatos);
 
+                    }
+                }
+            }
+        }
+
+        private void btnActualizar_Click_1(object sender, EventArgs e)
+        {
+            if (flag == 1)
+            {
+                DialogsResults respuesta = Dialogs.Show("Esta seguro que desea guardar el item? ", DialogsType.Question);
+                if (respuesta == DialogsResults.Yes)
+                {
+                    string Cliente, Tela, Conf, Lav, Proc, Avios, Falt, total;
+                    if (txtCliente.Text != string.Empty && txtTela.Text != string.Empty && txtConf.Text != string.Empty && txtLav.Text != string.Empty && txtProc.Text != string.Empty && txtAvios.Text != string.Empty && txtFalt.Text != string.Empty && Segundas.Existe(txtCliente.Text) == false)
+                    {
+                        Cliente = txtCliente.Text;
+                        Tela = txtTela.Text;
+                        Conf = txtConf.Text;
+                        Lav = txtLav.Text;
+                        Proc = txtProc.Text;
+                        Avios = txtAvios.Text;
+                        Falt = txtFalt.Text;
+                        Tela = Tela.Replace("%", string.Empty);
+                        Conf = Conf.Replace("%", string.Empty);
+                        Lav = Lav.Replace("%", string.Empty);
+                        Proc = Proc.Replace("%", string.Empty);
+                        Avios = Avios.Replace("%", string.Empty);
+                        Falt = Falt.Replace("%", string.Empty);
+                        total = (float.Parse(Tela) + float.Parse(Conf) + float.Parse(Lav) + float.Parse(Proc) + float.Parse(Avios) + float.Parse(Falt)).ToString();
+                        bool resultado = Segundas.AddSegundas(Cliente, Tela, Conf, Lav, Proc, Avios, Falt, total);
+                        if (resultado == true)
+                        {
+                            Dialogs.Show(Properties.Resources.Agregar + " el Segundas", DialogsType.Info);
+                            txtCliente.Text = string.Empty;
+                            txtTela.Text = string.Empty;
+                            txtConf.Text = string.Empty;
+                            txtLav.Text = string.Empty;
+                            txtProc.Text = string.Empty;
+                            txtAvios.Text = string.Empty;
+                            txtFalt.Text = string.Empty;
+                            dtDatos.Enabled = true;
+                            Segundas.Segundas(dtDatos);
+                            string idcatalogo;
+                            idcatalogo = "Alta de 2das y faltantes";
+                            Bitacora.AddBitacoradeEventos(GLOBALS.USUARIO, GLOBALS.DEPARTAMENTO, DateTime.Now, idcatalogo);
+                            dtDatos.Enabled = true;
+                            btnAlta.Enabled = true;
+                            btnEliminar.Enabled = true;
+                            flag = 0;
+                        }
+                    }
+                    else
+                    {
+                        Dialogs.Show("Ëxiste campo sin datos o datos erroneos, intente de nuevo", DialogsType.Error);
+                    }
+                }
+            }
+            else if (flag == 0)
+            {
+                DialogsResults respuesta = Dialogs.Show("Esta seguro que desea guardar el item? ", DialogsType.Question);
+                if (respuesta == DialogsResults.Yes)
+                {
+                    string Cliente, Tela, Conf, Lav, Proc, Avios, Falt, total;
+                    int id;
+                    if (txtCliente.Text != string.Empty && txtTela.Text != string.Empty && txtConf.Text != string.Empty && txtLav.Text != string.Empty && txtProc.Text != string.Empty && txtAvios.Text != string.Empty && txtFalt.Text != string.Empty && Segundas.Existe(txtCliente.Text) == false)
+                    {
+                        id = int.Parse(dtDatos.CurrentRow.Cells[0].Value.ToString());
+
+                        Cliente = txtCliente.Text;
+                        Tela = txtTela.Text;
+                        Conf = txtConf.Text;
+                        Lav = txtLav.Text;
+                        Proc = txtProc.Text;
+                        Avios = txtAvios.Text;
+                        Falt = txtFalt.Text;
+                        Tela = Tela.Replace("%", string.Empty);
+                        Conf = Conf.Replace("%", string.Empty);
+                        Lav = Lav.Replace("%", string.Empty);
+                        Proc = Proc.Replace("%", string.Empty);
+                        Avios = Avios.Replace("%", string.Empty);
+                        Falt = Falt.Replace("%", string.Empty);
+                        total = (float.Parse(Tela) + float.Parse(Conf) + float.Parse(Lav) + float.Parse(Proc) + float.Parse(Avios) + float.Parse(Falt)).ToString();
+                        bool resultado = Segundas.UpdateSegundas(Cliente, Tela, Conf, Lav, Proc, Avios, Falt, total, id);
+                        if (resultado == true)
+                        {
+                            Dialogs.Show(Properties.Resources.Editar + " el Segundas", DialogsType.Info);
+                            txtCliente.Text = string.Empty;
+                            txtTela.Text = string.Empty;
+                            txtConf.Text = string.Empty;
+                            txtLav.Text = string.Empty;
+                            txtProc.Text = string.Empty;
+                            txtAvios.Text = string.Empty;
+                            txtFalt.Text = string.Empty;
+                            dtDatos.Enabled = true;
+                            Segundas.Segundas(dtDatos);
+                            dtDatos.Enabled = true;
+                            btnAlta.Enabled = true;
+                            btnEliminar.Enabled = true;
+                            string idcatalogo1;
+                            idcatalogo1 = "Actualización de  2das y faltantes ";
+                            Bitacora.AddBitacoradeEventos(GLOBALS.USUARIO, GLOBALS.DEPARTAMENTO, DateTime.Now, idcatalogo1);
+                        }
+                    }
+                    else
+                    {
+                        Dialogs.Show("Ëxiste campo sin datos o datos erroneos, intente de nuevo", DialogsType.Error);
                     }
                 }
             }

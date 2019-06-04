@@ -418,10 +418,10 @@
     <Compile Include="Vista\Reporte\vistaReporte2.Designer.cs">
       <DependentUpon>vistaReporte2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vista\SimulacionCotizacion.cs">
+    <Compile Include="Vista\Cotización\SimulacionCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vista\SimulacionCotizacion.Designer.cs">
+    <Compile Include="Vista\Cotización\SimulacionCotizacion.Designer.cs">
       <DependentUpon>SimulacionCotizacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Vista\VistasEstilos\EstilosdeProduccionAM.cs">
@@ -631,7 +631,7 @@
     <EmbeddedResource Include="Vista\Reporte\vistaReporte2.resx">
       <DependentUpon>vistaReporte2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vista\SimulacionCotizacion.resx">
+    <EmbeddedResource Include="Vista\Cotización\SimulacionCotizacion.resx">
       <DependentUpon>SimulacionCotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\VistasEstilos\EstilosdeProduccionAM.resx">

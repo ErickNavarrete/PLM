@@ -11,10 +11,11 @@ namespace PLM.Controlador
     public class CotizacionController
     {
         private Dynamics dbd = new Dynamics();
+        PLMContext db = new PLMContext();
 
         public void getClientes(DataGridView controlView)
         {
-            var datos = dbd.Inventario2().Select(x=> new {x.Cliente, x.Tienda}).ToList();
+            var datos = dbd.Inventario2().Select(x=> new {x.Cliente, x.Tienda, x.ClienteC}).ToList();
             controlView.Columns.Clear();
             controlView.DataSource = datos;
             controlView.Columns[0].Width = 400;
@@ -33,6 +34,23 @@ namespace PLM.Controlador
 
             controlView.Columns[0].Width = 200;
             controlView.Columns[1].Width = 300;
+        }
+
+        public void getArticulosCOT(DataGridView controlView)
+        {
+            var datos = dbd.getArticulosCot().Select(x => new { x.Clave, x.Descr, x.Ancho, x.Peso, x.Proveedor, x.UnidadMedida }).ToList();
+            controlView.Columns.Clear();
+            controlView.DataSource = datos;
+            controlView.Columns[0].Width = 150;
+            controlView.Columns[1].Width = 200;
+            controlView.Columns[1].Name = "Descripción";
+        }
+
+        public Segundas GetSegundas(string cliente)
+        {
+            Segundas segundas = db.Segundas.Where(x => x.Cliente == cliente).FirstOrDefault();
+
+            return segundas;
         }
     }
 }

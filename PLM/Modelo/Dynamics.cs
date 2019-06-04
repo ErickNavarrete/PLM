@@ -1837,5 +1837,69 @@ WHERE        (D.ProcStage IN ('P', 'F', 'R')) AND (A.SiteID <> 'prod. term')
                 miDt.Dispose();
             }
         }
+        public List<ArticulosCot> getArticulosCot()
+        {
+            SqlCommand comando = new SqlCommand(@" select	
+                                                            distinct(w.InvtID) as Clave,
+                                                            A.Descr as Descripcion,
+                                                            A.DfltSOUnit as UnidadMedida,
+                                                            A.Supplr1 as Proveedor,
+                                                            A.Color as Color,
+															IA.Weight as Peso,
+															IA.Width as Ancho,
+															IA.Gauge as Calibre
+                                                    from WOMatlReq W
+                                                    join Inventory A on W.InvtID = A.InvtID
+                                                    join InventoryADG IA on IA.InvtID = W.InvtID
+                                                    where W.SiteID = 'MAT. PRIMA'  ", conexion);
+            SqlDataAdapter miDa = new SqlDataAdapter();
+            DataSet miDs = new DataSet();
+            DataTable miDt = new DataTable();
+            List<ArticulosCot> miLista = new List<ArticulosCot>();
+            try
+            {
+                conexion.Open();
+                miDa.SelectCommand = comando;
+                miDa.Fill(miDs);
+                miDt = miDs.Tables[0];
+                if (miDt.Rows.Count > 0)
+                {
+                    for (int i = 0; i <= miDt.Rows.Count - 1; i++)
+                    {
+                        ArticulosCot objetoInv = new ArticulosCot()
+                        {
+                            Clave = miDt.Rows[i][0].ToString().Trim(),
+                            Descr = miDt.Rows[i][1].ToString().Trim(),
+                            UnidadMedida = miDt.Rows[i][2].ToString().Trim(),
+                            Proveedor = miDt.Rows[i][3].ToString().Trim(),
+                            Color = miDt.Rows[i][4].ToString().Trim(),
+                            Peso = Convert.ToDecimal(miDt.Rows[i][5].ToString()),
+                            Ancho = Convert.ToDecimal(miDt.Rows[i][6].ToString()),
+                            Calibre = Convert.ToDecimal(miDt.Rows[i][7].ToString())
+                        };
+                        miLista.Add(objetoInv);
+                    }
+
+
+                    return miLista;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Dialogs.Show(ex.Message, DialogsType.Error);
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+                miDa.Dispose();
+                miDs.Dispose();
+                miDt.Dispose();
+            }
+        }
     }
 }

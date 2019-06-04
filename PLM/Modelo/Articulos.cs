@@ -26,4 +26,16 @@ namespace PLM.Modelo
         public string Linea { get; set; }
         public string Marca { get; set; }
     }
+
+    public class ArticulosCot
+    {
+        public string Clave { get; set; }
+        public string Descr { get; set; }
+        public string UnidadMedida { get; set; }
+        public string Proveedor { get; set; }
+        public string Color { get; set; }
+        public decimal Peso { get; set; }
+        public decimal Ancho { get; set; }
+        public decimal Calibre { get; set; }
+    }
 }
