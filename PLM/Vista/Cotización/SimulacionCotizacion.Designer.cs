@@ -35,7 +35,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.tbTipoCambio = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -126,7 +126,7 @@
             // 
             this.groupBox1.Controls.Add(this.dateTimePicker2);
             this.groupBox1.Controls.Add(this.metroLabel5);
-            this.groupBox1.Controls.Add(this.metroTextBox1);
+            this.groupBox1.Controls.Add(this.tbTipoCambio);
             this.groupBox1.Controls.Add(this.metroLabel4);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.metroLabel3);
@@ -157,36 +157,37 @@
             this.metroLabel5.TabIndex = 7;
             this.metroLabel5.Text = "Fecha Revisión:";
             // 
-            // metroTextBox1
+            // tbTipoCambio
             // 
             // 
             // 
             // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(137, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(101, 56);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ReadOnly = true;
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(159, 23);
-            this.metroTextBox1.TabIndex = 6;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbTipoCambio.CustomButton.Image = null;
+            this.tbTipoCambio.CustomButton.Location = new System.Drawing.Point(137, 1);
+            this.tbTipoCambio.CustomButton.Name = "";
+            this.tbTipoCambio.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbTipoCambio.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbTipoCambio.CustomButton.TabIndex = 1;
+            this.tbTipoCambio.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbTipoCambio.CustomButton.UseSelectable = true;
+            this.tbTipoCambio.CustomButton.Visible = false;
+            this.tbTipoCambio.Lines = new string[0];
+            this.tbTipoCambio.Location = new System.Drawing.Point(101, 56);
+            this.tbTipoCambio.MaxLength = 32767;
+            this.tbTipoCambio.Name = "tbTipoCambio";
+            this.tbTipoCambio.PasswordChar = '\0';
+            this.tbTipoCambio.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbTipoCambio.SelectedText = "";
+            this.tbTipoCambio.SelectionLength = 0;
+            this.tbTipoCambio.SelectionStart = 0;
+            this.tbTipoCambio.ShortcutsEnabled = true;
+            this.tbTipoCambio.Size = new System.Drawing.Size(159, 23);
+            this.tbTipoCambio.TabIndex = 6;
+            this.tbTipoCambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbTipoCambio.UseSelectable = true;
+            this.tbTipoCambio.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbTipoCambio.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbTipoCambio.TextChanged += new System.EventHandler(this.tbTipoCambio_TextChanged);
             // 
             // metroLabel4
             // 
@@ -1063,7 +1064,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroTextBox txtNroBom;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private MetroFramework.Controls.MetroTextBox tbTipoCambio;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private MetroFramework.Controls.MetroLabel metroLabel5;

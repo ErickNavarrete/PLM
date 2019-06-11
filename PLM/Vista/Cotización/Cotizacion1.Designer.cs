@@ -29,26 +29,30 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cotizacion1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.metroTextBox18 = new MetroFramework.Controls.MetroTextBox();
+            this.btnAddHilo = new System.Windows.Forms.Button();
+            this.tbSubHilo = new MetroFramework.Controls.MetroTextBox();
+            this.tbCostoHilo = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel24 = new MetroFramework.Controls.MetroLabel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.CALIBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MN_PROGRAMADA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.dgvHilos = new System.Windows.Forms.DataGridView();
+            this.tbConsumoPHilo = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.tbTipoHilo = new MetroFramework.Controls.MetroTextBox();
+            this.tbArticuloHilo = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tbCosto = new MetroFramework.Controls.MetroTextBox();
@@ -59,9 +63,9 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.tbTipo = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox16 = new MetroFramework.Controls.MetroTextBox();
+            this.tbSubTelas = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox17 = new MetroFramework.Controls.MetroTextBox();
+            this.tbFletes = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
             this.dgvTP = new System.Windows.Forms.DataGridView();
             this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,69 +78,141 @@
             this.COSTO_USD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.COSTO_MN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CALIBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MN_PROGRAMADA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHilos)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTP)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.metroTextBox18);
+            this.groupBox5.Controls.Add(this.btnAddHilo);
+            this.groupBox5.Controls.Add(this.tbSubHilo);
+            this.groupBox5.Controls.Add(this.tbCostoHilo);
             this.groupBox5.Controls.Add(this.metroLabel24);
-            this.groupBox5.Controls.Add(this.dataGridView2);
-            this.groupBox5.Location = new System.Drawing.Point(5, 242);
+            this.groupBox5.Controls.Add(this.metroLabel5);
+            this.groupBox5.Controls.Add(this.dgvHilos);
+            this.groupBox5.Controls.Add(this.tbConsumoPHilo);
+            this.groupBox5.Controls.Add(this.metroLabel8);
+            this.groupBox5.Controls.Add(this.metroLabel6);
+            this.groupBox5.Controls.Add(this.tbTipoHilo);
+            this.groupBox5.Controls.Add(this.tbArticuloHilo);
+            this.groupBox5.Controls.Add(this.metroLabel7);
+            this.groupBox5.Location = new System.Drawing.Point(5, 228);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1135, 198);
+            this.groupBox5.Size = new System.Drawing.Size(1135, 212);
             this.groupBox5.TabIndex = 14;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Tipos de Hilo";
+            this.groupBox5.Text = "TIPOS DE HILO";
             // 
-            // metroTextBox18
+            // btnAddHilo
+            // 
+            this.btnAddHilo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddHilo.BackgroundImage")));
+            this.btnAddHilo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddHilo.FlatAppearance.BorderSize = 0;
+            this.btnAddHilo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddHilo.Location = new System.Drawing.Point(866, 19);
+            this.btnAddHilo.Name = "btnAddHilo";
+            this.btnAddHilo.Size = new System.Drawing.Size(30, 30);
+            this.btnAddHilo.TabIndex = 32;
+            this.btnAddHilo.UseVisualStyleBackColor = true;
+            this.btnAddHilo.Click += new System.EventHandler(this.btnAddHilo_Click);
+            // 
+            // tbSubHilo
             // 
             // 
             // 
             // 
-            this.metroTextBox18.CustomButton.Image = null;
-            this.metroTextBox18.CustomButton.Location = new System.Drawing.Point(137, 1);
-            this.metroTextBox18.CustomButton.Name = "";
-            this.metroTextBox18.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox18.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox18.CustomButton.TabIndex = 1;
-            this.metroTextBox18.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox18.CustomButton.UseSelectable = true;
-            this.metroTextBox18.CustomButton.Visible = false;
-            this.metroTextBox18.Lines = new string[0];
-            this.metroTextBox18.Location = new System.Drawing.Point(214, 166);
-            this.metroTextBox18.MaxLength = 32767;
-            this.metroTextBox18.Name = "metroTextBox18";
-            this.metroTextBox18.PasswordChar = '\0';
-            this.metroTextBox18.ReadOnly = true;
-            this.metroTextBox18.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox18.SelectedText = "";
-            this.metroTextBox18.SelectionLength = 0;
-            this.metroTextBox18.SelectionStart = 0;
-            this.metroTextBox18.ShortcutsEnabled = true;
-            this.metroTextBox18.Size = new System.Drawing.Size(159, 23);
-            this.metroTextBox18.TabIndex = 17;
-            this.metroTextBox18.UseSelectable = true;
-            this.metroTextBox18.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox18.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbSubHilo.CustomButton.Image = null;
+            this.tbSubHilo.CustomButton.Location = new System.Drawing.Point(137, 1);
+            this.tbSubHilo.CustomButton.Name = "";
+            this.tbSubHilo.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbSubHilo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbSubHilo.CustomButton.TabIndex = 1;
+            this.tbSubHilo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbSubHilo.CustomButton.UseSelectable = true;
+            this.tbSubHilo.CustomButton.Visible = false;
+            this.tbSubHilo.Lines = new string[0];
+            this.tbSubHilo.Location = new System.Drawing.Point(214, 177);
+            this.tbSubHilo.MaxLength = 32767;
+            this.tbSubHilo.Name = "tbSubHilo";
+            this.tbSubHilo.PasswordChar = '\0';
+            this.tbSubHilo.ReadOnly = true;
+            this.tbSubHilo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbSubHilo.SelectedText = "";
+            this.tbSubHilo.SelectionLength = 0;
+            this.tbSubHilo.SelectionStart = 0;
+            this.tbSubHilo.ShortcutsEnabled = true;
+            this.tbSubHilo.Size = new System.Drawing.Size(159, 23);
+            this.tbSubHilo.TabIndex = 17;
+            this.tbSubHilo.UseSelectable = true;
+            this.tbSubHilo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbSubHilo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // tbCostoHilo
+            // 
+            // 
+            // 
+            // 
+            this.tbCostoHilo.CustomButton.Image = null;
+            this.tbCostoHilo.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.tbCostoHilo.CustomButton.Name = "";
+            this.tbCostoHilo.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbCostoHilo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbCostoHilo.CustomButton.TabIndex = 1;
+            this.tbCostoHilo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbCostoHilo.CustomButton.UseSelectable = true;
+            this.tbCostoHilo.CustomButton.Visible = false;
+            this.tbCostoHilo.Lines = new string[0];
+            this.tbCostoHilo.Location = new System.Drawing.Point(760, 23);
+            this.tbCostoHilo.MaxLength = 32767;
+            this.tbCostoHilo.Name = "tbCostoHilo";
+            this.tbCostoHilo.PasswordChar = '\0';
+            this.tbCostoHilo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbCostoHilo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbCostoHilo.SelectedText = "";
+            this.tbCostoHilo.SelectionLength = 0;
+            this.tbCostoHilo.SelectionStart = 0;
+            this.tbCostoHilo.ShortcutsEnabled = true;
+            this.tbCostoHilo.Size = new System.Drawing.Size(100, 23);
+            this.tbCostoHilo.TabIndex = 31;
+            this.tbCostoHilo.UseSelectable = true;
+            this.tbCostoHilo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbCostoHilo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel24
             // 
             this.metroLabel24.AutoSize = true;
-            this.metroLabel24.Location = new System.Drawing.Point(6, 170);
+            this.metroLabel24.Location = new System.Drawing.Point(6, 181);
             this.metroLabel24.Name = "metroLabel24";
             this.metroLabel24.Size = new System.Drawing.Size(111, 19);
             this.metroLabel24.TabIndex = 16;
             this.metroLabel24.Text = "Subtotal de Hilos:";
             // 
-            // dataGridView2
+            // metroLabel5
             // 
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(708, 27);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(46, 19);
+            this.metroLabel5.TabIndex = 30;
+            this.metroLabel5.Text = "Costo:";
+            // 
+            // dgvHilos
+            // 
+            this.dgvHilos.AllowUserToAddRows = false;
+            this.dgvHilos.BackgroundColor = System.Drawing.Color.White;
+            this.dgvHilos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHilos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CALIBRE,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
@@ -146,56 +222,136 @@
             this.dataGridViewTextBoxColumn8,
             this.MN_PROGRAMADA,
             this.dataGridViewTextBoxColumn9});
-            this.dataGridView2.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(1123, 139);
-            this.dataGridView2.TabIndex = 15;
+            this.dgvHilos.Location = new System.Drawing.Point(6, 59);
+            this.dgvHilos.Name = "dgvHilos";
+            this.dgvHilos.ReadOnly = true;
+            this.dgvHilos.Size = new System.Drawing.Size(1123, 110);
+            this.dgvHilos.TabIndex = 15;
             // 
-            // CALIBRE
+            // tbConsumoPHilo
             // 
-            this.CALIBRE.HeaderText = "CALIBRE";
-            this.CALIBRE.Name = "CALIBRE";
             // 
-            // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "TIPO";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // dataGridViewTextBoxColumn2
+            this.tbConsumoPHilo.CustomButton.Image = null;
+            this.tbConsumoPHilo.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.tbConsumoPHilo.CustomButton.Name = "";
+            this.tbConsumoPHilo.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbConsumoPHilo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbConsumoPHilo.CustomButton.TabIndex = 1;
+            this.tbConsumoPHilo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbConsumoPHilo.CustomButton.UseSelectable = true;
+            this.tbConsumoPHilo.CustomButton.Visible = false;
+            this.tbConsumoPHilo.Lines = new string[0];
+            this.tbConsumoPHilo.Location = new System.Drawing.Point(602, 23);
+            this.tbConsumoPHilo.MaxLength = 32767;
+            this.tbConsumoPHilo.Name = "tbConsumoPHilo";
+            this.tbConsumoPHilo.PasswordChar = '\0';
+            this.tbConsumoPHilo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbConsumoPHilo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbConsumoPHilo.SelectedText = "";
+            this.tbConsumoPHilo.SelectionLength = 0;
+            this.tbConsumoPHilo.SelectionStart = 0;
+            this.tbConsumoPHilo.ShortcutsEnabled = true;
+            this.tbConsumoPHilo.Size = new System.Drawing.Size(100, 23);
+            this.tbConsumoPHilo.TabIndex = 29;
+            this.tbConsumoPHilo.UseSelectable = true;
+            this.tbConsumoPHilo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbConsumoPHilo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "COLOR / DESCRIPCIÓN";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // metroLabel8
             // 
-            // PROVEEDOR
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(6, 27);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(38, 19);
+            this.metroLabel8.TabIndex = 24;
+            this.metroLabel8.Text = "Tipo:";
             // 
-            this.PROVEEDOR.HeaderText = "NOMBRE DEL PROVEEDOR";
-            this.PROVEEDOR.Name = "PROVEEDOR";
-            this.PROVEEDOR.Width = 150;
+            // metroLabel6
             // 
-            // dataGridViewTextBoxColumn6
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(448, 27);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(148, 19);
+            this.metroLabel6.TabIndex = 28;
+            this.metroLabel6.Text = "Consumo Programado:";
             // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "CONSUMO PROGRAMADO";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // tbTipoHilo
             // 
-            // dataGridViewTextBoxColumn7
             // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "UNIDAD";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
-            // dataGridViewTextBoxColumn8
             // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "COSTO USD PROG";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.tbTipoHilo.CustomButton.Image = null;
+            this.tbTipoHilo.CustomButton.Location = new System.Drawing.Point(137, 1);
+            this.tbTipoHilo.CustomButton.Name = "";
+            this.tbTipoHilo.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbTipoHilo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbTipoHilo.CustomButton.TabIndex = 1;
+            this.tbTipoHilo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbTipoHilo.CustomButton.UseSelectable = true;
+            this.tbTipoHilo.CustomButton.Visible = false;
+            this.tbTipoHilo.Lines = new string[0];
+            this.tbTipoHilo.Location = new System.Drawing.Point(50, 23);
+            this.tbTipoHilo.MaxLength = 32767;
+            this.tbTipoHilo.Name = "tbTipoHilo";
+            this.tbTipoHilo.PasswordChar = '\0';
+            this.tbTipoHilo.PromptText = "Presiona F3 para busqueda";
+            this.tbTipoHilo.ReadOnly = true;
+            this.tbTipoHilo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbTipoHilo.SelectedText = "";
+            this.tbTipoHilo.SelectionLength = 0;
+            this.tbTipoHilo.SelectionStart = 0;
+            this.tbTipoHilo.ShortcutsEnabled = true;
+            this.tbTipoHilo.Size = new System.Drawing.Size(159, 23);
+            this.tbTipoHilo.TabIndex = 25;
+            this.tbTipoHilo.UseSelectable = true;
+            this.tbTipoHilo.WaterMark = "Presiona F3 para busqueda";
+            this.tbTipoHilo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbTipoHilo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // MN_PROGRAMADA
+            // tbArticuloHilo
             // 
-            this.MN_PROGRAMADA.HeaderText = "COSTO MN PROG";
-            this.MN_PROGRAMADA.Name = "MN_PROGRAMADA";
             // 
-            // dataGridViewTextBoxColumn9
             // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "TOTAL USD PROG";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            this.tbArticuloHilo.CustomButton.Image = null;
+            this.tbArticuloHilo.CustomButton.Location = new System.Drawing.Point(137, 1);
+            this.tbArticuloHilo.CustomButton.Name = "";
+            this.tbArticuloHilo.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbArticuloHilo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbArticuloHilo.CustomButton.TabIndex = 1;
+            this.tbArticuloHilo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbArticuloHilo.CustomButton.UseSelectable = true;
+            this.tbArticuloHilo.CustomButton.Visible = false;
+            this.tbArticuloHilo.Lines = new string[0];
+            this.tbArticuloHilo.Location = new System.Drawing.Point(279, 23);
+            this.tbArticuloHilo.MaxLength = 32767;
+            this.tbArticuloHilo.Name = "tbArticuloHilo";
+            this.tbArticuloHilo.PasswordChar = '\0';
+            this.tbArticuloHilo.PromptText = "Presiona F3 para busqueda";
+            this.tbArticuloHilo.ReadOnly = true;
+            this.tbArticuloHilo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbArticuloHilo.SelectedText = "";
+            this.tbArticuloHilo.SelectionLength = 0;
+            this.tbArticuloHilo.SelectionStart = 0;
+            this.tbArticuloHilo.ShortcutsEnabled = true;
+            this.tbArticuloHilo.Size = new System.Drawing.Size(159, 23);
+            this.tbArticuloHilo.TabIndex = 27;
+            this.tbArticuloHilo.UseSelectable = true;
+            this.tbArticuloHilo.WaterMark = "Presiona F3 para busqueda";
+            this.tbArticuloHilo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbArticuloHilo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbArticuloHilo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbArticuloHilo_KeyDown);
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(215, 27);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(58, 19);
+            this.metroLabel7.TabIndex = 26;
+            this.metroLabel7.Text = "Artículo:";
             // 
             // groupBox4
             // 
@@ -208,17 +364,17 @@
             this.groupBox4.Controls.Add(this.metroLabel1);
             this.groupBox4.Controls.Add(this.tbTipo);
             this.groupBox4.Controls.Add(this.metroLabel2);
-            this.groupBox4.Controls.Add(this.metroTextBox16);
+            this.groupBox4.Controls.Add(this.tbSubTelas);
             this.groupBox4.Controls.Add(this.metroLabel22);
-            this.groupBox4.Controls.Add(this.metroTextBox17);
+            this.groupBox4.Controls.Add(this.tbFletes);
             this.groupBox4.Controls.Add(this.metroLabel23);
             this.groupBox4.Controls.Add(this.dgvTP);
             this.groupBox4.Location = new System.Drawing.Point(5, 5);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1135, 227);
+            this.groupBox4.Size = new System.Drawing.Size(1135, 217);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Telas Programado";
+            this.groupBox4.Text = "TELAS PROGRAMADO";
             // 
             // btnAdd
             // 
@@ -226,7 +382,7 @@
             this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(877, 12);
+            this.btnAdd.Location = new System.Drawing.Point(866, 19);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(30, 30);
             this.btnAdd.TabIndex = 23;
@@ -248,7 +404,7 @@
             this.tbCosto.CustomButton.UseSelectable = true;
             this.tbCosto.CustomButton.Visible = false;
             this.tbCosto.Lines = new string[0];
-            this.tbCosto.Location = new System.Drawing.Point(760, 19);
+            this.tbCosto.Location = new System.Drawing.Point(760, 24);
             this.tbCosto.MaxLength = 32767;
             this.tbCosto.Name = "tbCosto";
             this.tbCosto.PasswordChar = '\0';
@@ -267,7 +423,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(708, 23);
+            this.metroLabel4.Location = new System.Drawing.Point(708, 28);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(46, 19);
             this.metroLabel4.TabIndex = 21;
@@ -288,7 +444,7 @@
             this.tbConsumoP.CustomButton.UseSelectable = true;
             this.tbConsumoP.CustomButton.Visible = false;
             this.tbConsumoP.Lines = new string[0];
-            this.tbConsumoP.Location = new System.Drawing.Point(602, 19);
+            this.tbConsumoP.Location = new System.Drawing.Point(602, 24);
             this.tbConsumoP.MaxLength = 32767;
             this.tbConsumoP.Name = "tbConsumoP";
             this.tbConsumoP.PasswordChar = '\0';
@@ -307,7 +463,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(448, 23);
+            this.metroLabel3.Location = new System.Drawing.Point(448, 28);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(148, 19);
             this.metroLabel3.TabIndex = 19;
@@ -328,7 +484,7 @@
             this.tbArticulo.CustomButton.UseSelectable = true;
             this.tbArticulo.CustomButton.Visible = false;
             this.tbArticulo.Lines = new string[0];
-            this.tbArticulo.Location = new System.Drawing.Point(279, 19);
+            this.tbArticulo.Location = new System.Drawing.Point(279, 24);
             this.tbArticulo.MaxLength = 32767;
             this.tbArticulo.Name = "tbArticulo";
             this.tbArticulo.PasswordChar = '\0';
@@ -350,7 +506,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(215, 23);
+            this.metroLabel1.Location = new System.Drawing.Point(215, 28);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(58, 19);
             this.metroLabel1.TabIndex = 17;
@@ -371,7 +527,7 @@
             this.tbTipo.CustomButton.UseSelectable = true;
             this.tbTipo.CustomButton.Visible = false;
             this.tbTipo.Lines = new string[0];
-            this.tbTipo.Location = new System.Drawing.Point(50, 19);
+            this.tbTipo.Location = new System.Drawing.Point(50, 24);
             this.tbTipo.MaxLength = 32767;
             this.tbTipo.Name = "tbTipo";
             this.tbTipo.PasswordChar = '\0';
@@ -392,87 +548,87 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(6, 23);
+            this.metroLabel2.Location = new System.Drawing.Point(6, 28);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(38, 19);
             this.metroLabel2.TabIndex = 15;
             this.metroLabel2.Text = "Tipo:";
             // 
-            // metroTextBox16
+            // tbSubTelas
             // 
             // 
             // 
             // 
-            this.metroTextBox16.CustomButton.Image = null;
-            this.metroTextBox16.CustomButton.Location = new System.Drawing.Point(137, 1);
-            this.metroTextBox16.CustomButton.Name = "";
-            this.metroTextBox16.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox16.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox16.CustomButton.TabIndex = 1;
-            this.metroTextBox16.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox16.CustomButton.UseSelectable = true;
-            this.metroTextBox16.CustomButton.Visible = false;
-            this.metroTextBox16.Lines = new string[0];
-            this.metroTextBox16.Location = new System.Drawing.Point(495, 194);
-            this.metroTextBox16.MaxLength = 32767;
-            this.metroTextBox16.Name = "metroTextBox16";
-            this.metroTextBox16.PasswordChar = '\0';
-            this.metroTextBox16.ReadOnly = true;
-            this.metroTextBox16.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox16.SelectedText = "";
-            this.metroTextBox16.SelectionLength = 0;
-            this.metroTextBox16.SelectionStart = 0;
-            this.metroTextBox16.ShortcutsEnabled = true;
-            this.metroTextBox16.Size = new System.Drawing.Size(159, 23);
-            this.metroTextBox16.TabIndex = 14;
-            this.metroTextBox16.UseSelectable = true;
-            this.metroTextBox16.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox16.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbSubTelas.CustomButton.Image = null;
+            this.tbSubTelas.CustomButton.Location = new System.Drawing.Point(137, 1);
+            this.tbSubTelas.CustomButton.Name = "";
+            this.tbSubTelas.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbSubTelas.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbSubTelas.CustomButton.TabIndex = 1;
+            this.tbSubTelas.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbSubTelas.CustomButton.UseSelectable = true;
+            this.tbSubTelas.CustomButton.Visible = false;
+            this.tbSubTelas.Lines = new string[0];
+            this.tbSubTelas.Location = new System.Drawing.Point(495, 183);
+            this.tbSubTelas.MaxLength = 32767;
+            this.tbSubTelas.Name = "tbSubTelas";
+            this.tbSubTelas.PasswordChar = '\0';
+            this.tbSubTelas.ReadOnly = true;
+            this.tbSubTelas.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbSubTelas.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbSubTelas.SelectedText = "";
+            this.tbSubTelas.SelectionLength = 0;
+            this.tbSubTelas.SelectionStart = 0;
+            this.tbSubTelas.ShortcutsEnabled = true;
+            this.tbSubTelas.Size = new System.Drawing.Size(159, 23);
+            this.tbSubTelas.TabIndex = 14;
+            this.tbSubTelas.UseSelectable = true;
+            this.tbSubTelas.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbSubTelas.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel22
             // 
             this.metroLabel22.AutoSize = true;
-            this.metroLabel22.Location = new System.Drawing.Point(379, 198);
+            this.metroLabel22.Location = new System.Drawing.Point(379, 187);
             this.metroLabel22.Name = "metroLabel22";
             this.metroLabel22.Size = new System.Drawing.Size(110, 19);
             this.metroLabel22.TabIndex = 13;
             this.metroLabel22.Text = "Subtotal de Telas:";
             // 
-            // metroTextBox17
+            // tbFletes
             // 
             // 
             // 
             // 
-            this.metroTextBox17.CustomButton.Image = null;
-            this.metroTextBox17.CustomButton.Location = new System.Drawing.Point(137, 1);
-            this.metroTextBox17.CustomButton.Name = "";
-            this.metroTextBox17.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox17.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox17.CustomButton.TabIndex = 1;
-            this.metroTextBox17.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox17.CustomButton.UseSelectable = true;
-            this.metroTextBox17.CustomButton.Visible = false;
-            this.metroTextBox17.Lines = new string[0];
-            this.metroTextBox17.Location = new System.Drawing.Point(214, 194);
-            this.metroTextBox17.MaxLength = 32767;
-            this.metroTextBox17.Name = "metroTextBox17";
-            this.metroTextBox17.PasswordChar = '\0';
-            this.metroTextBox17.ReadOnly = true;
-            this.metroTextBox17.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox17.SelectedText = "";
-            this.metroTextBox17.SelectionLength = 0;
-            this.metroTextBox17.SelectionStart = 0;
-            this.metroTextBox17.ShortcutsEnabled = true;
-            this.metroTextBox17.Size = new System.Drawing.Size(159, 23);
-            this.metroTextBox17.TabIndex = 12;
-            this.metroTextBox17.UseSelectable = true;
-            this.metroTextBox17.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox17.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbFletes.CustomButton.Image = null;
+            this.tbFletes.CustomButton.Location = new System.Drawing.Point(137, 1);
+            this.tbFletes.CustomButton.Name = "";
+            this.tbFletes.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbFletes.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbFletes.CustomButton.TabIndex = 1;
+            this.tbFletes.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbFletes.CustomButton.UseSelectable = true;
+            this.tbFletes.CustomButton.Visible = false;
+            this.tbFletes.Lines = new string[0];
+            this.tbFletes.Location = new System.Drawing.Point(214, 183);
+            this.tbFletes.MaxLength = 32767;
+            this.tbFletes.Name = "tbFletes";
+            this.tbFletes.PasswordChar = '\0';
+            this.tbFletes.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbFletes.SelectedText = "";
+            this.tbFletes.SelectionLength = 0;
+            this.tbFletes.SelectionStart = 0;
+            this.tbFletes.ShortcutsEnabled = true;
+            this.tbFletes.Size = new System.Drawing.Size(159, 23);
+            this.tbFletes.TabIndex = 12;
+            this.tbFletes.UseSelectable = true;
+            this.tbFletes.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbFletes.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel23
             // 
             this.metroLabel23.AutoSize = true;
-            this.metroLabel23.Location = new System.Drawing.Point(6, 198);
+            this.metroLabel23.Location = new System.Drawing.Point(6, 187);
             this.metroLabel23.Name = "metroLabel23";
             this.metroLabel23.Size = new System.Drawing.Size(204, 19);
             this.metroLabel23.TabIndex = 11;
@@ -494,41 +650,41 @@
             this.COSTO_USD,
             this.COSTO_MN,
             this.TOTAL});
-            this.dgvTP.Location = new System.Drawing.Point(6, 56);
+            this.dgvTP.Location = new System.Drawing.Point(6, 61);
             this.dgvTP.Name = "dgvTP";
-            this.dgvTP.Size = new System.Drawing.Size(1123, 128);
+            this.dgvTP.Size = new System.Drawing.Size(1123, 110);
             this.dgvTP.TabIndex = 0;
             // 
             // TIPO
             // 
-            dataGridViewCellStyle1.NullValue = "Presiona F3 para busqueda";
-            this.TIPO.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.NullValue = "Presiona F3 para busqueda";
+            this.TIPO.DefaultCellStyle = dataGridViewCellStyle5;
             this.TIPO.HeaderText = "TIPO";
             this.TIPO.Name = "TIPO";
             this.TIPO.Width = 150;
             // 
             // ANCHO
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.ANCHO.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.ANCHO.DefaultCellStyle = dataGridViewCellStyle6;
             this.ANCHO.HeaderText = "ANCHO";
             this.ANCHO.Name = "ANCHO";
             // 
             // PESO
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.PESO.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.PESO.DefaultCellStyle = dataGridViewCellStyle7;
             this.PESO.HeaderText = "PESO";
             this.PESO.Name = "PESO";
             // 
             // COLOR_DESCRIPCION
             // 
-            dataGridViewCellStyle4.NullValue = "Presiona F3 para busqueda";
-            this.COLOR_DESCRIPCION.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.NullValue = "Presiona F3 para busqueda";
+            this.COLOR_DESCRIPCION.DefaultCellStyle = dataGridViewCellStyle8;
             this.COLOR_DESCRIPCION.HeaderText = "COLOR / DESCRIPCIÓN";
             this.COLOR_DESCRIPCION.Name = "COLOR_DESCRIPCION";
             this.COLOR_DESCRIPCION.Width = 150;
@@ -551,30 +707,102 @@
             // 
             // COSTO_USD
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.COSTO_USD.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.COSTO_USD.DefaultCellStyle = dataGridViewCellStyle9;
             this.COSTO_USD.HeaderText = "COSTO USD PROG";
             this.COSTO_USD.Name = "COSTO_USD";
             // 
             // COSTO_MN
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.COSTO_MN.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.COSTO_MN.DefaultCellStyle = dataGridViewCellStyle10;
             this.COSTO_MN.HeaderText = "COSTO MN PROG";
             this.COSTO_MN.Name = "COSTO_MN";
             // 
             // TOTAL
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.TOTAL.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.TOTAL.DefaultCellStyle = dataGridViewCellStyle11;
             this.TOTAL.HeaderText = "TOTAL MN PROG";
             this.TOTAL.Name = "TOTAL";
+            // 
+            // CALIBRE
+            // 
+            this.CALIBRE.HeaderText = "CALIBRE";
+            this.CALIBRE.Name = "CALIBRE";
+            this.CALIBRE.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "TIPO";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "COLOR / DESCRIPCIÓN";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // PROVEEDOR
+            // 
+            this.PROVEEDOR.HeaderText = "NOMBRE DEL PROVEEDOR";
+            this.PROVEEDOR.Name = "PROVEEDOR";
+            this.PROVEEDOR.ReadOnly = true;
+            this.PROVEEDOR.Width = 180;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTextBoxColumn6.HeaderText = "CONSUMO PROGRAMADO";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "UNIDAD";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn8.HeaderText = "COSTO USD PROG";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // MN_PROGRAMADA
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.MN_PROGRAMADA.DefaultCellStyle = dataGridViewCellStyle3;
+            this.MN_PROGRAMADA.HeaderText = "COSTO MN PROG";
+            this.MN_PROGRAMADA.Name = "MN_PROGRAMADA";
+            this.MN_PROGRAMADA.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewTextBoxColumn9.HeaderText = "TOTAL USD PROG";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
             // Cotizacion1
             // 
@@ -587,7 +815,7 @@
             this.Size = new System.Drawing.Size(1147, 454);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHilos)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTP)).EndInit();
@@ -598,22 +826,13 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox5;
-        private MetroFramework.Controls.MetroTextBox metroTextBox18;
+        private MetroFramework.Controls.MetroTextBox tbSubHilo;
         private MetroFramework.Controls.MetroLabel metroLabel24;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CALIBRE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PROVEEDOR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MN_PROGRAMADA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridView dgvHilos;
         private System.Windows.Forms.GroupBox groupBox4;
-        private MetroFramework.Controls.MetroTextBox metroTextBox16;
+        private MetroFramework.Controls.MetroTextBox tbSubTelas;
         private MetroFramework.Controls.MetroLabel metroLabel22;
-        private MetroFramework.Controls.MetroTextBox metroTextBox17;
+        private MetroFramework.Controls.MetroTextBox tbFletes;
         private MetroFramework.Controls.MetroLabel metroLabel23;
         private System.Windows.Forms.DataGridView dgvTP;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPO;
@@ -635,5 +854,23 @@
         private MetroFramework.Controls.MetroTextBox tbConsumoP;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         internal System.Windows.Forms.Button btnAdd;
+        internal System.Windows.Forms.Button btnAddHilo;
+        private MetroFramework.Controls.MetroTextBox tbCostoHilo;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroTextBox tbConsumoPHilo;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroTextBox tbTipoHilo;
+        private MetroFramework.Controls.MetroTextBox tbArticuloHilo;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CALIBRE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PROVEEDOR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MN_PROGRAMADA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
     }
 }

@@ -1,4 +1,5 @@
-﻿using DevComponents.DotNetBar.Metro;
+﻿using ArcangelDialogs;
+using DevComponents.DotNetBar.Metro;
 using PLM.Controlador;
 using PLM.Modelo;
 using PLM.Vista.Cotización;
@@ -17,7 +18,7 @@ namespace PLM.Vista
     public partial class SimulacionCotizacion : MetroForm
     {
         int pantalla = 1;
-        string nacionalidad;
+        public string nacionalidad;
         CotizacionController cotizacion = new CotizacionController();
 
         #region FUNCIONES
@@ -94,22 +95,53 @@ namespace PLM.Vista
         {
             if (e.KeyCode == Keys.F3)
             {
+                cotizacion1.cliente = false;
+
                 Busqueda.Busqueda frmBusqueda = new Busqueda.Busqueda(41);
                 frmBusqueda.ShowDialog();
                 if(frmBusqueda.dato != "")
                 {
+                    //CLIENTE CONTROL USER
+                    cotizacion1.cliente = true;
+                    cotizacion2.cliente = true;
+                    cotizacion3.cliente = true;
                     Segundas segundas = new Segundas(); 
                     tbCliente.Text = frmBusqueda.dato;
                     tbTienda.Text = frmBusqueda.dato1;
                     nacionalidad = frmBusqueda.dato2;
                     segundas = cotizacion.GetSegundas(tbCliente.Text);
-                    tbTela.Text = segundas.Tela;
-                    tbConf.Text = segundas.Conf;
-                    tbLav.Text = segundas.Lavado;
-                    tbPres.Text = segundas.proc;
-                    tbAvios.Text = segundas.avios;
-                    tbFalt.Text = segundas.faltantes;
-                    tbTotal.Text = segundas.total;
+                    //NACIONALIDAD CONTROL USER
+                    cotizacion1.nacionalidad = nacionalidad;                    
+                    cotizacion2.nacionalidad = nacionalidad;
+                    cotizacion3.nacionalidad = nacionalidad;
+                    if (segundas != null)
+                    {
+                        tbTela.Text = segundas.Tela;
+                        tbConf.Text = segundas.Conf;
+                        tbLav.Text = segundas.Lavado;
+                        tbPres.Text = segundas.proc;
+                        tbAvios.Text = segundas.avios;
+                        tbFalt.Text = segundas.faltantes;
+                        tbTotal.Text = segundas.total;
+
+                        //PORCENTAJE
+                        cotizacion1.porcentaje_tela = Convert.ToDecimal(segundas.Tela.Replace("%", "")) / 100;
+                        cotizacion2.porcentaje_tela = Convert.ToDecimal(segundas.Tela.Replace("%", "")) / 100;
+                        cotizacion3.porcentaje_tela = Convert.ToDecimal(segundas.Tela.Replace("%", "")) / 100;
+                    }
+                    else
+                    {
+                        Dialogs.Show("Cliente no existente en el catálogo", DialogsType.Warning);
+                        tbTela.Text = "0";
+                        tbConf.Text = "0";
+                        tbLav.Text = "0";
+                        tbPres.Text = "0";
+                        tbAvios.Text = "0";
+                        tbFalt.Text = "0";
+                        tbTotal.Text = "0";
+
+                        cotizacion1.porcentaje_tela = 0;
+                    }
                 }
             }
         }
@@ -129,6 +161,26 @@ namespace PLM.Vista
                     tbMarca.Text = frmBusqueda.articulosPT.Marca;
                 }
             }
+        }
+
+        private void tbTipoCambio_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cotizacion1.tipo_cambio = Convert.ToDecimal(tbTipoCambio.Text);
+                cotizacion2.tipo_cambio = Convert.ToDecimal(tbTipoCambio.Text);
+                cotizacion3.tipo_cambio = Convert.ToDecimal(tbTipoCambio.Text);
+
+                cotizacion1.t_cambio = true;
+                cotizacion2.t_cambio = true;
+                cotizacion3.t_cambio = true;
+            }
+            catch (Exception)
+            {
+                cotizacion1.t_cambio = false;
+                cotizacion2.t_cambio = false;
+                cotizacion3.t_cambio = false;
+            }            
         }
     }
 }

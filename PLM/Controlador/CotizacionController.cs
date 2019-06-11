@@ -38,7 +38,7 @@ namespace PLM.Controlador
 
         public void getArticulosCOT(DataGridView controlView)
         {
-            var datos = dbd.getArticulosCot().Select(x => new { x.Clave, x.Descr, x.Ancho, x.Peso, x.Proveedor, x.UnidadMedida }).ToList();
+            var datos = dbd.getArticulosCot().Select(x => new { x.Clave, x.Descr, x.Ancho, x.Peso, x.Proveedor, x.UnidadMedida, x.Calibre }).ToList();
             controlView.Columns.Clear();
             controlView.DataSource = datos;
             controlView.Columns[0].Width = 150;
