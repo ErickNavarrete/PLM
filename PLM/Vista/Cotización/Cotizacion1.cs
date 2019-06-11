@@ -119,7 +119,7 @@ namespace PLM.Vista.Cotización
             costo = Convert.ToDecimal(tbCostoHilo.Text);
             consumo = Convert.ToDecimal(tbConsumoPHilo.Text);
 
-            if (nacionalidad == "USD")
+            if (nacionalidad.Trim() == "USD")
             {
                 total = costo + (costo * porcentaje_tela * consumo * tipo_cambio);
                 dgvHilos.Rows.Add(articulosCot.Calibre,tbTipoHilo.Text, articulosCot.Descr, articulosCot.Proveedor,consumo, articulosCot.UnidadMedida, tbCosto.Text, "", total);
@@ -193,7 +193,7 @@ namespace PLM.Vista.Cotización
             costo = Convert.ToDecimal(tbCosto.Text);
             consumo = Convert.ToDecimal(tbConsumoP.Text);
 
-            if (nacionalidad == "USD")
+            if (nacionalidad.Trim() == "USD")
             {
                 total = costo + (costo * porcentaje_tela * consumo * tipo_cambio);
                 dgvTP.Rows.Add(tbTipo.Text, articulosCot.Ancho, articulosCot.Peso, articulosCot.Descr, articulosCot.Proveedor, tbConsumoP.Text, articulosCot.UnidadMedida, tbCosto.Text, "",total);

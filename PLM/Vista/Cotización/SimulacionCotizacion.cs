@@ -105,15 +105,18 @@ namespace PLM.Vista
                     cotizacion1.cliente = true;
                     cotizacion2.cliente = true;
                     cotizacion3.cliente = true;
+                    cotizacion4.cliente = true;
+
                     Segundas segundas = new Segundas(); 
                     tbCliente.Text = frmBusqueda.dato;
                     tbTienda.Text = frmBusqueda.dato1;
                     nacionalidad = frmBusqueda.dato2;
                     segundas = cotizacion.GetSegundas(tbCliente.Text);
                     //NACIONALIDAD CONTROL USER
-                    cotizacion1.nacionalidad = nacionalidad;                    
-                    cotizacion2.nacionalidad = nacionalidad;
-                    cotizacion3.nacionalidad = nacionalidad;
+                    cotizacion1.nacionalidad = nacionalidad.Trim();                    
+                    cotizacion2.nacionalidad = nacionalidad.Trim();
+                    cotizacion3.nacionalidad = nacionalidad.Trim();
+                    cotizacion4.nacionalidad = nacionalidad.Trim();
                     if (segundas != null)
                     {
                         tbTela.Text = segundas.Tela;
@@ -128,6 +131,7 @@ namespace PLM.Vista
                         cotizacion1.porcentaje_tela = Convert.ToDecimal(segundas.Tela.Replace("%", "")) / 100;
                         cotizacion2.porcentaje_tela = Convert.ToDecimal(segundas.Tela.Replace("%", "")) / 100;
                         cotizacion3.porcentaje_tela = Convert.ToDecimal(segundas.Tela.Replace("%", "")) / 100;
+                        cotizacion4.porcentaje_tela = Convert.ToDecimal(segundas.Tela.Replace("%", "")) / 100;
                     }
                     else
                     {
@@ -142,6 +146,24 @@ namespace PLM.Vista
 
                         cotizacion1.porcentaje_tela = 0;
                     }
+                }
+                else
+                {
+                    tbCliente.Text = "";
+                    tbTienda.Text = "";
+                    tbTela.Text = "";
+                    tbConf.Text = "";
+                    tbLav.Text = "";
+                    tbPres.Text = "";
+                    tbAvios.Text = "";
+                    tbFalt.Text = "";
+                    tbTotal.Text = "";
+
+                    //CLIENTE CONTROL USER
+                    cotizacion1.cliente = false;
+                    cotizacion2.cliente = false;
+                    cotizacion3.cliente = false;
+                    cotizacion4.cliente = false;
                 }
             }
         }
@@ -170,16 +192,19 @@ namespace PLM.Vista
                 cotizacion1.tipo_cambio = Convert.ToDecimal(tbTipoCambio.Text);
                 cotizacion2.tipo_cambio = Convert.ToDecimal(tbTipoCambio.Text);
                 cotizacion3.tipo_cambio = Convert.ToDecimal(tbTipoCambio.Text);
+                cotizacion4.tipo_cambio = Convert.ToDecimal(tbTipoCambio.Text);
 
                 cotizacion1.t_cambio = true;
                 cotizacion2.t_cambio = true;
                 cotizacion3.t_cambio = true;
+                cotizacion4.t_cambio = true;
             }
             catch (Exception)
             {
                 cotizacion1.t_cambio = false;
                 cotizacion2.t_cambio = false;
                 cotizacion3.t_cambio = false;
+                cotizacion4.t_cambio = false;
             }            
         }
     }
