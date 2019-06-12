@@ -52,5 +52,34 @@ namespace PLM.Controlador
 
             return segundas;
         }
+
+        public void GetProceso(DataGridView controlView)
+        {
+            var datos = db.Procesos.ToList();
+            controlView.Columns.Clear();
+            controlView.DataSource = datos;
+            controlView.Columns[0].Visible = false;
+            controlView.Columns[1].HeaderText = "PROCESO";
+            controlView.Columns[2].HeaderText = "DESCRIPCIÓN";
+            controlView.Columns[2].Width = 500;
+        }
+
+        public void GetManoObra(DataGridView controlView)
+        {
+            var datos = db.ManodeObra.ToList();
+            controlView.Columns.Clear();
+            controlView.DataSource = datos;
+            controlView.Columns[0].Visible = false;
+            controlView.Columns[1].HeaderText = "MANO DE OBRA";
+            controlView.Columns[2].HeaderText = "DESCRIPCIÓN";
+            controlView.Columns[2].Width = 500;
+        }
+
+        public Presupuestos GetPresupuestos(string presupuesto)
+        {
+            Presupuestos presupuestos= db.Presupuestos.Where(x => x.IdPresupuesto == presupuesto).FirstOrDefault();
+
+            return presupuestos;
+        }
     }
 }

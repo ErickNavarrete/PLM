@@ -13,7 +13,7 @@ namespace PLM.Modelo
         public int id { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(25)]
         public string IdManodeObra { get; set; }
 
         [Required]

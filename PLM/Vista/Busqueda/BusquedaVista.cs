@@ -31,6 +31,9 @@ namespace PLM.Vista.Busqueda
         public Articulos articulo;
         public ArticulosPT articulosPT;
         public ArticulosCot articulosCot;
+        public Proceso proceso;
+        public ManodeObra obra;
+        public Presupuestos presupuestos;
         int consulta;        
 
         public Busqueda(int _consulta)
@@ -49,7 +52,10 @@ namespace PLM.Vista.Busqueda
             dato2 = string.Empty;
             articulo = new Articulos();
             articulosPT = new ArticulosPT();
-            
+            proceso = new Proceso();
+            obra = new ManodeObra();
+            presupuestos = new Presupuestos();
+
             DiasF = new Controlador.DiasFeriadoseInhabiles();
             Bom = new Controlador.BOMController();
             consulta = _consulta;
@@ -99,6 +105,14 @@ namespace PLM.Vista.Busqueda
             if (consulta == 43)
             {
                 cotizacion.getArticulosCOT(dtDatos);
+            }
+            if (consulta == 44)
+            {
+                cotizacion.GetProceso(dtDatos);
+            }
+            if (consulta == 45)
+            {
+                cotizacion.GetManoObra(dtDatos);
             }
         }
 
@@ -202,6 +216,27 @@ namespace PLM.Vista.Busqueda
                     articulosCot.Peso = Convert.ToDecimal(dtDatos.CurrentRow.Cells[3].Value.ToString());
                     articulosCot.Proveedor = dtDatos.CurrentRow.Cells[4].Value.ToString();
                     articulosCot.UnidadMedida = dtDatos.CurrentRow.Cells[5].Value.ToString();
+                }
+            }
+            if (consulta == 44)
+            {
+                if (dtDatos.Rows.Count > 0)
+                {
+                    proceso = new Proceso();
+                    proceso.IdProceso = dtDatos.CurrentRow.Cells[1].Value.ToString();
+                    proceso.Descripción = dtDatos.CurrentRow.Cells[2].Value.ToString();
+                }
+            }
+            if (consulta == 45)
+            {
+                if (dtDatos.Rows.Count > 0)
+                {
+                    obra = new ManodeObra();
+                    presupuestos = new Presupuestos();
+                    obra.IdManodeObra = dtDatos.CurrentRow.Cells[1].Value.ToString();
+                    obra.Descripción = dtDatos.CurrentRow.Cells[2].Value.ToString();
+
+                    presupuestos = cotizacion.GetPresupuestos(obra.IdManodeObra);
                 }
             }
             this.Close();

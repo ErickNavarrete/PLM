@@ -427,14 +427,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PLM.exe" size="2440152">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PLM.exe" size="2513880">
       <assemblyIdentity name="PLM" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>7FauzEQy+UDPouTZp5z1/Ex1vNDpGjq6mm0C4ay1As4=</dsig:DigestValue>
+        <dsig:DigestValue>gwrmltfK1G8E2oqJ+GjlGaufApkoQoj5VrCelG70/XQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -543,22 +543,22 @@
       <dsig:DigestValue>yEOGmqylE1wtRylphfNcccqK9EMSiNBNSBxORsyT7iY=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Debug\PLM.exe" size="2439168">
+  <file name="bin\Debug\PLM.exe" size="2512896">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>DcuN7xnAeLlz1AZG3ATdYJosDsXXn8t9lNV3rGODcp8=</dsig:DigestValue>
+      <dsig:DigestValue>DF4baSXst5VbkLc9zbfBAPl/fXWZVRMQJCcWopafFY8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Debug\PLM.pdb" size="1279488">
+  <file name="bin\Debug\PLM.pdb" size="1293824">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>dx6RmNpugaWrKYmEs93KGPvhyjQrLhuhGYaTbbU6S5U=</dsig:DigestValue>
+      <dsig:DigestValue>UK56Bmiav33T4erVP3rNuwHu/rZ59JQ+hMToyzUWP6U=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Debug\PLM.vshost.exe" size="24224">

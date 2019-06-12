@@ -244,7 +244,7 @@
             this.txtDescripcion.SelectionStart = 0;
             this.txtDescripcion.ShortcutsEnabled = true;
             this.txtDescripcion.Size = new System.Drawing.Size(151, 23);
-            this.txtDescripcion.TabIndex = 11;
+            this.txtDescripcion.TabIndex = 25;
             this.txtDescripcion.UseSelectable = true;
             this.txtDescripcion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtDescripcion.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -276,7 +276,7 @@
             this.txtIdManoDeObra.Lines = new string[0];
             this.txtIdManoDeObra.Location = new System.Drawing.Point(467, 574);
             this.txtIdManoDeObra.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
-            this.txtIdManoDeObra.MaxLength = 10;
+            this.txtIdManoDeObra.MaxLength = 25;
             this.txtIdManoDeObra.Name = "txtIdManoDeObra";
             this.txtIdManoDeObra.PasswordChar = '\0';
             this.txtIdManoDeObra.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -285,7 +285,7 @@
             this.txtIdManoDeObra.SelectionStart = 0;
             this.txtIdManoDeObra.ShortcutsEnabled = true;
             this.txtIdManoDeObra.Size = new System.Drawing.Size(151, 23);
-            this.txtIdManoDeObra.TabIndex = 9;
+            this.txtIdManoDeObra.TabIndex = 11;
             this.txtIdManoDeObra.UseSelectable = true;
             this.txtIdManoDeObra.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtIdManoDeObra.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
