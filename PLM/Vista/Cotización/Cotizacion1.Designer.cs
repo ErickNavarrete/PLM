@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cotizacion1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -36,10 +40,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnAddHilo = new System.Windows.Forms.Button();
             this.tbSubHilo = new MetroFramework.Controls.MetroTextBox();
@@ -47,6 +47,15 @@
             this.metroLabel24 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.dgvHilos = new System.Windows.Forms.DataGridView();
+            this.CALIBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MN_PROGRAMADA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbConsumoPHilo = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
@@ -78,15 +87,6 @@
             this.COSTO_USD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.COSTO_MN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CALIBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MN_PROGRAMADA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHilos)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -142,11 +142,12 @@
             this.tbSubHilo.CustomButton.UseSelectable = true;
             this.tbSubHilo.CustomButton.Visible = false;
             this.tbSubHilo.Lines = new string[0];
-            this.tbSubHilo.Location = new System.Drawing.Point(214, 177);
+            this.tbSubHilo.Location = new System.Drawing.Point(122, 177);
             this.tbSubHilo.MaxLength = 32767;
             this.tbSubHilo.Name = "tbSubHilo";
             this.tbSubHilo.PasswordChar = '\0';
             this.tbSubHilo.ReadOnly = true;
+            this.tbSubHilo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbSubHilo.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbSubHilo.SelectedText = "";
             this.tbSubHilo.SelectionLength = 0;
@@ -154,6 +155,7 @@
             this.tbSubHilo.ShortcutsEnabled = true;
             this.tbSubHilo.Size = new System.Drawing.Size(159, 23);
             this.tbSubHilo.TabIndex = 17;
+            this.tbSubHilo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbSubHilo.UseSelectable = true;
             this.tbSubHilo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbSubHilo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -177,7 +179,7 @@
             this.tbCostoHilo.MaxLength = 32767;
             this.tbCostoHilo.Name = "tbCostoHilo";
             this.tbCostoHilo.PasswordChar = '\0';
-            this.tbCostoHilo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbCostoHilo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbCostoHilo.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbCostoHilo.SelectedText = "";
             this.tbCostoHilo.SelectionLength = 0;
@@ -185,6 +187,7 @@
             this.tbCostoHilo.ShortcutsEnabled = true;
             this.tbCostoHilo.Size = new System.Drawing.Size(100, 23);
             this.tbCostoHilo.TabIndex = 31;
+            this.tbCostoHilo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbCostoHilo.UseSelectable = true;
             this.tbCostoHilo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbCostoHilo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -228,6 +231,78 @@
             this.dgvHilos.Size = new System.Drawing.Size(1123, 110);
             this.dgvHilos.TabIndex = 15;
             // 
+            // CALIBRE
+            // 
+            this.CALIBRE.HeaderText = "CALIBRE";
+            this.CALIBRE.Name = "CALIBRE";
+            this.CALIBRE.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "TIPO";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "COLOR / DESCRIPCIÓN";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // PROVEEDOR
+            // 
+            this.PROVEEDOR.HeaderText = "NOMBRE DEL PROVEEDOR";
+            this.PROVEEDOR.Name = "PROVEEDOR";
+            this.PROVEEDOR.ReadOnly = true;
+            this.PROVEEDOR.Width = 180;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTextBoxColumn6.HeaderText = "CONSUMO PROGRAMADO";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "UNIDAD";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn8.HeaderText = "COSTO USD PROG";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // MN_PROGRAMADA
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.MN_PROGRAMADA.DefaultCellStyle = dataGridViewCellStyle3;
+            this.MN_PROGRAMADA.HeaderText = "COSTO MN PROG";
+            this.MN_PROGRAMADA.Name = "MN_PROGRAMADA";
+            this.MN_PROGRAMADA.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewTextBoxColumn9.HeaderText = "TOTAL USD PROG";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
             // tbConsumoPHilo
             // 
             // 
@@ -247,7 +322,7 @@
             this.tbConsumoPHilo.MaxLength = 32767;
             this.tbConsumoPHilo.Name = "tbConsumoPHilo";
             this.tbConsumoPHilo.PasswordChar = '\0';
-            this.tbConsumoPHilo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbConsumoPHilo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbConsumoPHilo.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbConsumoPHilo.SelectedText = "";
             this.tbConsumoPHilo.SelectionLength = 0;
@@ -255,6 +330,7 @@
             this.tbConsumoPHilo.ShortcutsEnabled = true;
             this.tbConsumoPHilo.Size = new System.Drawing.Size(100, 23);
             this.tbConsumoPHilo.TabIndex = 29;
+            this.tbConsumoPHilo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbConsumoPHilo.UseSelectable = true;
             this.tbConsumoPHilo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbConsumoPHilo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -297,7 +373,6 @@
             this.tbTipoHilo.Name = "tbTipoHilo";
             this.tbTipoHilo.PasswordChar = '\0';
             this.tbTipoHilo.PromptText = "Presiona F3 para busqueda";
-            this.tbTipoHilo.ReadOnly = true;
             this.tbTipoHilo.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbTipoHilo.SelectedText = "";
             this.tbTipoHilo.SelectionLength = 0;
@@ -330,7 +405,6 @@
             this.tbArticuloHilo.Name = "tbArticuloHilo";
             this.tbArticuloHilo.PasswordChar = '\0';
             this.tbArticuloHilo.PromptText = "Presiona F3 para busqueda";
-            this.tbArticuloHilo.ReadOnly = true;
             this.tbArticuloHilo.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbArticuloHilo.SelectedText = "";
             this.tbArticuloHilo.SelectionLength = 0;
@@ -408,7 +482,7 @@
             this.tbCosto.MaxLength = 32767;
             this.tbCosto.Name = "tbCosto";
             this.tbCosto.PasswordChar = '\0';
-            this.tbCosto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbCosto.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbCosto.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbCosto.SelectedText = "";
             this.tbCosto.SelectionLength = 0;
@@ -416,6 +490,7 @@
             this.tbCosto.ShortcutsEnabled = true;
             this.tbCosto.Size = new System.Drawing.Size(100, 23);
             this.tbCosto.TabIndex = 22;
+            this.tbCosto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbCosto.UseSelectable = true;
             this.tbCosto.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbCosto.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -448,7 +523,7 @@
             this.tbConsumoP.MaxLength = 32767;
             this.tbConsumoP.Name = "tbConsumoP";
             this.tbConsumoP.PasswordChar = '\0';
-            this.tbConsumoP.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbConsumoP.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbConsumoP.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbConsumoP.SelectedText = "";
             this.tbConsumoP.SelectionLength = 0;
@@ -456,6 +531,7 @@
             this.tbConsumoP.ShortcutsEnabled = true;
             this.tbConsumoP.Size = new System.Drawing.Size(100, 23);
             this.tbConsumoP.TabIndex = 20;
+            this.tbConsumoP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbConsumoP.UseSelectable = true;
             this.tbConsumoP.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbConsumoP.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -489,7 +565,6 @@
             this.tbArticulo.Name = "tbArticulo";
             this.tbArticulo.PasswordChar = '\0';
             this.tbArticulo.PromptText = "Presiona F3 para busqueda";
-            this.tbArticulo.ReadOnly = true;
             this.tbArticulo.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbArticulo.SelectedText = "";
             this.tbArticulo.SelectionLength = 0;
@@ -532,7 +607,6 @@
             this.tbTipo.Name = "tbTipo";
             this.tbTipo.PasswordChar = '\0';
             this.tbTipo.PromptText = "Presiona F3 para busqueda";
-            this.tbTipo.ReadOnly = true;
             this.tbTipo.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbTipo.SelectedText = "";
             this.tbTipo.SelectionLength = 0;
@@ -569,12 +643,12 @@
             this.tbSubTelas.CustomButton.UseSelectable = true;
             this.tbSubTelas.CustomButton.Visible = false;
             this.tbSubTelas.Lines = new string[0];
-            this.tbSubTelas.Location = new System.Drawing.Point(495, 183);
+            this.tbSubTelas.Location = new System.Drawing.Point(122, 183);
             this.tbSubTelas.MaxLength = 32767;
             this.tbSubTelas.Name = "tbSubTelas";
             this.tbSubTelas.PasswordChar = '\0';
             this.tbSubTelas.ReadOnly = true;
-            this.tbSubTelas.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbSubTelas.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbSubTelas.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbSubTelas.SelectedText = "";
             this.tbSubTelas.SelectionLength = 0;
@@ -582,6 +656,7 @@
             this.tbSubTelas.ShortcutsEnabled = true;
             this.tbSubTelas.Size = new System.Drawing.Size(159, 23);
             this.tbSubTelas.TabIndex = 14;
+            this.tbSubTelas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbSubTelas.UseSelectable = true;
             this.tbSubTelas.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbSubTelas.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -589,7 +664,7 @@
             // metroLabel22
             // 
             this.metroLabel22.AutoSize = true;
-            this.metroLabel22.Location = new System.Drawing.Point(379, 187);
+            this.metroLabel22.Location = new System.Drawing.Point(6, 187);
             this.metroLabel22.Name = "metroLabel22";
             this.metroLabel22.Size = new System.Drawing.Size(110, 19);
             this.metroLabel22.TabIndex = 13;
@@ -610,10 +685,11 @@
             this.tbFletes.CustomButton.UseSelectable = true;
             this.tbFletes.CustomButton.Visible = false;
             this.tbFletes.Lines = new string[0];
-            this.tbFletes.Location = new System.Drawing.Point(214, 183);
+            this.tbFletes.Location = new System.Drawing.Point(517, 183);
             this.tbFletes.MaxLength = 32767;
             this.tbFletes.Name = "tbFletes";
             this.tbFletes.PasswordChar = '\0';
+            this.tbFletes.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbFletes.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbFletes.SelectedText = "";
             this.tbFletes.SelectionLength = 0;
@@ -621,6 +697,7 @@
             this.tbFletes.ShortcutsEnabled = true;
             this.tbFletes.Size = new System.Drawing.Size(159, 23);
             this.tbFletes.TabIndex = 12;
+            this.tbFletes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbFletes.UseSelectable = true;
             this.tbFletes.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbFletes.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -628,7 +705,7 @@
             // metroLabel23
             // 
             this.metroLabel23.AutoSize = true;
-            this.metroLabel23.Location = new System.Drawing.Point(6, 187);
+            this.metroLabel23.Location = new System.Drawing.Point(307, 187);
             this.metroLabel23.Name = "metroLabel23";
             this.metroLabel23.Size = new System.Drawing.Size(204, 19);
             this.metroLabel23.TabIndex = 11;
@@ -731,78 +808,6 @@
             this.TOTAL.DefaultCellStyle = dataGridViewCellStyle11;
             this.TOTAL.HeaderText = "TOTAL MN PROG";
             this.TOTAL.Name = "TOTAL";
-            // 
-            // CALIBRE
-            // 
-            this.CALIBRE.HeaderText = "CALIBRE";
-            this.CALIBRE.Name = "CALIBRE";
-            this.CALIBRE.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "TIPO";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "COLOR / DESCRIPCIÓN";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 150;
-            // 
-            // PROVEEDOR
-            // 
-            this.PROVEEDOR.HeaderText = "NOMBRE DEL PROVEEDOR";
-            this.PROVEEDOR.Name = "PROVEEDOR";
-            this.PROVEEDOR.ReadOnly = true;
-            this.PROVEEDOR.Width = 180;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewTextBoxColumn6.HeaderText = "CONSUMO PROGRAMADO";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "UNIDAD";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumn8.HeaderText = "COSTO USD PROG";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // MN_PROGRAMADA
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.MN_PROGRAMADA.DefaultCellStyle = dataGridViewCellStyle3;
-            this.MN_PROGRAMADA.HeaderText = "COSTO MN PROG";
-            this.MN_PROGRAMADA.Name = "MN_PROGRAMADA";
-            this.MN_PROGRAMADA.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewTextBoxColumn9.HeaderText = "TOTAL USD PROG";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
             // Cotizacion1
             // 

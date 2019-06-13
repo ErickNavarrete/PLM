@@ -18,6 +18,7 @@ namespace PLM.Vista.Cotización
         public string nacionalidad;
         public decimal porcentaje_tela = 0, tipo_cambio = 0;
         public bool t_cambio = false, cliente = false;
+        public decimal metales = 0, confeccion = 0;
 
         public Cotizacion3()
         {
@@ -132,10 +133,12 @@ namespace PLM.Vista.Cotización
             if (tbSubM.Text != "")
             {
                 tbSubM.Text = (Convert.ToDecimal(tbSubM.Text) + total).ToString("N2");
+                metales = Convert.ToDecimal(tbSubM.Text) + total;
             }
             else
             {
                 tbSubM.Text = total.ToString("N2");
+                metales = total;
             }
 
             limpia_campos_metal();
@@ -206,10 +209,12 @@ namespace PLM.Vista.Cotización
             if (tbSubE.Text != "")
             {
                 tbSubE.Text = (Convert.ToDecimal(tbSubE.Text) + total).ToString("N2");
+                confeccion = Convert.ToDecimal(tbSubE.Text) + total;
             }
             else
             {
                 tbSubE.Text = total.ToString("N2");
+                confeccion = total;
             }
 
             limpia_campos_etiq();

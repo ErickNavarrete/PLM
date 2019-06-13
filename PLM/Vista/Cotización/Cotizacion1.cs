@@ -18,6 +18,7 @@ namespace PLM.Vista.Cotización
         public string nacionalidad;
         public decimal porcentaje_tela = 0, tipo_cambio = 0;
         public bool t_cambio = false, cliente = false;
+        public decimal hilo = 0, telas = 0;
         
         public Cotizacion1()
         {
@@ -133,10 +134,12 @@ namespace PLM.Vista.Cotización
             if (tbSubHilo.Text != "")
             {
                 tbSubHilo.Text = (Convert.ToDecimal(tbSubHilo.Text) + total).ToString("N2");
+                hilo = Convert.ToDecimal(tbSubHilo.Text) + total;
             }
             else
             {
                 tbSubHilo.Text = total.ToString("N2");
+                hilo = total;
             }
 
             limpia_campos_hilo();
@@ -206,10 +209,12 @@ namespace PLM.Vista.Cotización
             if(tbSubTelas.Text != "")
             {
                 tbSubTelas.Text = (Convert.ToDecimal(tbSubTelas.Text) + total).ToString("N2");
+                telas = Convert.ToDecimal(tbSubTelas.Text) + total;
             }
             else
             {
                 tbSubTelas.Text = total.ToString("N2");
+                telas = total;
             }
 
             limpia_campos_programado();

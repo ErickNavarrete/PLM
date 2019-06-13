@@ -139,6 +139,7 @@
             this.tbSubE.Name = "tbSubE";
             this.tbSubE.PasswordChar = '\0';
             this.tbSubE.ReadOnly = true;
+            this.tbSubE.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbSubE.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbSubE.SelectedText = "";
             this.tbSubE.SelectionLength = 0;
@@ -146,6 +147,7 @@
             this.tbSubE.ShortcutsEnabled = true;
             this.tbSubE.Size = new System.Drawing.Size(159, 23);
             this.tbSubE.TabIndex = 17;
+            this.tbSubE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbSubE.UseSelectable = true;
             this.tbSubE.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbSubE.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -169,7 +171,7 @@
             this.tbCostoE.MaxLength = 32767;
             this.tbCostoE.Name = "tbCostoE";
             this.tbCostoE.PasswordChar = '\0';
-            this.tbCostoE.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbCostoE.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbCostoE.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbCostoE.SelectedText = "";
             this.tbCostoE.SelectionLength = 0;
@@ -177,6 +179,7 @@
             this.tbCostoE.ShortcutsEnabled = true;
             this.tbCostoE.Size = new System.Drawing.Size(100, 23);
             this.tbCostoE.TabIndex = 50;
+            this.tbCostoE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbCostoE.UseSelectable = true;
             this.tbCostoE.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbCostoE.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -227,7 +230,7 @@
             this.tbConsumoPE.MaxLength = 32767;
             this.tbConsumoPE.Name = "tbConsumoPE";
             this.tbConsumoPE.PasswordChar = '\0';
-            this.tbConsumoPE.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbConsumoPE.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbConsumoPE.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbConsumoPE.SelectedText = "";
             this.tbConsumoPE.SelectionLength = 0;
@@ -235,6 +238,7 @@
             this.tbConsumoPE.ShortcutsEnabled = true;
             this.tbConsumoPE.Size = new System.Drawing.Size(100, 23);
             this.tbConsumoPE.TabIndex = 48;
+            this.tbConsumoPE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbConsumoPE.UseSelectable = true;
             this.tbConsumoPE.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbConsumoPE.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -354,7 +358,6 @@
             this.tbTipoE.Name = "tbTipoE";
             this.tbTipoE.PasswordChar = '\0';
             this.tbTipoE.PromptText = "Presiona F3 para busqueda";
-            this.tbTipoE.ReadOnly = true;
             this.tbTipoE.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbTipoE.SelectedText = "";
             this.tbTipoE.SelectionLength = 0;
@@ -387,7 +390,6 @@
             this.tbArticuloE.Name = "tbArticuloE";
             this.tbArticuloE.PasswordChar = '\0';
             this.tbArticuloE.PromptText = "Presiona F3 para busqueda";
-            this.tbArticuloE.ReadOnly = true;
             this.tbArticuloE.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbArticuloE.SelectedText = "";
             this.tbArticuloE.SelectionLength = 0;
@@ -463,7 +465,7 @@
             this.tbCostoM.MaxLength = 32767;
             this.tbCostoM.Name = "tbCostoM";
             this.tbCostoM.PasswordChar = '\0';
-            this.tbCostoM.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbCostoM.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbCostoM.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbCostoM.SelectedText = "";
             this.tbCostoM.SelectionLength = 0;
@@ -471,6 +473,7 @@
             this.tbCostoM.ShortcutsEnabled = true;
             this.tbCostoM.Size = new System.Drawing.Size(100, 23);
             this.tbCostoM.TabIndex = 40;
+            this.tbCostoM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbCostoM.UseSelectable = true;
             this.tbCostoM.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbCostoM.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -503,7 +506,7 @@
             this.tbConsumoPM.MaxLength = 32767;
             this.tbConsumoPM.Name = "tbConsumoPM";
             this.tbConsumoPM.PasswordChar = '\0';
-            this.tbConsumoPM.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbConsumoPM.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbConsumoPM.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbConsumoPM.SelectedText = "";
             this.tbConsumoPM.SelectionLength = 0;
@@ -511,6 +514,7 @@
             this.tbConsumoPM.ShortcutsEnabled = true;
             this.tbConsumoPM.Size = new System.Drawing.Size(100, 23);
             this.tbConsumoPM.TabIndex = 38;
+            this.tbConsumoPM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbConsumoPM.UseSelectable = true;
             this.tbConsumoPM.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbConsumoPM.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -544,7 +548,6 @@
             this.tbArticuloM.Name = "tbArticuloM";
             this.tbArticuloM.PasswordChar = '\0';
             this.tbArticuloM.PromptText = "Presiona F3 para busqueda";
-            this.tbArticuloM.ReadOnly = true;
             this.tbArticuloM.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbArticuloM.SelectedText = "";
             this.tbArticuloM.SelectionLength = 0;
@@ -587,7 +590,6 @@
             this.tbTipoM.Name = "tbTipoM";
             this.tbTipoM.PasswordChar = '\0';
             this.tbTipoM.PromptText = "Presiona F3 para busqueda";
-            this.tbTipoM.ReadOnly = true;
             this.tbTipoM.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbTipoM.SelectedText = "";
             this.tbTipoM.SelectionLength = 0;
@@ -715,6 +717,7 @@
             this.tbSubM.Name = "tbSubM";
             this.tbSubM.PasswordChar = '\0';
             this.tbSubM.ReadOnly = true;
+            this.tbSubM.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbSubM.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbSubM.SelectedText = "";
             this.tbSubM.SelectionLength = 0;
@@ -722,6 +725,7 @@
             this.tbSubM.ShortcutsEnabled = true;
             this.tbSubM.Size = new System.Drawing.Size(159, 23);
             this.tbSubM.TabIndex = 14;
+            this.tbSubM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbSubM.UseSelectable = true;
             this.tbSubM.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbSubM.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);

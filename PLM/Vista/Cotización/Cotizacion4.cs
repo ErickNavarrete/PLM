@@ -18,6 +18,7 @@ namespace PLM.Vista.Cotización
         public string nacionalidad;
         public decimal porcentaje_tela = 0, tipo_cambio = 0;
         public bool t_cambio = false, cliente = false;
+        public decimal externa = 0, empaque = 0;
 
         public Cotizacion4()
         {
@@ -132,10 +133,12 @@ namespace PLM.Vista.Cotización
             if (tbSubE.Text != "")
             {
                 tbSubE.Text = (Convert.ToDecimal(tbSubE.Text) + total).ToString("N2");
+                externa = Convert.ToDecimal(tbSubE.Text) + total;
             }
             else
             {
                 tbSubE.Text = total.ToString("N2");
+                externa = total;
             }
 
             limpia_campos_etiq();
@@ -206,10 +209,12 @@ namespace PLM.Vista.Cotización
             if (tbSubEE.Text != "")
             {
                 tbSubEE.Text = (Convert.ToDecimal(tbSubEE.Text) + total).ToString("N2");
+                empaque = Convert.ToDecimal(tbSubEE.Text) + total;
             }
             else
             {
                 tbSubEE.Text = total.ToString("N2");
+                empaque = total;
             }
 
             limpia_campos_emp();

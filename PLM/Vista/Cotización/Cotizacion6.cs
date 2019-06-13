@@ -24,6 +24,25 @@ namespace PLM.Vista.Cotización
             InitializeComponent();
         }
 
+        #region FUNCIONES
+        public void sumas(decimal segmento1, decimal segmento2)
+        {
+            if(tbCostoT.Text != "")
+            {
+                tbCostoT.Text = (Convert.ToDecimal(tbCostoT.Text) + segmento1 + segmento2).ToString("N2");
+            }
+            else
+            {
+                tbCostoT.Text = (segmento1 + segmento2).ToString("N2");
+            }
+        }
+
+        public void limpia_sumas()
+        {
+            tbCostoT.Text = "";
+        }
+        #endregion
+
         private void tbManoObra_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F3)

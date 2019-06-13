@@ -17,7 +17,7 @@ namespace PLM.Vista
 {
     public partial class SimulacionCotizacion : MetroForm
     {
-        int pantalla = 1;
+        public int pantalla = 1;
         public string nacionalidad;
         CotizacionController cotizacion = new CotizacionController();
 
@@ -63,6 +63,13 @@ namespace PLM.Vista
                     btnAnterior.Visible = true;
                     break;
                 case 6:
+                    cotizacion6.limpia_sumas();
+
+                    cotizacion6.sumas(cotizacion1.hilo,cotizacion1.telas);
+                    cotizacion6.sumas(cotizacion2.cierre,cotizacion2.fusing);
+                    cotizacion6.sumas(cotizacion3.metales,cotizacion3.confeccion);
+                    cotizacion6.sumas(cotizacion4.empaque,cotizacion4.externa);
+
                     hide_show_cu(cotizacion6);
                     btnSiguiente.Visible = false;
                     btnAnterior.Visible = true;
