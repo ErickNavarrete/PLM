@@ -69,6 +69,7 @@ namespace PLM.Vista
                     cotizacion6.sumas(cotizacion2.cierre,cotizacion2.fusing);
                     cotizacion6.sumas(cotizacion3.metales,cotizacion3.confeccion);
                     cotizacion6.sumas(cotizacion4.empaque,cotizacion4.externa);
+                    cotizacion6.sumas(cotizacion5.varios,cotizacion5.procesos);
 
                     hide_show_cu(cotizacion6);
                     btnSiguiente.Visible = false;
@@ -142,6 +143,7 @@ namespace PLM.Vista
                         cotizacion3.porcentaje_tela = Convert.ToDecimal(segundas.Tela.Replace("%", "")) / 100;
                         cotizacion4.porcentaje_tela = Convert.ToDecimal(segundas.Tela.Replace("%", "")) / 100;
                         cotizacion5.porcentaje_tela = Convert.ToDecimal(segundas.Tela.Replace("%", "")) / 100;
+                        cotizacion6.faltantes = Convert.ToDecimal(segundas.faltantes.Replace("%", "")) / 100;
                     }
                     else
                     {

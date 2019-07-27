@@ -18,6 +18,7 @@ namespace PLM.Vista.Cotización
         Presupuestos presupuestos = new Presupuestos();
         public string nacionalidad;
         public bool t_cambio = false, cliente = false;
+        public decimal faltantes = 0;
 
         public Cotizacion6()
         {
@@ -35,6 +36,8 @@ namespace PLM.Vista.Cotización
             {
                 tbCostoT.Text = (segmento1 + segmento2).ToString("N2");
             }
+
+            tbFaltantes.Text = ((Convert.ToDecimal(tbCostoT.Text) * faltantes) / 100).ToString("N2");
         }
 
         public void limpia_sumas()

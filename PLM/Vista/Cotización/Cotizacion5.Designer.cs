@@ -388,7 +388,6 @@
             this.tbProcesos.Name = "tbProcesos";
             this.tbProcesos.PasswordChar = '\0';
             this.tbProcesos.PromptText = "Presiona F3 para busqueda";
-            this.tbProcesos.ReadOnly = true;
             this.tbProcesos.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbProcesos.SelectedText = "";
             this.tbProcesos.SelectionLength = 0;
@@ -579,7 +578,6 @@
             this.tbArticuloV.Name = "tbArticuloV";
             this.tbArticuloV.PasswordChar = '\0';
             this.tbArticuloV.PromptText = "Presiona F3 para busqueda";
-            this.tbArticuloV.ReadOnly = true;
             this.tbArticuloV.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbArticuloV.SelectedText = "";
             this.tbArticuloV.SelectionLength = 0;
